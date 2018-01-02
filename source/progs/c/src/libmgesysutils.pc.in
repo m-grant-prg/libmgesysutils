@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+
+Name: libmgesysutils
+Description: MGE system utilities library.
+Version: @PACKAGE_VERSION@
+Requires:
+Libs: -L${libdir} -lmgesysutils
+Cflags: -I${includedir}

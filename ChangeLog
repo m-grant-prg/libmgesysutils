@@ -1,0 +1,17 @@
+2017-05-04 v 1.0.5 Mark Grant <m.grant.prg@gmail.com>
+	*  Update source tree formatting & coding style to atcldpc
+	template v1.0.0
+
+2015-10-25 v 1.0.4 Mark Grant <m.grant.prg@gmail.com>
+	*  Restructure and change to conform to AutoTools General
+	Template v1.0.6.
+
+2015-09-22 v 1.0.3 Mark Grant <m.grant.prg@gmail.com>
+	*  Change from using txt2man to txt2manwrap.
+	Complies with MG AutoTools General standard version 1.0.4.
+
+2015-07-12 v 1.0.2 Mark Grant <m.grant.prg@gmail.com>
+	*  Add libmgesysutils.h and tidy.
+
+2015-07-12 v 1.0.1 Mark Grant <m.grant.prg@gmail.com>
+	*  Initial release.
