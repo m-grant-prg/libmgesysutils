@@ -1,0 +1,13 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+	DayOfWeek = Wed
+
+	
+ [General]
+# Will fail no mandatory Output section.
+

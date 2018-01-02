@@ -1,0 +1,14 @@
+2017-05-04 v 1.0.3 Mark Grant <m.grant.prg@gmail.com>
+	*  Migrate config file processing to use mge_errno.
+	Migrate sendremsyslog to use mge_errno.
+	Improve getaddrinfo processing.
+	Change to send errors to syslog, not stderr.
+	Update to standards from atclstv template v1.0.0
+
+2015-10-25 v 1.0.2 Mark Grant <m.grant.prg@gmail.com>
+	*  Restructure and change to conform to AutoTools General
+	Template v1.0.6.
+
+2015-07-12 v 1.0.1 Mark Grant <m.grant.prg@gmail.com>
+	*  Initial release.
+	Complies with MG AutoTools General standard version 1.0.4.

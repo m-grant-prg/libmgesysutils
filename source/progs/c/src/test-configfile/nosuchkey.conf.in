@@ -1,0 +1,14 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+	DayOfWeek = Wed
+
+	
+ [General]
+
+#line below will fail - no such key.
+beer=

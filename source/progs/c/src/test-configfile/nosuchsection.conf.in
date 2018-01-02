@@ -1,0 +1,20 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+	DayOfWeek = Wed
+
+	
+ [General]
+
+# line below will fail - no such Section.
+[Jim]
+
+[Output]
+# This will fail - no mandatory key Verbose.
+
+# Line below will fail - no terminating newline.
+Bold =

@@ -1,0 +1,27 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+	DayOfWeek = Wed
+
+# Line below will fail - no closing ]
+[Incremental			   fghhhj 	j
+	
+ [General]
+
+# Line below will fail - no = sign.
+pollint
+#line below will fail - no such key.
+beer
+
+# line below will fail - no such Section.
+[Jim]
+
+[Output]
+# This will fail - no mandatory key Verbose.
+
+# Line below will fail - no terminating newline.
+Bold =
