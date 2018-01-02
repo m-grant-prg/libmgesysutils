@@ -1,0 +1,25 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+	DayOfWeek = Wed
+
+	
+ [General]
+
+# Line below will fail - no = sign.
+pollint
+#line below will fail - no such key.
+beer
+
+# line below will fail - no such Section.
+[Jim]
+
+[Output]
+# This will fail - no mandatory key Verbose.
+
+# Line below will fail - no terminating newline.
+Bold =

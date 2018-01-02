@@ -1,0 +1,13 @@
+Release 1.0.3 2017-05-04
+Migrate config file processing to use mge_errno.
+Migrate sendremsyslog to use mge_errno.
+Improve getaddrinfo processing.
+Change to send errors to syslog, not stderr.
+Update to standards from atclstv template v1.0.0
+
+Release 1.0.2 2015-10-25
+Restructure and change to conform to AutoTools General Template v1.0.6.
+
+Release 1.0.1 2015-07-12
+Initial release.
+Complies with MG AutoTools General standard version 1.0.4.

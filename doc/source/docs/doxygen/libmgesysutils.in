@@ -1,0 +1,9 @@
+Document: libmgesysutils
+Title: MGE system utilities library documentation.
+Author: Mark Grant
+Abstract: This document describes the API for the MGE system utilities library.
+Section: Programming/C
+
+Format: HTML
+Index: @htmldir@/html/index.html
+Files: @htmldir@/html/*.html

@@ -1,0 +1,17 @@
+
+	
+  
+
+	# Comment
+
+  [Full]
+  
+# This will fail - no mandatory key DayOfWeek even though [FULL] not mandatory, it is present.
+	#DayOfWeek = Wed
+
+	
+ [General]
+
+[Output]
+
+
