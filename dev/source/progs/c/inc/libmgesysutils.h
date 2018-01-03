@@ -1,5 +1,5 @@
 /**
- * @file dev/source/progs/c/inc/libmgesysutils/libmgesysutils.h
+ * @file dev/source/progs/c/inc/libmgesysutils.h
  *
  * Header file for libmgesysutils shared library.
  *
