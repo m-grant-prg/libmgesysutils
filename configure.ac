@@ -40,12 +40,14 @@
 # 02/01/2018	MG	1.0.9	Move to new source directory structure.	#
 # 05/01/2018	MG	1.0.10	Correct use of config.h - remove the	#
 #				Makefile.am and processing.		#
+#				Update minimum required Autoconf	#
+#				version.				#
 #									#
 #########################################################################
 
 AC_REVISION([$Revision: 1.0.10 $])
 
-AC_PREREQ([2.65])
+AC_PREREQ([2.69])
 
 
 ########################
