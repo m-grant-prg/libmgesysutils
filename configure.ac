@@ -38,10 +38,12 @@
 #				consumption.				#
 # 01/01/2018	MG	1.0.8	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.9	Move to new source directory structure.	#
+# 05/01/2018	MG	1.0.10	Correct use of config.h - remove the	#
+#				Makefile.am and processing.		#
 #									#
 #########################################################################
 
-AC_REVISION([$Revision: 1.0.9 $])
+AC_REVISION([$Revision: 1.0.10 $])
 
 AC_PREREQ([2.65])
 
@@ -277,7 +279,6 @@ PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
 
 # Project Makefiles to create.
 AC_CONFIG_FILES([Makefile
-		source/progs/c/sysgen/inc/Makefile
 		source/progs/c/sysgen/lib/Makefile
 		source/progs/c/inc-tmp/Makefile
 		source/progs/c/lib-tmp/Makefile
