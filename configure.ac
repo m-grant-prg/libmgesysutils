@@ -207,16 +207,58 @@ AC_SUBST([edit], ["sed \
 		-e 's|@pkglibexecdir[@]|\$(pkglibexecdir)|g'"])
 
 
+# Passes the options to all am files. Puts objects in the sub-directory
+# containing the source.
+# This also checks :-	BSD install	make variable set	mkdir -p
+#			gawk
 AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects])
 
+# Set language for compilation tests.
+AC_LANG([C])
+
+# Checks the compiler to use, stores it in the cc variable and checks its
+# capabilities.
 AC_PROG_CC
+
+# Checks the c pre-processor to use, stores it in the cpp variable and checks
+# its capabilities.
+AC_PROG_CPP
+
+# Checks the c++ compiler to use, stores it in the cxx variable and checks its
+# capabilities. (Required by ltmain.sh).
+AC_PROG_CXX
+
+# Checks that there is an installation program or script.
+AC_PROG_INSTALL
+
+# Check whether symbolic links are supported.
+AC_PROG_LN_S
+
+# Check a source file to ensure no command line --srcdir typo.
+AC_CONFIG_SRCDIR([source/progs/c/sysgen/lib/dummy.c])
+
+# GNULIB macros.
+# Also checks for ar, grep, egrep, ranlib and how to run the cpp.
 gl_EARLY
 gl_INIT
 
+# Must use this macro if the ar archiver is used. ar is mostly now used for
+# static libraries.
 AM_PROG_AR
 
+# Check for libtool minimum version.
+LT_PREREQ([2.4.6])
+
+# Turn on shared libraries.
+# Also checks for fgrep, linker capabilities, ranlib, sed.
+# Also checks for:-	ANSI C header files	sys/types.h	sys/stat.h
+#			stdlib.h	string.h	memory.h
+#			strings.h	inttypes.h	stdint.h
+#			unistd.h	dlfcn.h
 LT_INIT
 
+# Causes AC_OUTPUT to create a c preprocessor file with #define statements about
+# the configuration.
 AC_CONFIG_HEADERS([source/progs/c/sysgen/inc/config.h])
 
 
@@ -235,8 +277,18 @@ AC_CONFIG_MACRO_DIR([m4])
 ########################
 #
 # Checks for programs.
-# install, mkdir and gawk are checked by AM_INIT_AUTOMAKE.
-# grep, egrep and ranlib are also automatically checked.
+# If using am init automake, gl early or lt init the following programs are
+# automatically checked:-
+#
+# am init automake
+#	BSD install	mkdir -p	gawk
+#
+# gl early
+#	ar	grep	egrep	ranlib
+#
+# lt init
+#	fgrep	ranlib	sed
+#
 # Particular and generic program checks follow:
 #
 ########################
@@ -261,6 +313,7 @@ AC_CHECK_HEADERS([unistd.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([errno.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([sys/socket.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([netinet/in.h], [], [AC_MSG_ERROR([header not found])])
+AC_CHECK_HEADERS([netdb.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([syslog.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([configfile.h], [], [AC_MSG_ERROR([header not found])])
 AC_CHECK_HEADERS([mge-errno.h], [], [AC_MSG_ERROR([header not found])])
@@ -272,6 +325,7 @@ AC_CHECK_HEADERS([libmgesysutils.h], [], [AC_MSG_ERROR([header not found])])
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+AC_CHECK_FUNCS([gethostname memset socket strchr])
 
 # Checks for pkg-config files.
 PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
