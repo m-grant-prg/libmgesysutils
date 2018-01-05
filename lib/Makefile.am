@@ -26,12 +26,14 @@
 # 09/06/2017	MG	1.0.4	Add support for temporary libraries.	#
 # 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
+# 05/01/2018	MG	1.0.7	Correct use of config.h - remove the	#
+#				Makefile.am and processing.		#
 #									#
 #########################################################################
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = source/progs/c/sysgen/inc source/progs/c/sysgen/lib
+SUBDIRS = source/progs/c/sysgen/lib
 SUBDIRS += source/progs/c/inc-tmp
 SUBDIRS += source/progs/c/lib-tmp
 SUBDIRS += source/progs/c/src/libmgesysutils

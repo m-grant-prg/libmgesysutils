@@ -29,13 +29,15 @@
 #				Re-order into logical steps.		#
 # 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
+# 05/01/2018	MG	1.0.7	Correct use of config.h - add the	#
+#				header directory to AM_CPPFLAGS.	#
 #									#
 #########################################################################
 
 
 AM_CPPFLAGS = -I$(srcdir)/../../inc-tmp -I$(srcdir)/../../inc
 AM_CPPFLAGS += -I$(top_srcdir)/../dev/source/progs/c/inc
-AM_CPPFLAGS += -I../../sysgen/lib
+AM_CPPFLAGS += -I../../sysgen/inc -I../../sysgen/lib
 
 
 AM_CFLAGS = -Wall
