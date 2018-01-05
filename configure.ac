@@ -36,7 +36,7 @@
 
 AC_REVISION([$Revision: 1.0.6 $])
 
-AC_PREREQ([2.65])
+AC_PREREQ([2.69])
 
 
 ########################
