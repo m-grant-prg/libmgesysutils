@@ -122,7 +122,20 @@ AC_SUBST([edit], ["sed \
 		-e 's|@pkglibexecdir[@]|\$(pkglibexecdir)|g'"])
 
 
+# Passes the options to all am files. Puts objects in the sub-directory
+# containing the source.
 AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects])
+
+# Checks the compiler to use and stores it in the cc variable.
+AC_PROG_CC
+
+# Ensure source files are where they are told to be. (In case of a bad command
+# line --srcdir=).
+AC_CONFIG_SRCDIR([source/progs/c/inc/remsyslog.h])
+
+# Causes AC_OUTPUT to create a c preprocessor file with #define statements about
+# the configuration.
+AC_CONFIG_HEADERS([source/progs/c/sysgen/inc/config.h])
 
 
 ########################
