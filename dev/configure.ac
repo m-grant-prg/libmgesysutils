@@ -31,10 +31,11 @@
 #				multi-line.				#
 # 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
+# 09/01/2018	MG	1.0.7	Remove unnecessary config.h genneration.#
 #									#
 #########################################################################
 
-AC_REVISION([$Revision: 1.0.6 $])
+AC_REVISION([$Revision: 1.0.7 $])
 
 AC_PREREQ([2.69])
 
@@ -132,10 +133,6 @@ AC_PROG_CC
 # Ensure source files are where they are told to be. (In case of a bad command
 # line --srcdir=).
 AC_CONFIG_SRCDIR([source/progs/c/inc/remsyslog.h])
-
-# Causes AC_OUTPUT to create a c preprocessor file with #define statements about
-# the configuration.
-AC_CONFIG_HEADERS([source/progs/c/sysgen/inc/config.h])
 
 
 ########################
