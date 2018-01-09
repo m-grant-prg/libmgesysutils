@@ -1,6 +1,5 @@
 Overview					{#mainpage}
 ========
 [TOC]
-The libmgec project produces a library of functions covering a diverse range of
-subjects. They are placed in this library as they can be generally useful but
-related functions are not large enough to warrant libraries of their own.
+This library contains utility functions which can be loosely classified as
+system utilities.
