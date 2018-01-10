@@ -31,7 +31,7 @@
 #				multi-line.				#
 # 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
-# 09/01/2018	MG	1.0.7	Remove unnecessary config.h genneration.#
+# 09/01/2018	MG	1.0.7	Remove unnecessary config.h generation.	#
 #									#
 #########################################################################
 
