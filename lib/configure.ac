@@ -80,7 +80,7 @@ AC_SUBST(pkgversion, $PACKAGE_VERSION)
 
 AC_SUBST([tmpheaders])
 
-for entry in `dirname $0`/source/progs/c/inc-tmp/*.h
+for entry in `dirname $0`/src/prg/c/inc-tmp/*.h
 do
 	if test -f "$entry" ;then
 		tmpheaders=$tmpheaders" "$(basename "$entry")
@@ -102,11 +102,11 @@ done
 
 AC_SUBST([tmplibraries])
 
-for direntry in `dirname $0`/source/progs/c/lib-tmp/*
+for direntry in `dirname $0`/src/prg/c/lib-tmp/*
 do
 	if test -d "$direntry" ;then
 		for entry in `dirname $0`\
-/source/progs/c/lib-tmp/$(basename "$direntry")/*.la
+/src/prg/c/lib-tmp/$(basename "$direntry")/*.la
 		do
 			if test -f "$entry" ;then
 				tmplibraries=$tmplibraries\
@@ -237,7 +237,7 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 
 # Check a source file to ensure no command line --srcdir typo.
-AC_CONFIG_SRCDIR([source/progs/c/sysgen/lib/dummy.c])
+AC_CONFIG_SRCDIR([src/prg/c/gen/lib/dummy.c])
 
 # GNULIB macros.
 # Also checks for ar, grep, egrep, ranlib and how to run the cpp.
@@ -261,7 +261,7 @@ LT_INIT
 
 # Causes AC_OUTPUT to create a c preprocessor file with #define statements about
 # the configuration.
-AC_CONFIG_HEADERS([source/progs/c/sysgen/inc/config.h])
+AC_CONFIG_HEADERS([src/prg/c/gen/inc/config.h])
 
 
 ########################
@@ -335,11 +335,11 @@ PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
 
 # Project Makefiles to create.
 AC_CONFIG_FILES([Makefile
-		source/progs/c/sysgen/lib/Makefile
-		source/progs/c/inc-tmp/Makefile
-		source/progs/c/lib-tmp/Makefile
-		source/progs/c/src/libmgesysutils/Makefile
-		source/progs/c/src/test-configfile/Makefile
-		source/progs/c/src/test-remsyslog/Makefile])
+		src/prg/c/gen/lib/Makefile
+		src/prg/c/inc-tmp/Makefile
+		src/prg/c/lib-tmp/Makefile
+		src/prg/c/src/libmgesysutils/Makefile
+		src/prg/c/src/test-configfile/Makefile
+		src/prg/c/src/test-remsyslog/Makefile])
 
 AC_OUTPUT
