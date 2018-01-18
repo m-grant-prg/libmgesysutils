@@ -1,5 +1,5 @@
 /**
- * @file dev/source/progs/c/inc/configfile.h
+ * @file dev/src/prg/c/inc/configfile.h
  *
  * Config file processing header file.
  *

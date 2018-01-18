@@ -132,7 +132,7 @@ AC_PROG_CC
 
 # Ensure source files are where they are told to be. (In case of a bad command
 # line --srcdir=).
-AC_CONFIG_SRCDIR([source/progs/c/inc/remsyslog.h])
+AC_CONFIG_SRCDIR([src/prg/c/inc/remsyslog.h])
 
 
 ########################
@@ -190,10 +190,10 @@ AC_CHECK_HEADERS([portability.h], [], [AC_MSG_ERROR([header not found])])
 
 # Project Makefiles to create.
 AC_CONFIG_FILES([Makefile
-		source/man/man3/configfile/Makefile
-		source/man/man3/remsyslog/Makefile
-		source/progs/c/inc/Makefile
-		source/progs/c/src/libmgesysutils.pc
-		source/progs/c/src/Makefile])
+		src/man/3/configfile/Makefile
+		src/man/3/remsyslog/Makefile
+		src/prg/c/inc/Makefile
+		src/prg/c/src/libmgesysutils.pc
+		src/prg/c/src/Makefile])
 
 AC_OUTPUT
