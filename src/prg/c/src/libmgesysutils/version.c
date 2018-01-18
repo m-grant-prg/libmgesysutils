@@ -1,5 +1,5 @@
 /**
- * @file lib/source/progs/c/src/libmgesysutils/version.c
+ * @file lib/src/prg/c/src/libmgesysutils/version.c
  *
  * Standard versioning.
  *

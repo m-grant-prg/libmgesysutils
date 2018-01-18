@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 #########################################################################
 #									#
-# Script ID: lib/source/progs/c/src/test-remsyslog/Makefile.am		#
+# Script ID: lib/src/prg/c/src/test-remsyslog/Makefile.am		#
 # Author: Copyright (C) 2015-2018  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
@@ -36,8 +36,8 @@
 
 
 AM_CPPFLAGS = -I$(srcdir)/../../inc-tmp -I$(srcdir)/../../inc
-AM_CPPFLAGS += -I$(top_srcdir)/../dev/source/progs/c/inc
-AM_CPPFLAGS += -I../../sysgen/inc -I../../sysgen/lib
+AM_CPPFLAGS += -I$(top_srcdir)/../dev/src/prg/c/inc
+AM_CPPFLAGS += -I../../gen/inc -I../../gen/lib
 
 
 AM_CFLAGS = -Wall

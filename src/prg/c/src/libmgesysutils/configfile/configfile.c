@@ -1,5 +1,5 @@
 /**
- * @file lib/source/progs/c/src/libmgesysutils/configfile/configfile.c
+ * @file lib/src/prg/c/src/libmgesysutils/configfile/configfile.c
  *
  * Configuration file processing.
  *
