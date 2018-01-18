@@ -20,6 +20,7 @@
 #									#
 # 28/12/2017	MG	1.0.0	First release.				#
 # 02/01/2018	MG	1.0.2	Move to new source directory structure.	#
+# 18/01/2018	MG	1.0.3	Update changed source location.		#
 #									#
 #########################################################################
 
@@ -40,12 +41,12 @@ docbasedir = $(datarootdir)/doc-base
 # documentation which would then be installed.
 
 $(docpkg): doxygen.stamp
-	if [ -d $(top_srcdir)/../lib/source/ \
+	if [ -d $(top_srcdir)/../lib/src/ \
 		-a -d $(top_srcdir)/../dev/src/ ]; \
 		then tar chof - html | gzip -9 -c > $@; fi
 
 doxygen.stamp: Doxyfile
-	if [ -d $(top_srcdir)/../lib/source/ \
+	if [ -d $(top_srcdir)/../lib/src/ \
 		-a -d $(top_srcdir)/../dev/src/ ]; \
 		then doxygen $<; fi
 	echo Timestamp > $@
