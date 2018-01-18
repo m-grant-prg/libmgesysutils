@@ -19,6 +19,8 @@
 
 #include <mge-errno.h>
 #include <configfile.h>
+#include <libmgesysutils.h>
+
 
 /*
  * configfile test program.
@@ -156,5 +158,9 @@ int main(int argc, char** argv)
 	}
 
 	fprintf(stderr, "%s\n", mge_strerror(mge_errno));
+
+	libmgesysutils_print_pkg_version();
+	libmgesysutils_print_src_version();
+
 	return (parserror);
 }
