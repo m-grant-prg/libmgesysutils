@@ -1,5 +1,5 @@
 /**
- * @file dev/source/progs/c/inc/remsyslog.h
+ * @file dev/src/prg/c/inc/remsyslog.h
  *
  * Send message to remote syslog header file.
  *

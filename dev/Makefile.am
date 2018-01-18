@@ -28,5 +28,5 @@
 #########################################################################
 
 
-SUBDIRS = source/man/man3/configfile source/man/man3/remsyslog
-SUBDIRS += source/progs/c/inc source/progs/c/src
+SUBDIRS = src/man/3/configfile src/man/3/remsyslog
+SUBDIRS += src/prg/c/inc src/prg/c/src
