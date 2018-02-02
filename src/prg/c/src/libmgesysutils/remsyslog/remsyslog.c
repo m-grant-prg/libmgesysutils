@@ -58,7 +58,7 @@
 int sndremsyslogmsg(const char *hostname, const char *prog_name,
 			const char *message)
 {
-	char clientid[100];
+	char clientid[100] = { '\0' };
 	int c;
 	char fullmessage[strlen(message) + 1 + strlen(clientid) + 1
 				+ strlen(prog_name) + 1];
