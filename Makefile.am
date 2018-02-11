@@ -28,5 +28,8 @@
 #########################################################################
 
 
+ACLOCAL_AMFLAGS = -I m4
+
+
 SUBDIRS = src/man/3/configfile src/man/3/remsyslog
 SUBDIRS += src/prg/c/inc src/prg/c/src
