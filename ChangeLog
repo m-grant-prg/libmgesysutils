@@ -1,3 +1,7 @@
+2018-02-27 v 1.0.7 Mark Grant <m.grant.prg@gmail.com>
+	*  Add Doxygen comments.
+	Overhaul of AutoTools project structure.
+
 2017-05-04 v 1.0.5 Mark Grant <m.grant.prg@gmail.com>
 	*  Update source tree formatting & coding style to atcldpc
 	template v1.0.0
