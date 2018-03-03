@@ -53,7 +53,7 @@ AC_PREREQ([2.69])
 #
 ########################
 
-AC_INIT([[libmgesysutils development files.]], [v1.0.7],
+AC_INIT([[libmgesysutils development files.]], [v1.0.8],
 	[m.grant.prg@gmail.com], [libmgesysutils-dev])
 
 AC_SUBST(pkgversion, $PACKAGE_VERSION)
