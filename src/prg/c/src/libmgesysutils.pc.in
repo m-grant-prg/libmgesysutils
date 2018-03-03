@@ -8,6 +8,7 @@ includedir=@includedir@
 Name: libmgesysutils
 Description: MGE system utilities library.
 Version: @PACKAGE_VERSION@
-Requires:
+Requires: @pc_requires@
+Requires.private: @pc_requires_private@
 Libs: -L${libdir} -lmgesysutils
 Cflags: -I${includedir}
