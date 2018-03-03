@@ -1,3 +1,6 @@
+2018-03-03 v 1.0.8 Mark Grant <m.grant.prg@gmail.com>
+	*  Add libmgec Requires dependency to libmgesysutils.pc pkg-config file.
+
 2018-02-27 v 1.0.7 Mark Grant <m.grant.prg@gmail.com>
 	*  Add Doxygen comments.
 	Overhaul of AutoTools project structure.
