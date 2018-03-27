@@ -42,7 +42,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.7 ==== 02/01/2018_
+ * @version _v1.0.8 ==== 27/03/2018_
  */
 
 /* **********************************************************************
@@ -62,6 +62,8 @@
  * 07/11/2017	MG	1.0.5	Add Doxygen comments.			*
  * 10/11/2017	MG	1.0.6	Add SPDX license tag.			*
  * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
+ * 27/03/2018	MG	1.0.8	Ensure variable declarations preceed	*
+ *				code, (fixes sparse warnings).		*
  *									*
  ************************************************************************
  */
@@ -180,8 +182,9 @@ static int parseline(struct confsection *params, int nparams, char *pline)
  */
 static int parsesection(struct confsection *params, int nparams, char *pline)
 {
-	mge_errno = 0;
 	char s[MAX_KEYVAL_LENGTH] = { '\0' };
+
+	mge_errno = 0;
 
 	if (strchr(pline, ']') != NULL) {
 		if ((strchr(pline, ']') - strchr(pline, '[')) > 1) {
@@ -215,8 +218,9 @@ static int parsesection(struct confsection *params, int nparams, char *pline)
 static int validatesection(struct confsection *params, int nparams,
 				char *section)
 {
-	mge_errno = MGE_CONFIG_PARSE;
 	int s = 1;
+
+	mge_errno = MGE_CONFIG_PARSE;
 
 	while (s) {
 		if (!strcmp(params->section, section)) {
@@ -241,13 +245,14 @@ static int validatesection(struct confsection *params, int nparams,
  */
 static int parseparam(char *pline)
 {
-	mge_errno = 0;
 	/* Initialise to enable use of strncpy. */
 	char paramkey[MAX_KEYVAL_LENGTH] = { '\0' };
 	char paramvalue[MAX_KEYVAL_LENGTH] = { '\0' };
 	char *endkey = strchr(pline, '=');
 	char *startval = strchr(pline, '=') + 1;
 	char *endval = strchr(pline, '\n');
+
+	mge_errno = 0;
 
 	if ((endkey != NULL) && (endval != NULL)) {
 		if (endkey - pline) {
@@ -330,9 +335,10 @@ static int isolatevalue(char *startvalue, char *endvalue, char *value)
  */
 static int validatekeyvalue(char *key, char *value)
 {
-	mge_errno = MGE_CONFIG_PARSE;
 	int s = 1;
 	int x = 0;
+
+	mge_errno = MGE_CONFIG_PARSE;
 
 	while (s && (x < MAX_KEYS_PER_SECTION)) {
 		if (pcursect->keys[x].key) {
@@ -358,8 +364,9 @@ static int validatekeyvalue(char *key, char *value)
  */
 static int chkmandatories(struct confsection *params, int nparams)
 {
-	mge_errno = 0;
 	int s = 1;
+
+	mge_errno = 0;
 
 	while (s && !mge_errno) {
 		if (params->present) {
@@ -385,9 +392,10 @@ static int chkmandatories(struct confsection *params, int nparams)
  */
 static int chkkeys(struct confsection *section)
 {
-	mge_errno = 0;
 	int s = 1;
 	int x = 0;
+
+	mge_errno = 0;
 
 	while (s && (x < MAX_KEYS_PER_SECTION)) {
 		if (section->keys[x].key) {
