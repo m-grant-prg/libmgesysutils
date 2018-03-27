@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.7 ==== 02/01/2018_
+ * @version _v1.0.8 ==== 27/03/2018_
  */
 
 /* **********************************************************************
@@ -29,6 +29,8 @@
  * 07/11/2017	MG	1.0.5	Add Doxygen comments.			*
  * 10/11/2017	MG	1.0.6	Add SPDX license tag.			*
  * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
+ * 27/03/2018	MG	1.0.8	Initialise NULL pointer with NULL, not	*
+ *				zero, (fixes a sparse warning).		*
  *									*
  ************************************************************************
  */
@@ -64,7 +66,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 				+ strlen(prog_name) + 1];
 	const char *portname = "syslog";
 	struct addrinfo hints;
-	struct addrinfo *res = 0;
+	struct addrinfo *res = NULL;
 	struct addrinfo *rai;
 	int fd = 0;
 
