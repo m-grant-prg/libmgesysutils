@@ -28,6 +28,9 @@
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
 # 05/01/2018	MG	1.0.7	Correct use of config.h - remove the	#
 #				Makefile.am and processing.		#
+# 20/04/2018	MG	1.0.8	Add srctarball target to build a source	#
+#				tarball in the build directory. Uses	#
+#				git archive to archive HEAD.		#
 #									#
 #########################################################################
 
@@ -40,3 +43,13 @@ SUBDIRS += src/prg/c/src/libmgesysutils
 SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
 
 EXTRA_DIST  = m4/gnulib-cache.m4
+
+
+srctarball:
+	@cwd="$${PWD}" && \
+	cd @srcdir@ && \
+	git archive --format=tar.gz \
+		--prefix=@PACKAGE_TARNAME@-@PACKAGE_VERSION@/ \
+		--output=$${cwd}/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz \
+		HEAD && \
+	cd -
