@@ -25,16 +25,6 @@ The documentation produced is in HTML format and is installed in the html_DATA
 directory. If doc-base is installed on the system then the documents are
 registered and dochelp is updated.
 
-Related packages are the libmgesysutils-lib MGE System Utilities Library itself
-and the libmgesysutils-dev MGE System Utilities Library Development package.
-There is also a super project (git), libmgesysutils-super, which has the above
-mentioned dev, lib and doc projects as git submodules.
-
-So please refer also to:-
-https://github.com/m-grant-prg/libmgesysutils-lib
-https://github.com/m-grant-prg/libmgesysutils-dev
-https://github.com/m-grant-prg/libmgesysutils-super
-
 **********
 ** N.B. **
 **********
@@ -49,7 +39,7 @@ distibution tarball.
 =================================================
 
 a) ... Download the distribution tarball (the .tar.gz file) from:-
-	https://github.com/m-grant-prg/libmgesysutils-doc/releases
+	https://github.com/m-grant-prg/libmgesysutils/releases
 
 b) ... Extract the tarball preserving the directory structure.
 
@@ -94,7 +84,7 @@ To uninstall this package at any time please type:-
 4 ... Debian and Raspbian Installation
 ======================================
 Debian and Raspbian '.deb' packages can be downloaded from:-
-	https://github.com/m-grant-prg/libmgesysutils-doc/releases
+	https://github.com/m-grant-prg/libmgesysutils/releases
 
 They can then be installed using a utility such as GDebi which is available in
 the standard repos.

@@ -28,16 +28,6 @@ This package needs to be installed on your system if you are going to build, or,
 build against the libmgesysutils MGE System Utilities Library (project name
 libmgesysutils-lib).
 
-Related packages are the libmgesysutils MGE System Utilities Library itself and
-a documentation project libmgesysutils-doc. There is also a super project (git),
-libmgesysutils-super, which has the above mentioned dev, lib and doc projects as
-git submodules.
-
-So please refer also to:-
-https://github.com/m-grant-prg/libmgesysutils-lib
-https://github.com/m-grant-prg/libmgesysutils-doc
-https://github.com/m-grant-prg/libmgesysutils-super
-
 
 -------------------------------------------------
 2 ... AutoTools (configure and make) Installation
@@ -45,7 +35,7 @@ https://github.com/m-grant-prg/libmgesysutils-super
 
 a) ... Download either the source or distribution tarball (the .tar.gz file)
 	from:-
-	https://github.com/m-grant-prg/libmgesysutils-dev/releases
+	https://github.com/m-grant-prg/libmgesysutils/releases
 
 b) ... Extract the tarball preserving the directory structure.
 
@@ -92,7 +82,7 @@ To uninstall this package at any time please type:-
 4 ... Debian and Raspbian Installation
 ======================================
 Debian and Raspbian '.deb' packages can be downloaded from:-
-	https://github.com/m-grant-prg/libmgesysutils-dev/releases
+	https://github.com/m-grant-prg/libmgesysutils/releases
 
 They can then be installed using a utility such as GDebi which is available in
 the standard repos.
