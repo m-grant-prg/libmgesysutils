@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.8 ==== 27/03/2018_
+ * @version _v1.0.9 ==== 13/05/2018_
  */
 
 /* **********************************************************************
@@ -31,6 +31,7 @@
  * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
  * 27/03/2018	MG	1.0.8	Initialise NULL pointer with NULL, not	*
  *				zero, (fixes a sparse warning).		*
+ * 13/05/2018	MG	1.0.9	On error return -ve mge_errno.		*
  *									*
  ************************************************************************
  */
@@ -55,7 +56,7 @@
  * @param hostname Destination machine.
  * @param prog_name Source program name.
  * @param message The message to send.
- * @return 0 on success, non-zero on error.
+ * @return 0 on success, -ve mge_errno on error.
  */
 int sndremsyslogmsg(const char *hostname, const char *prog_name,
 			const char *message)
@@ -77,7 +78,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		mge_errno = MGE_ERRNO;
 		syslog((int) (LOG_USER | LOG_NOTICE),
 			"Error retrieving hostname. %m");
-		return mge_errno;
+		return -mge_errno;
 	}
 	/* Prepend client & program names to message to build full message. */
 	strcpy(fullmessage, clientid);
@@ -102,7 +103,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		mge_errno = MGE_GAI;
 		syslog((int) (LOG_USER | LOG_NOTICE), "%s",
 			mge_strerror(mge_errno));
-		return mge_errno;
+		return -mge_errno;
 	}
 
 	for (rai = res; res != NULL; res = res->ai_next) {
@@ -126,12 +127,12 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		goto err_exit;
 
 	freeaddrinfo(res);
-	return mge_errno;
+	return 0;
 
 err_exit:
 	sav_errno = errno;
 	mge_errno = MGE_ERRNO;
 	perror("");
 	freeaddrinfo(res);
-	return mge_errno;
+	return -mge_errno;
 }

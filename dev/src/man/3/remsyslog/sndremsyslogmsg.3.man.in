@@ -8,10 +8,6 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 DESCRIPTION
 Sends a message (message) to a remote syslog server (hostname) using an UDP
 Datagram on the standard 'syslog' port.
-EXAMPLE
-
-error = sndremsyslogmsg("hermes.mgent.home", "MyProg", "A message");
-
 PARAMETERS
 char *hostname - The hostname of the remote syslog server.
 
@@ -21,9 +17,13 @@ char *message - The message to send.
 RETURN VALUE
 0 on success.
 .br
-Non-zero indicates failure. The value will either be an error number from
-getaddrinfo when contacting the host, or, the standard errno from subsequent
-functions.
+Negative mge_errno on error.
+ERRORS
+On error mge_errno will be set.
+EXAMPLE
+
+error = sndremsyslogmsg("hermes.mgent.home", "MyProg", "A message");
+
 AUTHOR
 Written by Mark Grant.
 REPORTING BUGS

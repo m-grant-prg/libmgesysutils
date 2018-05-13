@@ -37,6 +37,7 @@ int main(int argc, char** argv)
 
 	prog_error = sndremsyslogmsg("dummy.mgent.home", argv[0], "Message 300");
 
+	printf("Return value for dummy is %i\n",prog_error);
 	printf("This should fail dummy? %s\n", mge_strerror(mge_errno));
 
 	libmgesysutils_print_src_version();
