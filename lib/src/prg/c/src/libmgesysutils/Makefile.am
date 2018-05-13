@@ -60,6 +60,9 @@ AM_CFLAGS += -Wsparse-all
 endif
 
 
+noinst_HEADERS = configfile/internal.h
+
+
 lib_LTLIBRARIES = libmgesysutils.la
 
 libmgesysutils_la_SOURCES = configfile/configfile.c remsyslog/remsyslog.c

@@ -78,23 +78,13 @@
 
 #include <mge-errno.h>
 #include <configfile.h>
+#include "internal.h"
+
 
 static char line[MAX_LINE_LENGTH];
 static char currentsection[MAX_KEYVAL_LENGTH];
 static struct confsection *pcursect;
 
-/* Static prototypes. */
-static char *getparamline(char *, FILE *);
-static int parseline(struct confsection *, int, char *);
-static int parsesection(struct confsection *, int, char *);
-static int validatesection(struct confsection *, int, char *);
-static int parseparam(char *);
-static int isolatekey(char *, char *, char *);
-static int isolatevalue(char *, char *, char *);
-static int validatekeyvalue(char *, char *);
-static int chkmandatories(struct confsection *, int);
-static int chkkeys(struct confsection *);
-static int chkfileerr(FILE *);
 
 /**
  * Parse a configuration file.
