@@ -42,7 +42,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.8 ==== 27/03/2018_
+ * @version _v1.0.9 ==== 13/05/2018_
  */
 
 /* **********************************************************************
@@ -64,6 +64,9 @@
  * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
  * 27/03/2018	MG	1.0.8	Ensure variable declarations preceed	*
  *				code, (fixes sparse warnings).		*
+ * 13/05/2018	MG	1.0.9	Extract prototype declarations to	*
+ *				internal.h				*
+ *				Return -ve error number on failure.	*
  *									*
  ************************************************************************
  */
@@ -92,12 +95,13 @@ static struct confsection *pcursect;
  * @param params Pointer to a struct confsection array of parameters.
  * @param nparams The number of parameters.
  * @param filename The config filename.
- * @return 0 for success, non-zero for failure.
+ * @return 0 for success, -mge_errno on failure.
  */
 int parsefile(struct confsection *params, int nparams, char *filename)
 {
 	char *pl = line;
 	FILE *fp;
+	int ret = 0;
 	mge_errno = 0;
 
 	/* open file */
@@ -106,23 +110,23 @@ int parsefile(struct confsection *params, int nparams, char *filename)
 		sav_errno = errno;
 		mge_errno = MGE_ERRNO;
 		syslog((int) (LOG_USER | LOG_NOTICE), "%m %s", filename);
-		return mge_errno;
+		return -mge_errno;
 	}
 
 	/* Process file. */
-	while (((pl = getparamline(pl, fp)) != NULL) && !mge_errno) {
-		mge_errno = parseline(params, nparams, pl);
+	while (((pl = getparamline(pl, fp)) != NULL) && !ret) {
+		ret = parseline(params, nparams, pl);
 	}
 	/* Check it was EOF, not a real file error. */
-	if (pl == NULL && !mge_errno)
-		mge_errno = chkfileerr(fp);
+	if (pl == NULL && !ret)
+		ret = chkfileerr(fp);
 	/* All OK to here, then check mandatory requirements. */
-	if (!mge_errno)
-		mge_errno = chkmandatories(params, nparams);
+	if (!ret)
+		ret = chkmandatories(params, nparams);
 	/* Close the file and exit. */
 	if (fclose(fp))
-		mge_errno = chkfileerr(fp);
-	return mge_errno;
+		ret = chkfileerr(fp);
+	return ret;
 }
 
 /*
@@ -151,20 +155,26 @@ static char *getparamline(char *pline, FILE *stream)
  */
 static int parseline(struct confsection *params, int nparams, char *pline)
 {
+	int ret = 0;
 	mge_errno = 0;
 
 	while (*pline && isspace(*pline))
 		pline++;
 
-	if (*pline == '[')
-		mge_errno = parsesection(params, nparams, pline);
-	else if (!currentsection[0]) {
-		mge_errno = MGE_CONFIG_PARSE;
-		syslog((int) (LOG_USER | LOG_NOTICE), "First non-blank, "
-			"non-empty, non-comment line must be a section.");
-	} else
-		mge_errno = parseparam(pline);
-	return mge_errno;
+	if (*pline == '[') {
+		ret = parsesection(params, nparams, pline);
+	} else {
+		if (!currentsection[0]) {
+			mge_errno = MGE_CONFIG_PARSE;
+			ret = -mge_errno;
+			syslog((int) (LOG_USER | LOG_NOTICE), "First non-blank,"
+				" non-empty, non-comment line must be a "
+				"section.");
+		} else {
+			ret = parseparam(pline);
+		}
+	}
+	return ret;
 }
 
 /*
@@ -173,6 +183,7 @@ static int parseline(struct confsection *params, int nparams, char *pline)
 static int parsesection(struct confsection *params, int nparams, char *pline)
 {
 	char s[MAX_KEYVAL_LENGTH] = { '\0' };
+	int ret;
 
 	mge_errno = 0;
 
@@ -182,24 +193,27 @@ static int parsesection(struct confsection *params, int nparams, char *pline)
 				strncpy(s, strchr(pline, '[') + 1,
 					(int) (strchr(pline, ']') -
 						strchr(pline, '[') - 1));
-				mge_errno = validatesection(params, nparams, s);
+				ret = validatesection(params, nparams, s);
 			} else {
 				syslog((int) (LOG_USER | LOG_NOTICE),
 					"Section name longer than %d.",
 					MAX_KEYVAL_LENGTH);
 				mge_errno = MGE_CONFIG_PARSE;
+				ret = -mge_errno;
 			}
 		} else {
 			syslog((int) (LOG_USER | LOG_NOTICE), "Section heading "
 				"must not be empty.");
 			mge_errno = MGE_CONFIG_PARSE;
+			ret = -mge_errno;
 		}
 	} else {
 		syslog((int) (LOG_USER | LOG_NOTICE), "Section heading %s has "
 			"no closing ].", pline);
 		mge_errno = MGE_CONFIG_PARSE;
+		ret = -mge_errno;
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -208,6 +222,7 @@ static int parsesection(struct confsection *params, int nparams, char *pline)
 static int validatesection(struct confsection *params, int nparams,
 				char *section)
 {
+	int ret = 0;
 	int s = 1;
 
 	mge_errno = MGE_CONFIG_PARSE;
@@ -224,10 +239,12 @@ static int validatesection(struct confsection *params, int nparams,
 		else
 			params++;
 	}
-	if (mge_errno)
+	if (mge_errno) {
 		syslog((int) (LOG_USER | LOG_NOTICE), "Section %s is "
 			"invalid.", section);
-	return mge_errno;
+		ret = -mge_errno;
+	}
+	return ret;
 }
 
 /*
@@ -241,29 +258,32 @@ static int parseparam(char *pline)
 	char *endkey = strchr(pline, '=');
 	char *startval = strchr(pline, '=') + 1;
 	char *endval = strchr(pline, '\n');
+	int ret = 0;
 
 	mge_errno = 0;
 
 	if ((endkey != NULL) && (endval != NULL)) {
 		if (endkey - pline) {
 			if (strlen(pline) < MAX_KEYVAL_LENGTH) {
-				mge_errno = isolatekey(pline, endkey, paramkey);
-				if (!mge_errno)
-					mge_errno = isolatevalue(startval,
-							endval, paramvalue);
-				if (!mge_errno)
-					mge_errno = validatekeyvalue(paramkey,
+				ret = isolatekey(pline, endkey, paramkey);
+				if (!ret)
+					ret = isolatevalue(startval, endval,
+							   paramvalue);
+				if (!ret)
+					ret = validatekeyvalue(paramkey,
 								paramvalue);
 			} else {
 				mge_errno = MGE_CONFIG_PARSE;
 				syslog((int) (LOG_USER | LOG_NOTICE),
 					"Parameter line longer than %d.",
 					MAX_KEYVAL_LENGTH);
+				ret = -mge_errno;
 			}
 		} else {
 			mge_errno = MGE_CONFIG_PARSE;
 			syslog((int) (LOG_USER | LOG_NOTICE), "Key name cannot "
 				"be empty.");
+			ret = -mge_errno;
 		}
 	} else {
 		mge_errno = MGE_CONFIG_PARSE;
@@ -273,8 +293,9 @@ static int parseparam(char *pline)
 		else
 			syslog((int) (LOG_USER | LOG_NOTICE), "Parameter line "
 				"must be terminated by newline character.");
+		ret = -mge_errno;
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -282,6 +303,7 @@ static int parseparam(char *pline)
  */
 static int isolatekey(char *pline, char *endkey, char *key)
 {
+	int ret = 0;
 	mge_errno = 0;
 
 	if ((endkey - pline) < MAX_KEYVAL_LENGTH) {
@@ -293,8 +315,9 @@ static int isolatekey(char *pline, char *endkey, char *key)
 		mge_errno = MGE_CONFIG_PARSE;
 		syslog((int) (LOG_USER | LOG_NOTICE), "Key name longer than "
 			"%d.", MAX_KEYVAL_LENGTH);
+		ret = -mge_errno;
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -302,6 +325,7 @@ static int isolatekey(char *pline, char *endkey, char *key)
  */
 static int isolatevalue(char *startvalue, char *endvalue, char *value)
 {
+	int ret = 0;
 	mge_errno = 0;
 
 	if ((endvalue - startvalue) < MAX_KEYVAL_LENGTH) {
@@ -316,8 +340,9 @@ static int isolatevalue(char *startvalue, char *endvalue, char *value)
 		mge_errno = MGE_CONFIG_PARSE;
 		syslog((int) (LOG_USER | LOG_NOTICE), "Value longer than %d.",
 			MAX_KEYVAL_LENGTH);
+		ret = -mge_errno;
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -325,6 +350,7 @@ static int isolatevalue(char *startvalue, char *endvalue, char *value)
  */
 static int validatekeyvalue(char *key, char *value)
 {
+	int ret = 0;
 	int s = 1;
 	int x = 0;
 
@@ -343,10 +369,12 @@ static int validatekeyvalue(char *key, char *value)
 			s = 0;
 		}
 	}
-	if (mge_errno)
+	if (mge_errno) {
 		syslog((int) (LOG_USER | LOG_NOTICE), "Key %s is invalid.",
 			key);
-	return mge_errno;
+		ret = -mge_errno;
+	}
+	return ret;
 }
 
 /*
@@ -354,19 +382,21 @@ static int validatekeyvalue(char *key, char *value)
  */
 static int chkmandatories(struct confsection *params, int nparams)
 {
+	int ret = 0;
 	int s = 1;
 
 	mge_errno = 0;
 
 	while (s && !mge_errno) {
 		if (params->present) {
-			mge_errno = chkkeys(params);
+			ret = chkkeys(params);
 		} else {
 			if (params->mandatory) {
 				mge_errno = MGE_CONFIG_PARSE;
 				s = 0;
 				syslog((int) (LOG_USER | LOG_NOTICE), "Section "
 					"%s is mandatory.\n", params->section);
+				ret = -mge_errno;
 			}
 		}
 		if (!(--nparams))
@@ -374,7 +404,7 @@ static int chkmandatories(struct confsection *params, int nparams)
 		else
 			params++;
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -382,6 +412,7 @@ static int chkmandatories(struct confsection *params, int nparams)
  */
 static int chkkeys(struct confsection *section)
 {
+	int ret = 0;
 	int s = 1;
 	int x = 0;
 
@@ -398,6 +429,7 @@ static int chkkeys(struct confsection *section)
 						"mandatory.",
 						section->keys[x].key,
 						section->section);
+					ret = -mge_errno;
 				} else {
 					x++;
 				}
@@ -408,7 +440,7 @@ static int chkkeys(struct confsection *section)
 			s = 0;
 		}
 	}
-	return mge_errno;
+	return ret;
 }
 
 /*
@@ -423,5 +455,5 @@ static int chkfileerr(FILE *fp)
 		syslog((int) (LOG_USER | LOG_NOTICE), "%s",
 			mge_strerror(mge_errno));
 	}
-	return mge_errno;
+	return -mge_errno;
 }

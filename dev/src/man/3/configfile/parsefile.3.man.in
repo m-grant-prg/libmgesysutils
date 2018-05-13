@@ -30,20 +30,6 @@ An array of struct confsection's is provided by the library user to specify
 valid parameters and whether they are mandatory. A mandatory Key / Value pair
 for an optional Section is only enforced if the Section does appear, (is
 defined), in the config file.
-EXAMPLE
-# Section General.
-
-[General]
-
-# pollint is the polling interval in seconds.
-
-pollint=5 <== This is legal.
-
-large pollint=5 <== This is legal.
-
-pollint = <== This is legal.
-
-pollint	<== This is illegal.
 PARAMETERS
 parameters - Pointer to an array of struct confsection's - the parameters.
 
@@ -80,7 +66,23 @@ configfile - The config filename.
 RETURN VALUE
 0 on success.
 .br
-Non-zero Failure
+Negative mge_errno on failure
+ERRORS
+mge_errno will be set as required.
+EXAMPLE
+# Section General.
+
+[General]
+
+# pollint is the polling interval in seconds.
+
+pollint=5 <== This is legal.
+
+large pollint=5 <== This is legal.
+
+pollint = <== This is legal.
+
+pollint	<== This is illegal.
 AUTHOR
 Written by Mark Grant.
 REPORTING BUGS
