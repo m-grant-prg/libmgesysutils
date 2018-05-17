@@ -63,7 +63,7 @@ AC_PREREQ([2.69])
 #
 ########################
 
-AC_INIT(MGE system utilities library, v1.0.6,
+AC_INIT(MGE system utilities library, v1.0.6-rc1,
 	m.grant.prg@gmail.com, libmgesysutils)
 
 AC_SUBST(pkgversion, $PACKAGE_VERSION)
