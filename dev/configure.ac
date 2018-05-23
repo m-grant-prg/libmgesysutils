@@ -40,9 +40,9 @@
 #									#
 #########################################################################
 
-AC_REVISION([$Revision: 1.0.10 $])
+AC_REVISION($Revision: 1.0.10 $)
 
-AC_PREREQ([2.69])
+AC_PREREQ(2.69)
 
 
 ########################
@@ -132,11 +132,11 @@ AC_SUBST([edit], ["sed \
 # containing the source. Forces tar to use --format=posix in make dist.
 # This also checks :-	BSD install	make variable set	mkdir -p
 #			gawk
-AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects tar-pax])
+AM_INIT_AUTOMAKE(-Wall -Werror subdir-objects tar-pax)
 
 # Ensure source files are where they are told to be. (In case of a bad command
 # line --srcdir=).
-AC_CONFIG_SRCDIR([src/prg/c/inc/remsyslog.h])
+AC_CONFIG_SRCDIR(src/prg/c/inc/remsyslog.h)
 
 
 ########################
@@ -150,7 +150,7 @@ AC_CONFIG_SRCDIR([src/prg/c/inc/remsyslog.h])
 #
 ########################
 
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIR(m4)
 
 
 ########################
@@ -186,31 +186,31 @@ AC_SUBST(pc_requires_private, "")
 #
 ########################
 
-AC_MSG_NOTICE([checking for generic programs required by this application])
-AC_CHECK_PROG([TAR], [tar], [yes], [no])
+AC_MSG_NOTICE(checking for generic programs required by this application)
+AC_CHECK_PROG(TAR, tar, yes, no)
 if test "x$TAR" = "xno" ; then
-	AC_MSG_ERROR([tar not found])
+	AC_MSG_ERROR(tar not found)
 fi
 
-AC_CHECK_PROG([BASH], [bash], [yes], [no])
+AC_CHECK_PROG(BASH, bash, yes, no)
 if test "x$BASH" = "xno" ; then
-   	AC_MSG_ERROR([bash not found])
+   	AC_MSG_ERROR(bash not found)
 fi
 
-AC_CHECK_PROG([TXT2MAN], [txt2man], [yes], [no])
+AC_CHECK_PROG(TXT2MAN, txt2man, yes, no)
 if test "x$TXT2MAN" = "xno" ; then
-   	AC_MSG_ERROR([txt2man not found])
+   	AC_MSG_ERROR(txt2man not found)
 fi
 
-AC_CHECK_PROG([TXT2MANWRAP], [txt2manwrap], [yes], [no])
+AC_CHECK_PROG(TXT2MANWRAP, txt2manwrap, yes, no)
 if test "x$TXT2MANWRAP" = "xno" ; then
-   	AC_MSG_ERROR([txt2manwrap not found])
+   	AC_MSG_ERROR(txt2manwrap not found)
 fi
 
 # Checks for libraries.
 
 # Checks for C header files.
-AC_CHECK_HEADERS([portability.h], [], [AC_MSG_ERROR([header not found])])
+AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
 
 # Checks for C++ header files.
 
@@ -219,11 +219,11 @@ AC_CHECK_HEADERS([portability.h], [], [AC_MSG_ERROR([header not found])])
 # Checks for library functions.
 
 # Project Makefiles to create.
-AC_CONFIG_FILES([Makefile
+AC_CONFIG_FILES(Makefile
 		src/man/3/configfile/Makefile
 		src/man/3/remsyslog/Makefile
 		src/prg/c/inc/Makefile
 		src/prg/c/src/libmgesysutils.pc
-		src/prg/c/src/Makefile])
+		src/prg/c/src/Makefile)
 
 AC_OUTPUT
