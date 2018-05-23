@@ -27,6 +27,7 @@
 # 14/04/2018	MG	1.0.5	Add srctarball target to build a source	#
 #				tarball in the build directory. Uses	#
 #				git archive to archive HEAD.		#
+# 23/05/2018	MG	1.0.6	Simplify man directory structure.	#
 #									#
 #########################################################################
 
@@ -34,7 +35,7 @@
 ACLOCAL_AMFLAGS = -I m4
 
 
-SUBDIRS = src/man/3/configfile src/man/3/remsyslog
+SUBDIRS = src/man/3
 SUBDIRS += src/prg/c/inc src/prg/c/src
 
 

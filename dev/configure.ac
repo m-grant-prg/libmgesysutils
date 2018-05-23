@@ -37,10 +37,11 @@
 # 03/03/2018	MG	1.0.10	Add substitution variables for 		#
 #				pkg-config file Requires and		#
 #				Requires.private fields.		#
+# 23/05/2018	MG	1.0.11	Simplify man directory structure.	#
 #									#
 #########################################################################
 
-AC_REVISION($Revision: 1.0.10 $)
+AC_REVISION($Revision: 1.0.11 $)
 
 AC_PREREQ(2.69)
 
@@ -220,8 +221,7 @@ AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
 
 # Project Makefiles to create.
 AC_CONFIG_FILES(Makefile
-		src/man/3/configfile/Makefile
-		src/man/3/remsyslog/Makefile
+		src/man/3/Makefile
 		src/prg/c/inc/Makefile
 		src/prg/c/src/libmgesysutils.pc
 		src/prg/c/src/Makefile)
