@@ -1,3 +1,6 @@
+2018-06-03 v 1.0.10 Mark Grant <m.grant.prg@gmail.com>
+	*  Make functions returning an int use -mge_errno on error.
+
 2018-04-19 v 1.0.9 Mark Grant <m.grant.prg@gmail.com>
 	*  Track m4 directory but keep gitignore to ensure directory exists,
 	even if empty.
