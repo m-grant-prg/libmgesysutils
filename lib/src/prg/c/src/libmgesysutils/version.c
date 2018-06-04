@@ -37,7 +37,7 @@
 #include <config.h>
 
 /** The source code version. */
-#define SOURCE_VERSION "1.0.7"
+#define SOURCE_VERSION "1.0.8"
 
 /**
  * Get the git-describe based package version.
