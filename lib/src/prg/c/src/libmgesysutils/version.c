@@ -10,7 +10,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.7 ==== 02/01/2018_
+ * @version _v1.0.7 ==== 04/06/2018_
  */
 
 /* **********************************************************************
@@ -22,15 +22,10 @@
  * 12/07/2015	MG	1.0.1	First release.				*
  * 16/07/2016	MG	1.0.2	Move towards kernel coding style.	*
  * 17/07/2016	MG	1.0.3	Further coding style changes.		*
- * 04/05/2017	MG	1.0.4	Migrate to use mge_errno.		*
- *				Improve getaddrinfo processing.		*
- *				Change to send errors to syslog, not	*
- *				stderr.					*
- *				Update to standards from atclstv	*
- *				template v1.0.0				*
- * 07/11/2017	MG	1.0.5	Add Doxygen comments.			*
- * 10/11/2017	MG	1.0.6	Add SPDX license tags.			*
- * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
+ * 07/11/2017	MG	1.0.4	Add Doxygen comments.			*
+ * 10/11/2017	MG	1.0.5	Add SPDX license tags.			*
+ * 02/01/2018	MG	1.0.6	Move to new source directory structure.	*
+ * 04/06/2018	MG	1.0.7	Make this ChangeLog for this file only.	*
  *									*
  ************************************************************************
  */
