@@ -28,6 +28,7 @@
 #				tarball in the build directory. Uses	#
 #				git archive to archive HEAD.		#
 # 23/05/2018	MG	1.0.6	Simplify man directory structure.	#
+# 07/06/2018	MG	1.0.7	Add info messages to srctarball target.	#
 #									#
 #########################################################################
 
@@ -42,6 +43,9 @@ SUBDIRS += src/prg/c/inc src/prg/c/src
 srctarball:
 	@cwd="$${PWD}" && \
 	cd @srcdir@ && \
+	echo "making srctarball from @srcdir@" && \
+	echo "GA	@builddir@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz" \
+	&& \
 	git archive --format=tar.gz \
 		--prefix=@PACKAGE_TARNAME@-@PACKAGE_VERSION@/ \
 		--output=$${cwd}/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz \
