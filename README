@@ -99,9 +99,9 @@ To uninstall the package:
 -------------------------
 3 ... Ubuntu Installation
 =========================
-This script is available as an Ubuntu package hosted in a Personal Package
-Archive (PPA). If you add this PPA to your software sources then you can easily
-install, update and remove the package.
+This library project is available as Ubuntu packages hosted in a Personal
+Package Archive (PPA). If you add this PPA to your software sources then you can
+easily install, update and remove the packages.
 
 To view the details of this PPA please follow the link below:-
 	https://code.launchpad.net/~m-grant-prg/+archive/ubuntu/utils
@@ -113,8 +113,12 @@ To add this PPA to your system please type the following:-
 All 3 sub-projects are available as packages with the proper dependencies set
 up, so each package can be addressed individually, however, most commonly only
 the library and documentation packages will be handled.
+The packages are:-
+libmgesysutils		The library itself.
+libmgesysutils-dev	The development files.
+libmgesysutils-doc	The Doxygen documentation.
 
-To install this script on your system for use please type the following:-
+To install, for example, the library on your system please type the following:-
 	sudo apt-get update
 	sudo apt-get install libmgesysutils
 
