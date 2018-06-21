@@ -39,6 +39,10 @@
 # 26/03/2018	MG	1.0.12	Add support for sparse.			#
 # 21/06/2018	MG	1.0.13	Disable sparse variable length array	#
 #				warnings.				#
+#				Use lib_version_info AC_SUBST variable	#
+#				passed via AC_CONFIG_FILES to enable	#
+#				all top level versioning to be done in	#
+#				configure.ac				#
 #									#
 #########################################################################
 
@@ -70,5 +74,5 @@ lib_LTLIBRARIES = libmgesysutils.la
 libmgesysutils_la_SOURCES = configfile/configfile.c remsyslog/remsyslog.c
 libmgesysutils_la_SOURCES += version.c
 
-AM_LDFLAGS = -version-info 0:0:0 $(LIBMGEC_LIBS)
+AM_LDFLAGS = -version-info @lib_version_info@ $(LIBMGEC_LIBS)
 libmgesysutils_la_LIBADD = $(tmplibraries)
