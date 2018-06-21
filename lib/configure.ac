@@ -47,10 +47,12 @@
 # 26/03/2018	MG	1.0.12	Add support for an enable-sparse CLA	#
 #				and passing a suitable variable to the	#
 #				Makefile.am's.				#
+# 21/06/2018	MG	1.0.13	Use better source file for		#
+#				AC_CONFIG_SRCDIR check.			#
 #									#
 #########################################################################
 
-AC_REVISION($Revision: 1.0.12 $)
+AC_REVISION($Revision: 1.0.13 $)
 
 AC_PREREQ(2.69)
 
@@ -273,7 +275,7 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 
 # Check a source file to ensure no command line --srcdir typo.
-AC_CONFIG_SRCDIR(src/prg/c/gen/lib/dummy.c)
+AC_CONFIG_SRCDIR(src/prg/c/src/libmgesysutils/version.c)
 
 # GNULIB macros.
 # Also checks for ar, grep, egrep, ranlib and how to run the cpp.
