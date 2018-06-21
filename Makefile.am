@@ -24,10 +24,10 @@
 # 07/06/2018	MG	1.0.3	Add srctarball target to build a source	#
 #				tarball in the build directory. Uses	#
 #				git archive to archive HEAD.		#
+# 21/06/2018	MG	1.0.4	Simplify project structure to reflect	#
+#				it's purpose.				#
 #									#
 #########################################################################
-
-ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = dev lib doc
 
