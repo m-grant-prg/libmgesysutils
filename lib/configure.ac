@@ -49,6 +49,8 @@
 #				Makefile.am's.				#
 # 21/06/2018	MG	1.0.13	Use better source file for		#
 #				AC_CONFIG_SRCDIR check.			#
+#				AC_DEFINE SOURCE_VERSION for use in	#
+#				version.c via config.h			#
 #									#
 #########################################################################
 
@@ -67,6 +69,9 @@ AC_PREREQ(2.69)
 
 AC_INIT(MGE system utilities library, v1.0.7,
 	m.grant.prg@gmail.com, libmgesysutils)
+
+AC_DEFINE(SOURCE_VERSION, "1.0.8", \
+	Define to the version of source code in this package.)
 
 AC_SUBST(pkgversion, $PACKAGE_VERSION)
 

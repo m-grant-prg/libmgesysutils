@@ -10,7 +10,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.7 ==== 04/06/2018_
+ * @version _v1.0.8 ==== 21/06/2018_
  */
 
 /* **********************************************************************
@@ -26,6 +26,8 @@
  * 10/11/2017	MG	1.0.5	Add SPDX license tags.			*
  * 02/01/2018	MG	1.0.6	Move to new source directory structure.	*
  * 04/06/2018	MG	1.0.7	Make this ChangeLog for this file only.	*
+ * 21/06/2018	MG	1.0.8	Remove SOURCE_CODE define, now uses the	*
+ *				AC_DEFINE'd value in config.h		*
  *									*
  ************************************************************************
  */
@@ -36,8 +38,6 @@
 #include <libmgesysutils.h>
 #include <config.h>
 
-/** The source code version. */
-#define SOURCE_VERSION "1.0.8"
 
 /**
  * Get the git-describe based package version.
