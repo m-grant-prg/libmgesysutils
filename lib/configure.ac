@@ -51,6 +51,8 @@
 #				AC_CONFIG_SRCDIR check.			#
 #				AC_DEFINE SOURCE_VERSION for use in	#
 #				version.c via config.h			#
+#				Remove no longer needed AC_SUBST	#
+#				variable pkgversion.			#
 #									#
 #########################################################################
 
@@ -72,8 +74,6 @@ AC_INIT(MGE system utilities library, v1.0.7,
 
 AC_DEFINE(SOURCE_VERSION, "1.0.8", \
 	Define to the version of source code in this package.)
-
-AC_SUBST(pkgversion, $PACKAGE_VERSION)
 
 
 ########################
@@ -216,7 +216,6 @@ fi
 ########################
 
 AC_SUBST([edit], ["sed \
-		-e 's|@pkgversion[@]|\$(pkgversion)|g' \
 		-e 's|@prefix[@]|\$(prefix)|g' \
 		-e 's|@exec_prefix[@]|\$(exec_prefix)|g' \
 		-e 's|@bindir[@]|\$(bindir)|g' \
