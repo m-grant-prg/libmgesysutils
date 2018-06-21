@@ -37,6 +37,8 @@
 # 05/01/2018	MG	1.0.11	Correct use of config.h - add the	#
 #				header directory to AM_CPPFLAGS.	#
 # 26/03/2018	MG	1.0.12	Add support for sparse.			#
+# 21/06/2018	MG	1.0.13	Disable sparse variable length array	#
+#				warnings.				#
 #									#
 #########################################################################
 
@@ -56,7 +58,7 @@ AM_CFLAGS += -O2
 endif
 
 if SPARSE
-AM_CFLAGS += -Wsparse-all
+AM_CFLAGS += -Wsparse-all -Wno-vla
 endif
 
 
