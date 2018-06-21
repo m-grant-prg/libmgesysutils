@@ -1,3 +1,13 @@
+2018-06-21 v 1.0.8 Mark Grant <m.grant.prg@gmail.com>
+	*  Add info messages to srctarball Make target.
+	README: Add N.B. concerning expecting a git environment.
+	README: Improve clarity of Ubuntu installation section.
+	Use better source file for AC_CONFIG_SRCDIR check.
+	Disable sparse variable length array warnings.
+	Define SOURCE_VERSION in configure.ac
+	Remove no longer needed AC_SUBST pkgversion variable.
+	Add lib_version_info, all top level versioning now in configure.ac
+
 2018-06-03 v 1.0.7 Mark Grant <m.grant.prg@gmail.com>
 	*  Make functions returning an int use -mge_errno on error.
 	Introduce internal.h for non-public declarations.
