@@ -1,2 +1,13 @@
+Release 1.0.10 2018-06-22
+Update bootstrap.sh script to v1.3.4
+Add srctarball Make target.
+README: Add nota bene concerning expecting a git environment.
+README: Improve clarity of Ubuntu installation section.
+Simplify project structure to properly reflect it's purpose.
+full: v1.0.10
+dev: v1.0.11
+doc: v1.0.0-rc8
+lib: v1.0.8
+
 Release 1.0.1 2018-01-01
 Initial release.
