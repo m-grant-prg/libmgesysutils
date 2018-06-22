@@ -39,9 +39,8 @@ AC_PREREQ(2.69)
 
 ########################
 #
-# The following two macros use git to provide versioning information.
-# If git is not initialised or no commit has been made, then 'Pre-Release'
-# will be used.
+# The following macros uses git to provide versioning information. If git is not
+# initialised or no commit has been made, then 'Pre-Release' will be used.
 # If no Tag has been created then just a commit identifier will be used.
 # If a tag has been created then the most recent tag, plus number of commits
 # since the tag, plus a commit identifier will be used.
