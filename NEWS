@@ -1,3 +1,10 @@
+Release 1.0.11 2018-06-27
+Modules at:-
+full v1.0.11
+dev v1.0.12
+doc v1.0.0-rc9
+lib still at v1.0.8
+
 Release 1.0.10 2018-06-22
 Update bootstrap.sh script to v1.3.4
 Add srctarball Make target.
