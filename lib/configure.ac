@@ -10,6 +10,7 @@
 #	AutoConf script file to configure libmgesysutils project.	#
 #									#
 # ./configure	[--enable-debug=<yes|no> [default: no]]			#
+#		[--enable-headercheck=<yes|no> [default: no]]		#
 #		[--enable-sparse=<yes|no> [default: no]]		#
 #									#
 #									#
