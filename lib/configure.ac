@@ -62,10 +62,11 @@
 #				the Makefile.am's.			#
 #				Build suitable CFLAGS based on compiler	#
 #				version.				#
+# 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
 #									#
 #########################################################################
 
-AC_REVISION($Revision: 1.0.14 $)
+AC_REVISION($Revision: 1.0.15 $)
 
 AC_PREREQ(2.69)
 
@@ -391,6 +392,12 @@ AC_CHECK_PROG(TAR, tar, yes, no)
 if test "x$TAR" = "xno" ; then
 	AC_MSG_ERROR(tar not found)
 fi
+
+AC_CHECK_PROG(PKGCONFIG, pkg-config, yes, no)
+if test "x$PKGCONFIG" = "xno" ; then
+	AC_MSG_ERROR(pkg-config not found)
+fi
+
 
 # Checks for libraries.
 AC_SEARCH_LIBS(pull_msg, mgec, , \
