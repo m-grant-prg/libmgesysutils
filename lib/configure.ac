@@ -78,7 +78,7 @@ AC_PREREQ(2.69)
 #
 ########################
 
-AC_INIT(MGE system utilities library, v1.0.9,
+AC_INIT(MGE system utilities library, v1.0.10,
 	m.grant.prg@gmail.com, libmgesysutils)
 
 AC_DEFINE(SOURCE_VERSION, "1.0.9", \
