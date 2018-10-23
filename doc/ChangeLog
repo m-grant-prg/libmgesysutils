@@ -1,2 +1,7 @@
+2018-10-23 v 1.0.2 Mark Grant <m.grant.prg@gmail.com>
+	*  srctarball to make filename with -src-.
+	Update README to refer to new project wiki.
+
 2018-09-01 v 1.0.1 Mark Grant <m.grant.prg@gmail.com>
 	*  Initial release.
+
