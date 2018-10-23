@@ -1,3 +1,12 @@
+2018-10-23 v 1.0.13 Mark Grant <m.grant.prg@gmail.com>
+	*  srctarball to include -src- in filename
+	Add markdown symlink to README for GitHub
+	Update README to refer to new project wiki
+	full	v1.0.13
+	dev	v1.0.14
+	doc	v1.0.2
+	lib	v1.0.10
+
 2018-06-27 v 1.0.11 Mark Grant <m.grant.prg@gmail.com>
 	*  Modules at:-
 	full v1.0.11
