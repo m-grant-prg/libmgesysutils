@@ -58,7 +58,7 @@ AC_PREREQ(2.69)
 #
 ########################
 
-AC_INIT(libmgesysutils development files, v1.0.13,
+AC_INIT(libmgesysutils development files, v1.0.14,
 	m.grant.prg@gmail.com, libmgesysutils-dev)
 
 
