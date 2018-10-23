@@ -48,7 +48,7 @@ AC_PREREQ(2.69)
 #
 ########################
 
-AC_INIT(MGE system utilities library documentation, v1.0.1,
+AC_INIT(MGE system utilities library documentation, v1.0.2,
 		m.grant.prg@gmail.com, libmgesysutils-doc)
 
 
