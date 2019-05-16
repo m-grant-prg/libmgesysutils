@@ -39,10 +39,11 @@
 #				Make source tarball name == GitHub.	#
 #				Add install of standard GNU files such	#
 #				as AUTHORS etc.				#
+#				Add m4extra macro directory.		#
 #									#
 #########################################################################
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 -I m4extra
 
 SUBDIRS = src/man/3
 SUBDIRS += src/prg/c/gen/lib

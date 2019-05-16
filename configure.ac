@@ -65,6 +65,7 @@
 # 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
 # 16/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
 #				Remove leading v from package version.	#
+#				Use new m4 macro to build CFLAGS.	#
 #									#
 #########################################################################
 
@@ -303,19 +304,7 @@ AC_PROG_CC($compiler_list)
 AC_PROG_CPP
 
 # Build a suitable CFLAGS list depending on compiler version.
-# This has been checked up to gcc v8.2
-AC_SUBST(mg_cflags)
-AX_COMPILER_VENDOR
-AX_COMPILER_VERSION
-# The following 2 options seem fairly universal.
-mg_cflags="-Wall -Wextra"
-if test "$ax_cv_c_compiler_vendor" = "gnu"; then
-	mg_cflags+=" -Wmissing-include-dirs -Wshadow -Wstrict-prototypes"
-	AX_COMPARE_VERSION($ax_cv_c_compiler_version, ge, "7")
-	if test "x${ax_compare_version}" = xtrue; then
-		mg_cflags+=" -Wimplicit-fallthrough"
-	fi
-fi
+BUILD_COMPILER_VERSION_CFLAGS(mg_cflags)
 
 # Checks the c++ compiler to use, stores it in the cxx variable and checks its
 # capabilities. (Required by ltmain.sh).
