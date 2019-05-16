@@ -36,6 +36,7 @@
 #				filename.				#
 # 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
+#				Make source tarball name == GitHub.	#
 #									#
 #########################################################################
 
@@ -57,7 +58,7 @@ EXTRA_DIST  = m4/gnulib-cache.m4
 
 srctarball:
 	@cwd="$${PWD}" && \
-	targ="$${cwd}/@PACKAGE_TARNAME@-src-@PACKAGE_VERSION@.tar.gz" && \
+	targ="$${cwd}/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz" && \
 	cd @srcdir@ && \
 	echo "making srctarball from @srcdir@" && \
 	echo "GA	$${targ}" && \
