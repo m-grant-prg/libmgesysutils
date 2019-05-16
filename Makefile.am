@@ -2,14 +2,14 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2018  Mark Grant				#
+# Author: Copyright (C) 2015-2019  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
 #									#
 # Purpose:								#
-#	AutoMake script file to generate libmgesysutils all projects	#
-# from source.								#
+#	AutoMake script file to generate libmgesysutils project from	#
+# source.								#
 #									#
 #########################################################################
 
@@ -19,20 +19,40 @@
 #									#
 # Date		Author	Version	Description				#
 #									#
-# 01/01/2018	MG	1.0.1	First release.				#
-# 02/01/2018	MG	1.0.2	Move to new source directory structure.	#
-# 07/06/2018	MG	1.0.3	Add srctarball target to build a source	#
+# 12/07/2015	MG	1.0.1	First release.				#
+# 25/10/2015	MG	1.0.2	Restructure and change to conform to	#
+#				AutoTools General Template v1.0.6.	#
+# 23/04/2017	MG	1.0.3	Add temporary header directory.		#
+# 09/06/2017	MG	1.0.4	Add support for temporary libraries.	#
+# 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
+# 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
+# 05/01/2018	MG	1.0.7	Correct use of config.h - remove the	#
+#				Makefile.am and processing.		#
+# 20/04/2018	MG	1.0.8	Add srctarball target to build a source	#
 #				tarball in the build directory. Uses	#
 #				git archive to archive HEAD.		#
-# 21/06/2018	MG	1.0.4	Simplify project structure to reflect	#
-#				it's purpose.				#
-# 23/10/2018	MG	1.0.5	Change srctarball target to build with	#
+# 07/06/2018	MG	1.0.9	Add info messages to srctarball target.	#
+# 23/10/2018	MG	1.0.10	Change srctarball target to build with	#
 #				src between package name and version in	#
 #				filename.				#
+# 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
 #									#
 #########################################################################
 
-SUBDIRS = dev lib doc
+ACLOCAL_AMFLAGS = -I m4
+
+SUBDIRS = src/man/3
+SUBDIRS += src/prg/c/gen/lib
+SUBDIRS += src/prg/c/inc
+SUBDIRS += src/prg/c/inc-tmp
+SUBDIRS += src/prg/c/lib-tmp
+SUBDIRS += src/prg/c/pkg-config
+SUBDIRS += src/prg/c/src/libmgesysutils
+SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
+SUBDIRS += doc/doxygen
+
+
+EXTRA_DIST  = m4/gnulib-cache.m4
 
 
 srctarball:

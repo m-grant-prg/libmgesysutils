@@ -1,6 +1,3 @@
-----------------------------
-MGE System Utilities Library
-============================
 --------
 Contents
 ========
@@ -19,8 +16,6 @@ Contents
 1 ... Project Description
 =========================
 
-System Synopsis
----------------
 This AutoTools project contains the libmgesysutils MGE System Utilities Library.
 
 Notable function subjects include:-
@@ -28,46 +23,19 @@ Config file parsing.
 Send a remote syslog entry.
 
 If you are going to build, or build against, this libmgesysutils MGE System
-Utilities Library then you must install the development files.
-
-Project Structure
------------------
-This AutoTools project contains the entire MGE System Utilities Library System.
-
-Whilst this project can be treated as a single entity, (build, install,
-uninstall, etc), it is designed so that only the desired elements, the library
-itself or all the parts can be installed on a system. Indeed, by the time this
-system is packaged downstream, it is split into 3 packages.
-
-These individual elements are contained in 3 subdirectories of the project root
-and they are all AutoTools sub-projects in their own right. These sub-projects
-are:-
-
-dev		The development files for the library libmgesysutils.
-lib		The general library libmgesysutils.
-doc		Doxygen documentation on the entire project.
-
-The development files generally consist of c header files, pkg-config files and
-man pages.
-
-Any dependencies not installed on your system will be identified by the
-configure script. Any of these produced by this author can be found in a
-repository located here:-
+Utilities Library then you must install the development files from
+libmgesysutils-dev. Other required dependencies not installed on your system
+will be identified by the configure script. Any of these produced by this author
+can be found in a repository located here:-
 https://github.com/m-grant-prg
-
-Please also refer to the specific README files in dev/ doc/ and lib/.
 
 N.B.
 ----
 At a source modification / development level, this project expects to reside in
-a git environment. This manifests itself in 3 places:-
+a git environment. This manifests itself in 2 places:-
 1) ... .gitignore files are included in the source.
 2) ... The make target, 'srctarball', relies on the command 'git am' so it will
 	fail if git is not installed or it is not in a git repository.
-3) ... Package building for the full project relies on the command
-	'git describe' so it will fail if git is not installed or it is not in
-	a git repository. (As said before, building the full package is not a
-	particularly meaningful task.)
 
 
 -------------------------------------------------
@@ -108,7 +76,8 @@ https://github.com/m-grant-prg/libmgesysutils/wiki
 ---------------------
 4 ... Utility Scripts
 =====================
-In the project root directory there is a helper script; bootstrap.sh
+In the project root directory there are 2 helper scripts; bootstrap.sh and
+gen-gnulib.sh.
 
 bootstrap.sh
 ------------
@@ -159,4 +128,16 @@ mutually exclusive.
 
 Options d debug, F distcheckfake and s sparse are enabled by configure so
 require option c config.
+
+
+gen-gnulib.sh
+-------------
+This script generates or re-generates the gnulib requirements, I shan't go into
+detail here.
+
+It is useful when setting up the project initially, when you are actually
+building in what is required and thinking about it, thereafter it is best to use
+../bootstrap.sh --gnulib ..
+as it determines whether to do a re-generate based on whether the cache file
+exists, i.e. it has been wanted before.
 
