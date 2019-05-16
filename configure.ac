@@ -64,6 +64,7 @@
 #				version.				#
 # 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
 # 16/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
+#				Remove leading v from package version.	#
 #									#
 #########################################################################
 
@@ -79,7 +80,7 @@ AC_PREREQ(2.69)
 #
 ########################
 
-AC_INIT(MGE system utilities library, v1.0.10,
+AC_INIT(MGE system utilities library, 1.0.10,
 	m.grant.prg@gmail.com, libmgesysutils)
 
 AC_DEFINE(SOURCE_VERSION, "1.0.9", \
