@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/prg/c/src/test-configfile/Makefile.am			#
@@ -37,6 +36,7 @@
 #				orientated level 3 (includes		#
 #				pre-processor macros).			#
 # 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 

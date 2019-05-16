@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/man/3/Makefile.am					#
@@ -34,6 +33,7 @@
 # 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
 # 23/05/2018	MG	1.0.7	Consolidated into this dir, 1 level up.	#
 # 16/05/2019	MG	1.0.8	Collapse AT sub-projects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 

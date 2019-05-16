@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/prg/c/src/libmgesysutils/Makefile.am			#
@@ -52,6 +51,7 @@
 #				Use compiler version dependent CFLAGS	#
 #				assembled in configure.			#
 # 16/05/2019	MG	1.0.16	Collapse AT subprojects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 

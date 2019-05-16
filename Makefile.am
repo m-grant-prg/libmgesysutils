@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
@@ -36,6 +35,7 @@
 #				src between package name and version in	#
 #				filename.				#
 # 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 

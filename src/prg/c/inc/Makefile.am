@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/prg/c/inc/Makefile.am					#
@@ -25,6 +24,7 @@
 # 01/01/2018	MG	1.0.3	Add SPDX license tags to source files.	#
 # 02/01/2018	MG	1.0.4	Move to new source directory structure.	#
 # 16/05/2019	MG	1.0.5	Collapse AT sub-projects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 

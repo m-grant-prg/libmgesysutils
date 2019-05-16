@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: doc/doxygen/Makefile.am					#
@@ -30,6 +29,7 @@
 #				be used for the substitution of		#
 #				Installation Directory Variables.	#
 # 16/05/2019	MG	1.0.7	Collapse AT sub-projects into one.	#
+#				Remove shebang.				#
 #									#
 #########################################################################
 
