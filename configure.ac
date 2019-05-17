@@ -9,10 +9,28 @@
 # Purpose:								#
 #	AutoConf script file to configure libmgesysutils project.	#
 #									#
+# cmd line syntax:							#
 # ./configure	[--enable-debug=<yes|no> [default: no]]			#
 #		[--enable-headercheck=<yes|no> [default: no]]		#
 #		[--enable-sparse=<yes|no> [default: no]]		#
 #									#
+# Layout: (Only relevant sections will exist).				#
+# ChangeLog : High level ChangeLog					#
+# SECTION  1: Initialisation & Setup					#
+# SECTION  2: Architecture, target and host checks			#
+# SECTION  3: Command line arguments					#
+# SECTION  4: Compiler setup						#
+# SECTION  5: Check for programs					#
+# SECTION  6: Check for libraries					#
+# SECTION  7: Check for header files					#
+# SECTION  8: Check for types						#
+# SECTION  9: Check for structures					#
+# SECTION 10: Check for compiler characteristics			#
+# SECTION 11: Check for library functions				#
+# SECTION 12: Check for pkg-config files				#
+# SECTION 13: Check for system services					#
+# SECTION 14: Additional checks & variables				#
+# SECTION 15: Specify the output files					#
 #									#
 #########################################################################
 
@@ -63,93 +81,69 @@
 #				Build suitable CFLAGS based on compiler	#
 #				version.				#
 # 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
-# 16/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
+# 17/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
 #				Remove leading v from package version.	#
 #				Use new m4 macro to build CFLAGS.	#
+#				Revamp to new standard layout.		#
 #									#
 #########################################################################
+
+
+#########################################
+#					#
+# SECTION  1: Initialisation & Setup	#
+#					#
+#########################################
 
 AC_REVISION($Revision: 1.1.1 $)
 
 AC_PREREQ(2.69)
 
-
-########################
 #
 # The following macros set all top level versioning for this project. All
 # information can be propagated via AC_CONFIG_HEADERS and AC_CONFIG_FILES.
 #
-########################
-
 AC_INIT(MGE system utilities library, 1.0.10,
 	m.grant.prg@gmail.com, libmgesysutils)
+
+AC_MSG_NOTICE(initialisation and setup)
 
 AC_DEFINE(SOURCE_VERSION, "1.0.9", \
 	Define to the version of source code in this package.)
 
 AC_SUBST(lib_version_info, "0:1:0")
 
-
-########################
 #
-# This creates an AutoConf substitution variable for temporary header files.
-# Temporary headers might be copies of -dev package header files brought into a
-# library package for development and modification. Whilst there it should be
-# used. When finished it must be moved back to the -dev package for release.
-# This variable and the inc-tmp/Makefile.am allow for this conditional use and
-# even conditional presence in inc-tmp.
-# The use of `dirname $0` to get the configure invocation directory is critical
-# for parallel builds and make distcheck as the relative path always stays the
-# same but configure may be invoked from different directories.
+# Passes the options to all am files. Puts objects in the sub-directory
+# containing the source. Forces tar to use --format=posix in make dist.
+# This also checks :-	BSD install	make variable set	mkdir -p
+#			gawk
 #
-########################
+AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects tar-pax])
 
-AC_SUBST(tmpheaders)
-
-for entry in `dirname $0`/src/prg/c/inc-tmp/*.h
-do
-	if test -f "$entry" ;then
-		tmpheaders=$tmpheaders" "$(basename "$entry")
-	fi
-done
-
-
-########################
 #
-# This creates an AutoConf substitution variable for temporary libraries.
-# Temporary libraries are development copies of libraries from other packages
-# which are being tested / modified in conjunction with this package.
-# This variable can be consumed in the AutoMake XXX_LDADD line.
-# The use of `dirname $0` to get the configure invocation directory is critical
-# for parallel builds and make distcheck as the relative path always stays the
-# same but configure may be invoked from different directories.
+# Standard macros will be automatically placed in m4.
+# Programmer defined macros should be placed in, say, m4extra which allows us
+# to exclude the standard macros from being git tracked. This other directory
+# must be specified as an include option in the Makefile.am ACLOCAL_AMFLAGS
+# e.g.
+# ACLOCAL_AMFLAGS = -I m4 -I m4extra
 #
-########################
-
-AC_SUBST(tmplibraries)
-
-for direntry in `dirname $0`/src/prg/c/lib-tmp/*
-do
-	if test -d "$direntry" ;then
-		for entry in `dirname $0`\
-/src/prg/c/lib-tmp/$(basename "$direntry")/*.la
-		do
-			if test -f "$entry" ;then
-				tmplibraries=$tmplibraries\
-" \$(srcdir)/../../lib-tmp/"$(basename "$direntry")"/"$(basename "$entry")
-			fi
-		done
-	fi
-done
+AC_CONFIG_MACRO_DIR([m4])
 
 
-########################
+#########################################
+#					#
+# SECTION  3: Command line arguments	#
+#					#
+#########################################
+
+AC_MSG_NOTICE(checking command line arguments)
+
 #
 # The following allows for an enable-debug=yes/no command line option. The
 # conditional DEBUG is made available to the makefiles.
 #
-########################
-
 AC_ARG_ENABLE(debug,
 	--enable-debug    Compile for debugging,
 	[case "${enableval}" in
@@ -162,21 +156,16 @@ AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
 # CFLAGS is usually set to -g -O2, but for debugging we will probably
 # want -g -Og and for production we will probably want -O2. So empty CFLAGS here
 # and leave the selection to the Makefile.am's.
-
 : ${CFLAGS=""}
 
 if test "x${debug}" = xtrue; then
-	AC_MSG_NOTICE(Using compiler debug flags.)
+	AC_MSG_NOTICE(Build in debug mode.)
 fi
 
-
-########################
 #
 # The following allows for an enable-headercheck=yes/no command line option.
 # The conditional HEADERCHECK is made available to the makefiles.
 #
-########################
-
 AC_ARG_ENABLE(headercheck,
 	--enable-headercheck    Build to display include stack,
 	[case "${enableval}" in
@@ -190,14 +179,10 @@ if test "x${headercheck}" = xtrue; then
 	AC_MSG_NOTICE(Building to display include stack depth.)
 fi
 
-
-########################
 #
 # The following allows for an enable-sparse=yes/no command line option. The
 # conditional SPARSE is made available to the makefiles.
 #
-########################
-
 AC_ARG_ENABLE(sparse,
 	--enable-sparse    Build with sparse,
 	[case "${enableval}" in
@@ -212,12 +197,212 @@ if test "x${sparse}" = xtrue; then
 fi
 
 
-########################
+#################################
+#				#
+# SECTION  4: Compiler setup	#
+#				#
+#################################
+
+AC_MSG_NOTICE([checking compiler setup])
+
+# Set language for compilation tests.
+AC_LANG(C)
+
+# Checks the compiler to use from either a standard list or one to use for
+# sparse, stores it in the CC variable and checks its capabilities.
+if test "x$sparse" = "xtrue" ; then
+	compiler_list="cgcc gcc cc"
+else
+	compiler_list="gcc cc"
+fi
+AC_PROG_CC($compiler_list)
+
+AC_PROG_CPP
+
+# Build a suitable CFLAGS list depending on compiler version.
+BUILD_COMPILER_VERSION_CFLAGS(mg_cflags)
+
+# Checks the c++ compiler to use, stores it in the cxx variable and checks its
+# capabilities. (Required by ltmain.sh).
+AC_PROG_CXX
+
+# GNULIB macros.
+# Also checks for ar, grep, egrep, ranlib and how to run the cpp.
+gl_EARLY
+gl_INIT
+
+# Must use this macro if the ar archiver is used. ar is mostly now used for
+# static libraries.
+AM_PROG_AR
+
+# Check for libtool minimum version.
+LT_PREREQ(2.4.6)
+
+# Turn on shared libraries.
+# Also checks for fgrep, linker capabilities, ranlib, sed.
+# Also checks for:-	ANSI C header files	sys/types.h	sys/stat.h
+#			stdlib.h	string.h	memory.h
+#			strings.h	inttypes.h	stdint.h
+#			unistd.h	dlfcn.h
+LT_INIT
+
+
+#########################################
+#					#
+# SECTION  5: Check for programs	#
+#					#
+#########################################
+
+AC_MSG_NOTICE(checking for basic programs that have AutoConf checks)
+
+#
+# The small set of tools you can expect to find on any machine.
+#
+# awk		date		grep		od
+# basename	diff		join		rm
+# cat		dirname		ln		rmdir
+# cc		egrep		ls		sed
+# chgrp		expr		mkdir		sleep
+# chown		expr (‘|’)	mkfifo		sort
+# chmod		expr (‘:’)	mknod		tar
+# cmp		fgrep		mktemp		touch
+# cp		find		mv		tr
+#
+# (For further information including limitations to the above, see Section 11.15
+# in the GNU AutoConf Manual).
+#
+# If using am init automake, gl early or lt init the following programs are
+# automatically checked:-
+#
+# am init automake
+#	BSD install	mkdir -p	gawk
+#
+# gl early
+#	ar	grep	egrep	ranlib
+#
+# lt init
+#	fgrep	ranlib	sed
+#
+# Basic and AutoTools program checks.
+#
+AC_PROG_AWK
+AC_PROG_EGREP
+AC_PROG_FGREP
+AC_PROG_GREP
+AC_PROG_LN_S
+AC_PROG_MKDIR_P
+AC_PROG_SED
+
+AC_MSG_NOTICE(checking for some standard AutoTools required programs)
+AC_PROG_INSTALL
+
+AC_MSG_NOTICE(checking for particular programs required by this build)
+AC_CHECK_PROG(DIA, dia, yes, no)
+if test "x$DIA" = "xno" ; then
+	AC_MSG_ERROR(dia not found)
+fi
+
+AC_CHECK_PROG(DOT, dot, yes, no)
+if test "x$DOT" = "xno" ; then
+	AC_MSG_ERROR(dot not found)
+fi
+
+AC_CHECK_PROG(DOXYGEN, doxygen, yes, no)
+if test "x$DOXYGEN" = "xno" ; then
+	AC_MSG_ERROR(doxygen not found)
+fi
+
+AC_CHECK_PROG([TAR], [tar], [yes], [no])
+if test "x$TAR" = "xno" ; then
+	AC_MSG_ERROR([tar not found])
+fi
+
+AC_CHECK_PROG([TXT2MAN], [txt2man], [yes], [no])
+if test "x$TXT2MAN" = "xno" ; then
+	AC_MSG_ERROR([txt2man not found])
+fi
+
+AC_CHECK_PROG([TXT2MANWRAP], [txt2manwrap], [yes], [no])
+if test "x$TXT2MANWRAP" = "xno" ; then
+	AC_MSG_ERROR([txt2manwrap not found])
+fi
+
+AC_CHECK_PROG(PKGCONFIG, pkg-config, yes, no)
+if test "x$PKGCONFIG" = "xno" ; then
+	AC_MSG_ERROR(pkg-config not found)
+fi
+
+AC_MSG_NOTICE(checking for particular programs required at build and run time)
+
+AC_MSG_NOTICE(checking for particular programs required at run time)
+
+
+#########################################
+#					#
+# SECTION  6: Check for libraries	#
+#					#
+#########################################
+
+AC_SEARCH_LIBS(pull_msg, mgec, , \
+	AC_MSG_ERROR(function pull_msg not found in libmgec))
+
+
+#########################################
+#					#
+# SECTION  7: Check for header files	#
+#					#
+#########################################
+
+AC_MSG_NOTICE(checking for header files required by this application)
+
+AC_CHECK_HEADERS(stdio.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(stdlib.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(string.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(ctype.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(unistd.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(errno.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(sys/socket.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(netinet/in.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(mge-errno.h, [], AC_MSG_ERROR(header not found))
+
+
+#################################################
+#						#
+# SECTION 11: Check for library functions	#
+#						#
+#################################################
+
+AC_MSG_NOTICE(checking for GNU compatible library functions)
+
+AC_CHECK_FUNCS(gethostname memset socket strchr)
+
+
+#################################################
+#						#
+# SECTION 12: Check for pkg-config files	#
+#						#
+#################################################
+
+PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
+		AC_MSG_ERROR(pkg-config file not found))
+
+
+#################################################
+#						#
+# SECTION 14: Additional checks & variables	#
+#						#
+#################################################
+
+AC_MSG_NOTICE(processing additional checks and variables)
+
 #
 # Now set up a sed sequence to substitute bookmarks in script files with either
 # standard GNU Directory Variables, or with programmer-defined variables set up
-# using an AC_SUBST macro above. This sed sequence will be invoked at
-# programmer discretion at sub-directory Makefile.am level.
+# using an AC_SUBST macro above. This sed sequence will be invoked at programmer
+# discretion at sub-directory Makefile.am level.
 # ----------------------
 #
 # prefix	/usr/local (typically)
@@ -248,8 +433,6 @@ fi
 #	pkglibdir	${libdir}/${PACKAGE}
 #	pkglibexecdir	${libexecdir}/${PACKAGE}
 #
-########################
-
 AC_SUBST([edit], ["sed \
 		-e 's|@prefix[@]|\$(prefix)|g' \
 		-e 's|@exec_prefix[@]|\$(exec_prefix)|g' \
@@ -279,90 +462,55 @@ AC_SUBST([edit], ["sed \
 		-e 's|@pkglibdir[@]|\$(pkglibdir)|g' \
 		-e 's|@pkglibexecdir[@]|\$(pkglibexecdir)|g'"])
 
-
-# Passes the options to all am files. Puts objects in the sub-directory
-# containing the source. Forces tar to use --format=posix in make dist.
-# This also checks :-	BSD install	make variable set	mkdir -p
-#			gawk
-AM_INIT_AUTOMAKE(-Wall -Werror subdir-objects tar-pax)
-
-# Set language for compilation tests.
-AC_LANG(C)
-
-# Checks the compiler to use from either a standard list or one to use for
-# sparse, stores it in the CC variable and checks its capabilities.
-if test "x$sparse" = "xtrue" ; then
-	compiler_list="cgcc gcc cc"
-else
-	compiler_list="gcc cc"
-fi
-
-AC_PROG_CC($compiler_list)
-
-# Checks the c pre-processor to use, stores it in the cpp variable and checks
-# its capabilities.
-AC_PROG_CPP
-
-# Build a suitable CFLAGS list depending on compiler version.
-BUILD_COMPILER_VERSION_CFLAGS(mg_cflags)
-
-# Checks the c++ compiler to use, stores it in the cxx variable and checks its
-# capabilities. (Required by ltmain.sh).
-AC_PROG_CXX
-
-# Checks that there is an installation program or script.
-AC_PROG_INSTALL
-
-# Check whether symbolic links are supported.
-AC_PROG_LN_S
-
-# Check a source file to ensure no command line --srcdir typo.
-AC_CONFIG_SRCDIR(src/prg/c/src/libmgesysutils/version.c)
-
-# GNULIB macros.
-# Also checks for ar, grep, egrep, ranlib and how to run the cpp.
-gl_EARLY
-gl_INIT
-
-# Must use this macro if the ar archiver is used. ar is mostly now used for
-# static libraries.
-AM_PROG_AR
-
-# Check for libtool minimum version.
-LT_PREREQ(2.4.6)
-
-# Turn on shared libraries.
-# Also checks for fgrep, linker capabilities, ranlib, sed.
-# Also checks for:-	ANSI C header files	sys/types.h	sys/stat.h
-#			stdlib.h	string.h	memory.h
-#			strings.h	inttypes.h	stdint.h
-#			unistd.h	dlfcn.h
-LT_INIT
-
-# Causes AC_OUTPUT to create a c preprocessor file with #define statements about
-# the configuration.
-AC_CONFIG_HEADERS(src/prg/c/gen/inc/config.h)
-
-
-########################
 #
-# Standard macros will be automatically placed in m4.
-# Programmer defined macros should be placed in, say, m4extra which allows us
-# to exclude the standard macros from being git tracked. This other directory
-# must be specified as an include option in the Makefile.am ACLOCAL_AMFLAGS
-# e.g.
-# ACLOCAL_AMFLAGS = -I m4 -I m4extra
+# This creates an AutoConf substitution variable for temporary header files.
+# Temporary headers might be copies of -dev package header files brought into a
+# library package for development and modification. Whilst there it should be
+# used. When finished it must be moved back to the -dev package for release.
+# This variable and the inc-tmp/Makefile.am allow for this conditional use and
+# even conditional presence in inc-tmp.
+# The use of `dirname $0` to get the configure invocation directory is critical
+# for parallel builds and make distcheck as the relative path always stays the
+# same but configure may be invoked from different directories.
 #
-########################
+AC_SUBST(tmpheaders)
 
-AC_CONFIG_MACRO_DIR(m4)
+for entry in `dirname $0`/src/prg/c/inc-tmp/*.h
+do
+	if test -f "$entry" ;then
+		tmpheaders=$tmpheaders" "$(basename "$entry")
+	fi
+done
 
+#
+# This creates an AutoConf substitution variable for temporary libraries.
+# Temporary libraries are development copies of libraries from other packages
+# which are being tested / modified in conjunction with this package.
+# This variable can be consumed in the AutoMake XXX_LDADD line.
+# The use of `dirname $0` to get the configure invocation directory is critical
+# for parallel builds and make distcheck as the relative path always stays the
+# same but configure may be invoked from different directories.
+#
+AC_SUBST(tmplibraries)
 
-########################
+for direntry in `dirname $0`/src/prg/c/lib-tmp/*
+do
+	if test -d "$direntry" ;then
+		for entry in `dirname $0`\
+/src/prg/c/lib-tmp/$(basename "$direntry")/*.la
+		do
+			if test -f "$entry" ;then
+				tmplibraries=$tmplibraries\
+" \$(srcdir)/../../lib-tmp/"$(basename "$direntry")"/"$(basename "$entry")
+			fi
+		done
+	fi
+done
+
 #
 # Setup substitution variables for use in the pkg-config file.
 #
-########################
+
 # The Requires field.
 AC_SUBST(pc_requires)
 # LIBMGEC is a Requires AOT Requires.private because it exposes mge_errno.
@@ -371,109 +519,30 @@ pc_requires="libmgec"
 # The Requires.private field
 AC_SUBST(pc_requires_private, "")
 
+# Check a source file to ensure no command line --srcdir typo.
+AC_CONFIG_SRCDIR(src/prg/c/src/libmgesysutils/version.c)
 
 
+#########################################
+#					#
+# SECTION 15: Specify the output files	#
+#					#
+#########################################
 
-########################
+AC_MSG_NOTICE(processing output files)
+
 #
-# Checks for programs.
-# If using am init automake, gl early or lt init the following programs are
-# automatically checked:-
-#
-# am init automake
-#	BSD install	mkdir -p	gawk
-#
-# gl early
-#	ar	grep	egrep	ranlib
-#
-# lt init
-#	fgrep	ranlib	sed
-#
-# Particular and generic program checks follow:
-#
-########################
-
-AC_MSG_NOTICE(checking for generic programs required by this application)
-AC_PROG_SED
-AC_CHECK_PROG(BASH, bash, yes, no)
-if test "x$BASH" = "xno" ; then
-   	AC_MSG_ERROR(bash not found)
-fi
-
-AC_CHECK_PROG(DIA, dia, yes, no)
-if test "x$DIA" = "xno" ; then
-	AC_MSG_ERROR(dia not found)
-fi
-
-AC_CHECK_PROG(DOT, dot, yes, no)
-if test "x$DOT" = "xno" ; then
-	AC_MSG_ERROR(dot not found)
-fi
-
-AC_CHECK_PROG(DOXYGEN, doxygen, yes, no)
-if test "x$DOXYGEN" = "xno" ; then
-	AC_MSG_ERROR(doxygen not found)
-fi
-
-AC_CHECK_PROG(TAR, tar, yes, no)
-if test "x$TAR" = "xno" ; then
-	AC_MSG_ERROR(tar not found)
-fi
-
-AC_CHECK_PROG(TXT2MAN, txt2man, yes, no)
-if test "x$TXT2MAN" = "xno" ; then
-   	AC_MSG_ERROR(txt2man not found)
-fi
-
-AC_CHECK_PROG(TXT2MANWRAP, txt2manwrap, yes, no)
-if test "x$TXT2MANWRAP" = "xno" ; then
-   	AC_MSG_ERROR(txt2manwrap not found)
-fi
-
-
-AC_CHECK_PROG(PKGCONFIG, pkg-config, yes, no)
-if test "x$PKGCONFIG" = "xno" ; then
-	AC_MSG_ERROR(pkg-config not found)
-fi
-
-
-# Checks for libraries.
-AC_SEARCH_LIBS(pull_msg, mgec, , \
-	AC_MSG_ERROR(function pull_msg not found in libmgec))
-
-# Checks for C header files.
-AC_CHECK_HEADERS(stdio.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(stdlib.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(string.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(ctype.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(unistd.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(errno.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(sys/socket.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(netinet/in.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(mge-errno.h, [], AC_MSG_ERROR(header not found))
-
-# Checks for C++ header files.
-
-# Checks for typedefs, structures, and compiler characteristics.
-
-# Checks for library functions.
-AC_CHECK_FUNCS(gethostname memset socket strchr)
-
-# Checks for pkg-config files.
-PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
-		AC_MSG_ERROR(pkg-config file not found))
-
-
 # Non-Makefile files to generate.
 # AC_CONFIG_FILES should not be used to substitute AutoConf Installation
-# Directory Variables, (bindir and friends), except im Makefiles and pkg-config
+# Directory Variables, (bindir and friends), except in Makefiles and pkg-config
 # files. See GNU AutoConf manual section 4.8.2 Installation Directory Variables.
+#
 AC_CONFIG_FILES(doc/doxygen/Doxyfile)
 AC_CONFIG_FILES(src/prg/c/pkg-config/libmgesysutils.pc)
 
+# Causes AC_OUTPUT to create a c preprocessor file with #define statements about
+# the configuration.
+AC_CONFIG_HEADERS(src/prg/c/gen/inc/config.h)
 
 # Project Makefiles to create.
 AC_CONFIG_FILES(Makefile
