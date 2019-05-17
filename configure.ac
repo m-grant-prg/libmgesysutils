@@ -111,7 +111,7 @@ AC_MSG_NOTICE(initialisation and setup)
 AC_DEFINE(SOURCE_VERSION, "1.0.9+rc1", \
 	Define to the version of source code in this package.)
 
-AC_SUBST(lib_version_info, "0:1:0")
+AC_SUBST(lib_version_info, "1:0:0")
 
 #
 # Passes the options to all am files. Puts objects in the sub-directory
