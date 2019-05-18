@@ -81,7 +81,7 @@
 #				Build suitable CFLAGS based on compiler	#
 #				version.				#
 # 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
-# 17/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
+# 18/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
 #				Remove leading v from package version.	#
 #				Use new m4 macro to build CFLAGS.	#
 #				Revamp to new standard layout.		#
@@ -217,18 +217,20 @@ else
 fi
 AC_PROG_CC($compiler_list)
 
-AC_PROG_CPP
+# GNULIB gl_EARLY macro. Place just after AC_PROG_CC.
+# Also checks for ar, grep, egrep, ranlib and how to run the cpp.
+gl_EARLY
 
-# Build a suitable CFLAGS list depending on compiler version.
-BUILD_COMPILER_VERSION_CFLAGS(mg_cflags)
+# Checks the c pre-processor to use, stores it in the cpp variable and checks
+# its capabilities.
+AC_PROG_CPP
 
 # Checks the c++ compiler to use, stores it in the cxx variable and checks its
 # capabilities. (Required by ltmain.sh).
 AC_PROG_CXX
 
-# GNULIB macros.
-# Also checks for ar, grep, egrep, ranlib and how to run the cpp.
-gl_EARLY
+# GNULIB gl_INIT macro. Must appear after other checks which may affect the
+# compiler invocation.
 gl_INIT
 
 # Must use this macro if the ar archiver is used. ar is mostly now used for
@@ -367,6 +369,18 @@ AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(mge-errno.h, [], AC_MSG_ERROR(header not found))
+
+
+#########################################################
+#							#
+# SECTION 10: Check for compiler characteristics	#
+#							#
+#########################################################
+
+AC_MSG_NOTICE(checking for compiler characteristics)
+
+# Build a suitable CFLAGS list depending on compiler version.
+BUILD_COMPILER_VERSION_CFLAGS(mg_cflags)
 
 
 #################################################
