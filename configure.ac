@@ -345,6 +345,8 @@ AC_MSG_NOTICE(checking for particular programs required at run time)
 #					#
 #########################################
 
+AC_MSG_NOTICE(checking for libraries required by this application)
+
 AC_SEARCH_LIBS(pull_msg, mgec, , \
 	AC_MSG_ERROR(function pull_msg not found in libmgec))
 
