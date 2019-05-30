@@ -1,3 +1,19 @@
+Release 1.1.0 2019-05-30
+Source at v1.0.10
+Library at v1:0:0
+configure.ac: Revamp to new standard layout
+Use new standard m4 macro to build initial CFLAGS
+Update Copyright statement where required
+Add README.md markdown link
+Update bootstrap.sh to v1.4.3
+Install standard GNU files eg AUTHORS etc
+README: Add Title and Copyright statement
+README: Make package install references generic
+Make source tarball name == GitHub
+Remove leading v from package version
+Remove shebangs from Makefile.ams
+Collapse AT sub-projects into one
+
 Release 1.0.10 2018-10-23
 Add pkg-config Autoconf program check.
 srctarball to make filename with -src-.
