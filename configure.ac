@@ -85,6 +85,7 @@
 #				Remove leading v from package version.	#
 #				Use new m4 macro to build CFLAGS.	#
 #				Revamp to new standard layout.		#
+# 31/05/2019	MG	1.1.2	Add Section 8 and check for (s)size_t.	#
 #									#
 #########################################################################
 
@@ -95,7 +96,7 @@
 #					#
 #########################################
 
-AC_REVISION($Revision: 1.1.1 $)
+AC_REVISION($Revision: 1.1.2 $)
 
 AC_PREREQ(2.69)
 
@@ -371,6 +372,17 @@ AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(mge-errno.h, [], AC_MSG_ERROR(header not found))
+
+
+#################################
+#				#
+# SECTION  8: Check for types	#
+#				#
+#################################
+
+AC_MSG_NOTICE(checking for typedefs required by this application)
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
 
 
 #########################################################
