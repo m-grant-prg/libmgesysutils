@@ -42,7 +42,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.10 ==== 16/05/2019_
+ * @version _v1.0.11 ==== 31/05/2019_
  */
 
 /* **********************************************************************
@@ -68,6 +68,8 @@
  *				internal.h				*
  *				Return -ve error number on failure.	*
  * 16/05/2019	MG	1.0.10	Collapse AT sub-projects into one.	*
+ * 31/05/2019	MG	1.0.11	Add or correct casts of size argument	*
+ *				to strncpy.				*
  *									*
  ************************************************************************
  */
@@ -192,7 +194,7 @@ static int parsesection(struct confsection *params, int nparams, char *pline)
 		if ((strchr(pline, ']') - strchr(pline, '[')) > 1) {
 			if (strlen(pline) < MAX_KEYVAL_LENGTH) {
 				strncpy(s, strchr(pline, '[') + 1,
-					(int) (strchr(pline, ']') -
+					(size_t)(strchr(pline, ']') -
 						strchr(pline, '[') - 1));
 				ret = validatesection(params, nparams, s);
 			} else {
@@ -311,7 +313,7 @@ static int isolatekey(char *pline, char *endkey, char *key)
 		do {
 			endkey--;
 		} while (isspace(*endkey) && (endkey - pline));
-		strncpy(key, pline, endkey - pline + 1);
+		strncpy(key, pline, (size_t)(endkey - pline + 1));
 	} else {
 		mge_errno = MGE_CONFIG_PARSE;
 		syslog((int) (LOG_USER | LOG_NOTICE), "Key name longer than "
@@ -336,7 +338,8 @@ static int isolatevalue(char *startvalue, char *endvalue, char *value)
 			&& (endvalue - startvalue))
 			endvalue--;
 		if (*startvalue != '\n')
-			strncpy(value, startvalue, (endvalue - startvalue + 1));
+			strncpy(value, startvalue,
+				(size_t)(endvalue - startvalue + 1));
 	} else {
 		mge_errno = MGE_CONFIG_PARSE;
 		syslog((int) (LOG_USER | LOG_NOTICE), "Value longer than %d.",
