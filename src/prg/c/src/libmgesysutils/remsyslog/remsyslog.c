@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.10 ==== 16/05/2019_
+ * @version _v1.0.11 ==== 31/05/2019_
  */
 
 /* **********************************************************************
@@ -33,6 +33,8 @@
  *				zero, (fixes a sparse warning).		*
  * 13/05/2018	MG	1.0.9	On error return -ve mge_errno.		*
  * 16/05/2019	MG	1.0.10	Collapse AT sub-projects into one.	*
+ * 31/05/2019	MG	1.0.11	Correct variable type for return	*
+ *				assignment from sendto.			*
  *									*
  ************************************************************************
  */
@@ -71,6 +73,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 	struct addrinfo *res = NULL;
 	struct addrinfo *rai;
 	int fd = 0;
+	ssize_t s;
 
 	/* Get hostname. */
 	mge_errno = gethostname(clientid, sizeof(clientid));
@@ -117,9 +120,9 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		goto err_exit;
 
 	/* Send the datagram. */
-	c = sendto(fd, fullmessage, strlen(fullmessage), 0, res->ai_addr,
+	s = sendto(fd, fullmessage, strlen(fullmessage), 0, res->ai_addr,
 			res->ai_addrlen);
-	if (c == -1)
+	if (s == -1)
 		goto err_exit;
 
 	/* Close socket file descriptor. */
