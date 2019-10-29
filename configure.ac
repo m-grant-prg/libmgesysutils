@@ -106,6 +106,7 @@
 # 29/10/2019	MG	1.1.3	Add enable-distcheckfake option.	#
 #				Add enable option descriptions in this	#
 #				file's header.				#
+#				Correct ARG_ENABLE help text.		#
 #									#
 #########################################################################
 
@@ -166,7 +167,7 @@ AC_MSG_NOTICE(checking command line arguments)
 # conditional DEBUG is made available to the makefiles.
 #
 AC_ARG_ENABLE(debug,
-	--enable-debug    Compile for debugging,
+	AS_HELP_STRING([--enable-debug], [compile for debugging]),
 	[case "${enableval}" in
 		yes) debug=true ;;
 		no)  debug=false ;;
@@ -212,7 +213,7 @@ fi
 # The conditional HEADERCHECK is made available to the makefiles.
 #
 AC_ARG_ENABLE(headercheck,
-	--enable-headercheck    Build to display include stack,
+	AS_HELP_STRING([--enable-headercheck], [build to display header stack]),
 	[case "${enableval}" in
 		yes) headercheck=true ;;
 		no)  headercheck=false ;;
@@ -229,7 +230,7 @@ fi
 # conditional SPARSE is made available to the makefiles.
 #
 AC_ARG_ENABLE(sparse,
-	--enable-sparse    Build with sparse,
+	AS_HELP_STRING([--enable-sparse], [build with sparse]),
 	[case "${enableval}" in
 		yes) sparse=true ;;
 		no)  sparse=false ;;
