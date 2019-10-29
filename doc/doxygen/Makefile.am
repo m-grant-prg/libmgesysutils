@@ -30,6 +30,8 @@
 #				Installation Directory Variables.	#
 # 16/05/2019	MG	1.0.7	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
+# 29/10/2019	MG	1.0.8	Do not register with doc-base or	#
+#				dochelp when running make distcheck.	#
 #									#
 #########################################################################
 
@@ -66,6 +68,7 @@ docbase_DATA = libmgesysutils
 # If doc-base is installed register the documents then update dochelp if it is
 # installed.
 install-data-hook:
+if !DISTCHECKFAKE
 	cd $(DESTDIR)$(htmldir) && tar xf $(docpkg)
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vi $(docbasedir)/libmgesysutils; \
@@ -73,8 +76,10 @@ install-data-hook:
 	if command -v dochelp >/dev/null 2>&1; then \
 		dochelp update; \
 	fi
+endif
 
 uninstall-hook:
+if !DISTCHECKFAKE
 	cd $(DESTDIR)$(htmldir) && rm -rf html
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vr libmgesysutils; \
@@ -82,6 +87,7 @@ uninstall-hook:
 	if command -v dochelp >/dev/null 2>&1; then \
 		dochelp update; \
 	fi
+endif
 
 
 EXTRA_DIST = $(docpkg) libmgesysutils.in

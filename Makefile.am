@@ -40,10 +40,20 @@
 #				Add install of standard GNU files such	#
 #				as AUTHORS etc.				#
 #				Add m4extra macro directory.		#
+# 29/10/2019	MG	1.0.12	To enable make distcheck to work, any	#
+#				hard-coded paths requiring permissions	#
+#				such as /etc or fixed locations such as	#
+#				/usr/share/java must be accommodated,	#
+#				so set the configure flags to be used	#
+#				by make distcheck.			#
 #									#
 #########################################################################
 
 ACLOCAL_AMFLAGS = -I m4 -I m4extra
+
+
+AM_DISTCHECK_CONFIGURE_FLAGS = --enable-distcheckfake=yes
+
 
 SUBDIRS = src/man/3
 SUBDIRS += src/prg/c/gen/lib
