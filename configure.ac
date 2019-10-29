@@ -180,7 +180,7 @@ AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
 : ${CFLAGS=""}
 
 if test "x${debug}" = xtrue; then
-	AC_MSG_NOTICE(Build in debug mode.)
+	AC_MSG_NOTICE(build in debug mode)
 fi
 
 #
@@ -221,7 +221,7 @@ AC_ARG_ENABLE(headercheck,
 AM_CONDITIONAL(HEADERCHECK, test x$headercheck = xtrue)
 
 if test "x${headercheck}" = xtrue; then
-	AC_MSG_NOTICE(Building to display include stack depth.)
+	AC_MSG_NOTICE(building to display include stack depth)
 fi
 
 #
@@ -238,7 +238,7 @@ AC_ARG_ENABLE(sparse,
 AM_CONDITIONAL(SPARSE, test x$sparse = xtrue)
 
 if test "x${sparse}" = xtrue; then
-	AC_MSG_NOTICE(Building using sparse.)
+	AC_MSG_NOTICE(building using sparse)
 fi
 
 
