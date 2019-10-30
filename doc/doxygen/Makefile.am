@@ -30,8 +30,10 @@
 #				Installation Directory Variables.	#
 # 16/05/2019	MG	1.0.7	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
-# 29/10/2019	MG	1.0.8	Do not register with doc-base or	#
+# 30/10/2019	MG	1.0.8	Do not register with doc-base or	#
 #				dochelp when running make distcheck.	#
+#				Reduce Doxygen out put when silent	#
+#				rules are enabled.			#
 #									#
 #########################################################################
 
@@ -49,7 +51,11 @@ $(docpkg): doxygen.stamp
 	tar -chz --format=posix -f $@ html
 
 doxygen.stamp: Doxyfile
-	doxygen $<
+	if $(AM_V_P); then \
+		DOXYGEN_QUIET=NO doxygen $< ; \
+	else \
+		DOXYGEN_QUIET=YES doxygen $< ; \
+	fi
 	echo Timestamp > $@
 
 
