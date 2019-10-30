@@ -16,14 +16,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <libmgesysutils.h>
 #include <mge-errno.h>
 #include <remsyslog.h>
-#include <libmgesysutils.h>
 
 /*
  * remsyslog test program.
  */
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	int prog_error;
 
@@ -31,13 +31,15 @@ int main(int argc, char** argv)
 
 	printf("This should work localhost? %s\n", mge_strerror(mge_errno));
 
-	prog_error = sndremsyslogmsg("hermes.mgent.home", argv[0], "Message 200");
+	prog_error
+		= sndremsyslogmsg("hermes.mgent.home", argv[0], "Message 200");
 
 	printf("This should work hermes? %s\n", mge_strerror(mge_errno));
 
-	prog_error = sndremsyslogmsg("dummy.mgent.home", argv[0], "Message 300");
+	prog_error
+		= sndremsyslogmsg("dummy.mgent.home", argv[0], "Message 300");
 
-	printf("Return value for dummy is %i\n",prog_error);
+	printf("Return value for dummy is %i\n", prog_error);
 	printf("This should fail dummy? %s\n", mge_strerror(mge_errno));
 
 	libmgesysutils_print_src_version();

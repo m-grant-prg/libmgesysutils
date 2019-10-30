@@ -17,43 +17,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <mge-errno.h>
 #include <configfile.h>
 #include <libmgesysutils.h>
-
+#include <mge-errno.h>
 
 /*
  * configfile test program.
  */
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	/*
 	 * Odd {} duplication below prevents odd missing braces compiler
 	 * 	warnings.
 	 */
-	struct confsection sections[] = {
-		{"General", 0, 0, {
-			{"pollint", 0, 0, ""}
-			}
-		},
-		{"Full", 0, 0, {
-			{"Server", 0, 0, ""},
-			{"DayOfWeek", 1, 0, ""}
-			}
-		},
-		{"Incremental", 0, 0, {
-			{"Server", 0, 0, ""},
-			{"DayOfWeek", 0, 0, ""}
-			}
-		},
-		{"Output", 1, 0, {
-			{"Verbose", 1, 0, ""},
-			{"Bold", 0, 0, ""}
-			}
-		}
-	};
+	struct confsection sections[]
+		= { { "General", 0, 0, { { "pollint", 0, 0, "" } } },
+		    { "Full",
+		      0,
+		      0,
+		      { { "Server", 0, 0, "" }, { "DayOfWeek", 1, 0, "" } } },
+		    { "Incremental",
+		      0,
+		      0,
+		      { { "Server", 0, 0, "" }, { "DayOfWeek", 0, 0, "" } } },
+		    { "Output",
+		      1,
+		      0,
+		      { { "Verbose", 1, 0, "" }, { "Bold", 0, 0, "" } } } };
 	struct confsection *psections = sections;
-	int nsections = (int) (sizeof sections / sizeof sections[0]);
+	int nsections = (int)(sizeof sections / sizeof sections[0]);
 
 	int i, x;
 
@@ -65,14 +57,15 @@ int main(int argc, char** argv)
 	/* Print Params allowed struct pre-parse */
 	printf("Params allowed - pre-parse.\n");
 	for (i = 0; i < nsections; i++) {
-		printf("Section: %s\tMandatory: %d\n",
-			psections->section, psections->mandatory);
-		for (x = 0; x < (int) (sizeof psections->keys
-					/ sizeof psections->keys[0]); x++) {
+		printf("Section: %s\tMandatory: %d\n", psections->section,
+		       psections->mandatory);
+		for (x = 0; x < (int)(sizeof psections->keys
+				      / sizeof psections->keys[0]);
+		     x++) {
 			if (psections->keys[x].key)
 				printf("\tKey: %s\tMandatory: %d\n",
-					psections->keys[x].key,
-					psections->keys[x].mandatory);
+				       psections->keys[x].key,
+				       psections->keys[x].mandatory);
 		}
 		psections++;
 	}
@@ -93,7 +86,6 @@ int main(int argc, char** argv)
 	printf("i) Does not start at a section.\n");
 	printf("j) No such conf file.\n\n");
 
-
 	printf("[Choice]: ");
 	i = scanf("%1s", choice);
 
@@ -113,7 +105,7 @@ int main(int argc, char** argv)
 	case 'e':
 		strcpy(filename, "nonewline.conf");
 		break;
-	case'f':
+	case 'f':
 		strcpy(filename, "nosuchsection.conf");
 		break;
 	case 'g':
@@ -134,25 +126,24 @@ int main(int argc, char** argv)
 		break;
 	}
 
-	if (!parserror)
-	{
+	if (!parserror) {
 		printf("Using config file: %s", filename);
 		parserror = parsefile(psections, nsections, filename);
 	}
-
 
 	/* Print Params allowed struct post-parse */
 	printf("\n\nParams allowed - post-parse.\n");
 	for (i = 0; i < nsections; i++) {
 		printf("Section: %s\tPresent: %d\n", psections->section,
-			psections->present);
-		for (x = 0; x < (int) (sizeof psections->keys
-					/ sizeof psections->keys[0]); x++) {
+		       psections->present);
+		for (x = 0; x < (int)(sizeof psections->keys
+				      / sizeof psections->keys[0]);
+		     x++) {
 			if (psections->keys[x].key)
 				printf("\tKey: %s\tPresent: %d\tValue: %s\n",
-					psections->keys[x].key,
-					psections->keys[x].present,
-					psections->keys[x].value);
+				       psections->keys[x].key,
+				       psections->keys[x].present,
+				       psections->keys[x].value);
 		}
 		psections++;
 	}
