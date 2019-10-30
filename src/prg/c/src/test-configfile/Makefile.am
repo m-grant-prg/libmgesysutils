@@ -37,6 +37,7 @@
 #				pre-processor macros).			#
 # 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
+# 30/10/2019	MG	1.0.12	Move under check target.		#
 #									#
 #########################################################################
 
@@ -54,7 +55,7 @@ AM_CFLAGS += -O2
 endif
 
 
-noinst_PROGRAMS = configfiletest
+check_PROGRAMS = configfiletest
 configfiletest_SOURCES = main.c
 
 
@@ -81,7 +82,7 @@ thisworks.conf: $(srcdir)/thisworks.conf.in
 nomandatorysection.conf: $(srcdir)/nomandatorysection.conf.in
 nostartatsection.conf: $(srcdir)/nostartatsection.conf.in
 
-noinst_DATA = noclosingbracket.conf noequalssign.conf nomandatorykey.conf \
+check_DATA = noclosingbracket.conf noequalssign.conf nomandatorykey.conf \
 	nonewline.conf nosuchkey.conf nosuchsection.conf thisworks.conf \
 	nomandatorysection.conf nostartatsection.conf
 
