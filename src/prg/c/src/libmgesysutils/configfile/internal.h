@@ -1,7 +1,7 @@
 /**
  * @file src/prg/c/src/libmgesysutils/configfile/internal.h
  *
- * Externally non-visible prototypes etc..
+ * Externally non-visible prototypes etc.
  *
  * No distribution required.
  *
