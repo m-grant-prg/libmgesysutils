@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0
  *
- * @version _v1.0.11 ==== 31/05/2019_
+ * @version _v1.0.12 ==== 30/10/2019_
  */
 
 /* **********************************************************************
@@ -35,23 +35,22 @@
  * 16/05/2019	MG	1.0.10	Collapse AT sub-projects into one.	*
  * 31/05/2019	MG	1.0.11	Correct variable type for return	*
  *				assignment from sendto.			*
+ * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  *									*
  ************************************************************************
  */
 
-
-#include <stdio.h>
 #include <errno.h>
-#include <string.h>
-#include <unistd.h>
 #include <netdb.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
 #include <syslog.h>
+#include <unistd.h>
 
 #include <mge-errno.h>
 #include <remsyslog.h>
-
 
 /**
  * Send message to remote syslog server.
@@ -62,12 +61,12 @@
  * @return 0 on success, -ve mge_errno on error.
  */
 int sndremsyslogmsg(const char *hostname, const char *prog_name,
-			const char *message)
+		    const char *message)
 {
 	char clientid[100] = { '\0' };
 	int c;
 	char fullmessage[strlen(message) + 1 + strlen(clientid) + 1
-				+ strlen(prog_name) + 1];
+			 + strlen(prog_name) + 1];
 	const char *portname = "syslog";
 	struct addrinfo hints;
 	struct addrinfo *res = NULL;
@@ -80,8 +79,8 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 	if (mge_errno) {
 		sav_errno = errno;
 		mge_errno = MGE_ERRNO;
-		syslog((int) (LOG_USER | LOG_NOTICE),
-			"Error retrieving hostname. %m");
+		syslog((int)(LOG_USER | LOG_NOTICE),
+		       "Error retrieving hostname. %m");
 		return -mge_errno;
 	}
 	/* Prepend client & program names to message to build full message. */
@@ -93,9 +92,9 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 
 	/* PF_ prefix described as "TCP/IP", AF_ prefix as "Internet". */
 	memset(&hints, 0, sizeof(struct addrinfo));
-	hints.ai_family = PF_UNSPEC;		/* Allow IPv4 or IPv6 */
-	hints.ai_socktype = SOCK_DGRAM;		/* Constrains to UDP */
-	hints.ai_protocol = IPPROTO_UDP;	/* Only UDP protocol */
+	hints.ai_family = PF_UNSPEC;	 /* Allow IPv4 or IPv6 */
+	hints.ai_socktype = SOCK_DGRAM;	 /* Constrains to UDP */
+	hints.ai_protocol = IPPROTO_UDP; /* Only UDP protocol */
 	hints.ai_canonname = NULL;
 	hints.ai_flags = AI_ADDRCONFIG;
 	hints.ai_addr = NULL;
@@ -105,8 +104,8 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 	if (mge_errno) {
 		sav_errno = mge_errno;
 		mge_errno = MGE_GAI;
-		syslog((int) (LOG_USER | LOG_NOTICE), "%s",
-			mge_strerror(mge_errno));
+		syslog((int)(LOG_USER | LOG_NOTICE), "%s",
+		       mge_strerror(mge_errno));
 		return -mge_errno;
 	}
 
@@ -121,7 +120,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 
 	/* Send the datagram. */
 	s = sendto(fd, fullmessage, strlen(fullmessage), 0, res->ai_addr,
-			res->ai_addrlen);
+		   res->ai_addrlen);
 	if (s == -1)
 		goto err_exit;
 
