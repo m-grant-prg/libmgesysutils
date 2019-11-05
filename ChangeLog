@@ -1,3 +1,30 @@
+2019-11-05 v1.1.1 Mark Grant <m.grant.prg@gmail.com>
+	*  Source at v1.0.11
+	Library at v1:1:0
+	configfile: Remove .. which confuses Doxygen
+	tests: Apply clang-format
+	remsyslog: Apply clang-format
+	configfile: Apply clang-format
+	libmgesysutils: Apply clang-format
+	inc: Apply clang-format
+	docs: Respect verbosity under enable-silent-rules
+	at: README: Update bootstrap.sh section
+	at: test-remsyslog: Move under check target
+	at: test-configfile: Move under check target
+	travis: Initial setup for using Travis build farm
+	at: Correct ARG_ENABLE help text
+	at: Output messages must start in lower case
+	at: Update --enable option desc in file header
+	at: Fix make distcheck
+	clang-format: Initial setup using v1.0.1
+	at: Update c-compiler.m4 macro to v1.0.4
+	git: Update project root gitignore to v1.0.2
+	at: Update bootstrap.sh to v1.4.6
+	m4: Update to tooling packages
+	configure: Add checks for size_t and ssize_t
+	remsyslog: Correct var type of return from sendto
+	configfile: Correct casts of size arg to strncpy
+
 2019-05-30 v 1.1.0 Mark Grant <m.grant.prg@gmail.com>
 	*  Source at v1.0.10
 	Library at v1:0:0
