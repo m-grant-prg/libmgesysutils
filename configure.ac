@@ -125,15 +125,15 @@ AC_PREREQ(2.69)
 # The following macros set all top level versioning for this project. All
 # information can be propagated via AC_CONFIG_HEADERS and AC_CONFIG_FILES.
 #
-AC_INIT(MGE system utilities library, 1.1.0+rc1,
+AC_INIT(MGE system utilities library, 1.1.1,
 	m.grant.prg@gmail.com, libmgesysutils)
 
 AC_MSG_NOTICE(initialisation and setup)
 
-AC_DEFINE(SOURCE_VERSION, "1.0.10", \
+AC_DEFINE(SOURCE_VERSION, "1.0.11", \
 	Define to the version of source code in this package.)
 
-AC_SUBST(lib_version_info, "1:0:0")
+AC_SUBST(lib_version_info, "1:1:0")
 
 #
 # Passes the options to all am files. Puts objects in the sub-directory
