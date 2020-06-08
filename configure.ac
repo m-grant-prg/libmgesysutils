@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./configure.ac						#
-# Author: Copyright (C) 2015-2019  Mark Grant				#
+# Author: Copyright (C) 2015-2020  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -107,6 +107,7 @@
 #				Add enable option descriptions in this	#
 #				file's header.				#
 #				Correct ARG_ENABLE help text.		#
+# 08/06/2020	MG	1.1.4	Remove check for unused program dia.	#
 #									#
 #########################################################################
 
@@ -117,7 +118,7 @@
 #					#
 #########################################
 
-AC_REVISION($Revision: 1.1.3 $)
+AC_REVISION($Revision: 1.1.4 $)
 
 AC_PREREQ(2.69)
 
@@ -345,11 +346,6 @@ AC_MSG_NOTICE(checking for some standard AutoTools required programs)
 AC_PROG_INSTALL
 
 AC_MSG_NOTICE(checking for particular programs required by this build)
-AC_CHECK_PROG(DIA, dia, yes, no)
-if test "x$DIA" = "xno" ; then
-	AC_MSG_ERROR(dia not found)
-fi
-
 AC_CHECK_PROG(DOT, dot, yes, no)
 if test "x$DOT" = "xno" ; then
 	AC_MSG_ERROR(dot not found)
