@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: doc/doxygen/Makefile.am					#
-# Author: Copyright (C) 2017-2019  Mark Grant				#
+# Author: Copyright (C) 2017-2020  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -34,14 +34,15 @@
 #				dochelp when running make distcheck.	#
 #				Reduce Doxygen out put when silent	#
 #				rules are enabled.			#
+# 26/06/2020	MG	1.0.9	Split into API and full internal	#
+#				documentation.				#
 #									#
 #########################################################################
 
 
+# Build API documentation.
+
 docpkg = $(PACKAGE_TARNAME)-doxy-$(PACKAGE_VERSION).tar.gz
-
-docbasedir = $(datarootdir)/doc-base
-
 
 # The dependencies below start with Doxyfile which is produced by configure, so
 # thereafter no updates to these documents will happen by make alone. Re-run
@@ -52,32 +53,78 @@ $(docpkg): doxygen.stamp
 
 doxygen.stamp: Doxyfile
 	if $(AM_V_P); then \
-		DOXYGEN_QUIET=NO doxygen $< ; \
+		DOXYGEN_QUIET=NO \
+			DOXYGEN_PROJECT_NAME="MGE System Utility Library - API Documentation" \
+			DOXYGEN_HTML_OUTPUT=html \
+			DOXYGEN_ENABLED_SECTIONS= \
+			DOXYGEN_EXCLUDE_PATTERNS="*internal*" \
+			doxygen $< ; \
 	else \
-		DOXYGEN_QUIET=YES doxygen $< ; \
+		DOXYGEN_QUIET=YES \
+			DOXYGEN_PROJECT_NAME="MGE System Utility Library - API Documentation" \
+			DOXYGEN_HTML_OUTPUT=html \
+			DOXYGEN_ENABLED_SECTIONS= \
+			DOXYGEN_EXCLUDE_PATTERNS="*internal*" \
+			doxygen $< ; \
 	fi
 	echo Timestamp > $@
 
 
-html_DATA = $(docpkg)
+# Build full internal documentation.
+
+intdocpkg = $(PACKAGE_TARNAME)-int-doxy-$(PACKAGE_VERSION).tar.gz
+
+$(intdocpkg): doxygen1.stamp
+	tar -chz --format=posix -f $@ html-int
+
+doxygen1.stamp: Doxyfile
+	if $(AM_V_P); then \
+		DOXYGEN_QUIET=NO \
+			DOXYGEN_PROJECT_NAME="MGE System Utility Library - Full Internal Documentation" \
+			DOXYGEN_HTML_OUTPUT=html-int \
+			DOXYGEN_ENABLED_SECTIONS=INTERNAL \
+			DOXYGEN_EXCLUDE_PATTERNS= \
+			doxygen $< ; \
+	else \
+		DOXYGEN_QUIET=YES \
+			DOXYGEN_PROJECT_NAME="MGE System Utility Library - Full Internal Documentation" \
+			DOXYGEN_HTML_OUTPUT=html-int \
+			DOXYGEN_ENABLED_SECTIONS=INTERNAL \
+			DOXYGEN_EXCLUDE_PATTERNS= \
+			doxygen $< ; \
+	fi
+	echo Timestamp > $@
 
 
-libmgesysutils: Makefile
+apidir = $(htmldir)/api
+intdir = $(htmldir)/int
+
+api_DATA = $(docpkg)
+int_DATA = $(intdocpkg)
+
+
+libmgesysutils libmgesysutils-int: Makefile
 	mkdir -p $(@D)
 	rm -f $@ $@.tmp
 	$(edit) $(srcdir)/$(@F).in > $@
 libmgesysutils: $(srcdir)/libmgesysutils.in
-
-docbase_DATA = libmgesysutils
+libmgesysutils-int: $(srcdir)/libmgesysutils-int.in
 
 
 # If doc-base is installed register the documents then update dochelp if it is
 # installed.
+
+docbasedir = $(datarootdir)/doc-base
+
+docbase_DATA = libmgesysutils libmgesysutils-int
+
 install-data-hook:
 if !DISTCHECKFAKE
-	cd $(DESTDIR)$(htmldir) && tar xf $(docpkg)
+	cd $(DESTDIR)$(apidir) && tar xf $(docpkg)
+	cd $(DESTDIR)$(intdir) && tar xf $(intdocpkg)
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vi $(docbasedir)/libmgesysutils; \
+		install-docs -vi $(docbasedir)/libmgesysutils-int; \
 	fi
 	if command -v dochelp >/dev/null 2>&1; then \
 		dochelp update; \
@@ -86,9 +133,11 @@ endif
 
 uninstall-hook:
 if !DISTCHECKFAKE
-	cd $(DESTDIR)$(htmldir) && rm -rf html
+	cd $(DESTDIR)$(apidir) && rm -rf html
+	cd $(DESTDIR)$(intdir) && rm -rf html-int
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vr libmgesysutils; \
+		install-docs -vr libmgesysutils-int; \
 	fi
 	if command -v dochelp >/dev/null 2>&1; then \
 		dochelp update; \
@@ -96,11 +145,12 @@ if !DISTCHECKFAKE
 endif
 
 
-EXTRA_DIST = $(docpkg) libmgesysutils.in
+EXTRA_DIST = $(docpkg) $(intdocpkg) libmgesysutils.in libmgesysutils-int.in
 
 
-CLEANFILES = doxywarn.txt doxygen.stamp $(docpkg) libmgesysutils
+CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp $(docpkg) $(intdocpkg) \
+	libmgesysutils libmgesysutils-int
 
 clean-local:
-	rm -rf html
+	rm -rf html html-int
 
