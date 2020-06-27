@@ -145,7 +145,8 @@ if !DISTCHECKFAKE
 endif
 
 
-EXTRA_DIST = $(docpkg) $(intdocpkg) libmgesysutils.in libmgesysutils-int.in
+EXTRA_DIST = $(docpkg) $(intdocpkg) $(srcdir)/libmgesysutils.in \
+	$(srcdir)/libmgesysutils-int.in
 
 
 CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp $(docpkg) $(intdocpkg) \
