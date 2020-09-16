@@ -20,6 +20,7 @@
 # 06/11/2019    MG      1.0.2   Bionic is now the minimum distribution  #
 #                               due to dependencies built on LaunchPad. #
 # 08/06/2020    MG      1.0.3   Remove install of unused program dia.   #
+# 16/09/2020    MG      1.0.4   Use new libmgec2-dev package.           #
 #									#
 #########################################################################
 
@@ -34,7 +35,7 @@ before_install:
     - sudo apt-get update
     - sudo apt-get install -y autoconf-archive libtool-bin
     - sudo apt-get install -y doxygen graphviz
-    - sudo apt-get install -y libmgec2 libmgec-dev txt2man txt2manwrap
+    - sudo apt-get install -y libmgec2 libmgec2-dev txt2man txt2manwrap
 
 script:
     - autoreconf -if .
