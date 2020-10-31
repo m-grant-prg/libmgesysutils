@@ -1,3 +1,14 @@
+2020-10-31 v1.1.2 Mark Grant <m.grant.prg@gmail.com>
+	*  at: lxcu: Add lxc test build setup
+	travis: Use new libmgec2-dev package
+	doc: Enable documentation of static functions
+	doc: Explicitly state source directory
+	doc: Separate API and internal documentation
+	README: Correct git command
+	at: Remove check for unused program dia
+	at: Update bootstrap.sh to v1.4.7
+	travis: Make the build use Bionic
+
 2019-11-05 v1.1.1 Mark Grant <m.grant.prg@gmail.com>
 	*  Source at v1.0.11
 	Library at v1:1:0
