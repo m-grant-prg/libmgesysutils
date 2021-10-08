@@ -117,6 +117,7 @@
 # 08/06/2020	MG	1.1.4	Remove check for unused program dia.	#
 # 08/10/2021	MG	1.1.5	Add enable-atonly CLA and add support	#
 #				for doc-base.				#
+#				Make use of new CPPFLAGS macro.		#
 #									#
 #########################################################################
 
@@ -466,7 +467,8 @@ AC_TYPE_SSIZE_T
 
 AC_MSG_NOTICE(checking for compiler characteristics)
 
-# Build a suitable CFLAGS list depending on compiler version.
+# Build compiler flags depending on compiler version.
+BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS)
 BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS)
 
 

@@ -53,27 +53,26 @@
 # 16/05/2019	MG	1.0.16	Collapse AT subprojects into one.	#
 #				Remove shebang.				#
 # 08/10/2021	MG	1.0.17	Use MG_CFLAGS variable.			#
+#				Use CPPFLAGS prepared by configure.	#
 #									#
 #########################################################################
 
 
-AM_CPPFLAGS = -I$(srcdir)/../../inc-tmp -I$(srcdir)/../../inc
+AM_CPPFLAGS = $(MG_CPPFLAGS)
+AM_CPPFLAGS += -I$(srcdir)/../../inc-tmp -I$(srcdir)/../../inc
 AM_CPPFLAGS += -I../../gen/inc -I../../gen/lib
 
 
 AM_CFLAGS = $(MG_CFLAGS)
 AM_CFLAGS += $(LIBMGEC_CFLAGS)
-
 if DEBUG
 AM_CFLAGS += -ggdb3 -Og
 else
 AM_CFLAGS += -O2
 endif
-
 if HEADERCHECK
 AM_CFLAGS += -H
 endif
-
 if SPARSE
 AM_CFLAGS += -Wsparse-all -Wno-vla
 endif
