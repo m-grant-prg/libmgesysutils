@@ -30,10 +30,11 @@ Send a remote syslog entry.
 
 If you are going to build, or build against, this libmgesysutils MGE System
 Utilities Library then you must install the development files from
-libmgesysutils-dev. Other required dependencies not installed on your system
-will be identified by the configure script. Any of these produced by this author
-can be found in a repository located here:-
-https://github.com/m-grant-prg
+libmgesysutils-dev.
+
+Related packages are the libmgesysutils-dev MGE System Utilities Library
+Development Files, an API documentation package libmgesysutils-doc and a full
+documentation package libmgesysutils-int-doc.
 
 N.B.
 ----
