@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: src/prg/c/src/test-configfile/Makefile.am			#
-# Author: Copyright (C) 2015-2019  Mark Grant				#
+# Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -38,6 +38,7 @@
 # 16/05/2019	MG	1.0.11	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
 # 30/10/2019	MG	1.0.12	Move under check target.		#
+# 08/10/2021	MG	1.0.13	Use CFLAGS from configure.		#
 #									#
 #########################################################################
 
@@ -46,7 +47,7 @@ AM_CPPFLAGS = -I$(srcdir)/../../inc-tmp -I$(srcdir)/../../inc
 AM_CPPFLAGS += -I../../gen/inc -I../../gen/lib
 
 
-AM_CFLAGS = -Wall
+AM_CFLAGS = $(MG_CFLAGS)
 
 if DEBUG
 AM_CFLAGS += -ggdb3 -Og
