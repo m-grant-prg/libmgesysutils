@@ -54,6 +54,7 @@
 #				Remove shebang.				#
 # 08/10/2021	MG	1.0.17	Use MG_CFLAGS variable.			#
 #				Use CPPFLAGS prepared by configure.	#
+#				Use LDFLAGS prepared by configure.	#
 #									#
 #########################################################################
 
@@ -83,9 +84,14 @@ noinst_HEADERS = configfile/internal.h
 
 lib_LTLIBRARIES = libmgesysutils.la
 
+
 libmgesysutils_la_SOURCES = configfile/configfile.c remsyslog/remsyslog.c
 libmgesysutils_la_SOURCES += version.c
 
-AM_LDFLAGS = -version-info @lib_version_info@ $(LIBMGEC_LIBS)
+
+AM_LDFLAGS = $(MG_LDFLAGS)
+AM_LDFLAGS += -version-info @lib_version_info@ $(LIBMGEC_LIBS)
+
+
 libmgesysutils_la_LIBADD = $(tmplibraries)
 

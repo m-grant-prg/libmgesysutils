@@ -38,6 +38,7 @@
 # 30/10/2019	MG	1.0.10	Move under check target.		#
 # 08/10/2021	MG	1.0.11	Use CFLAGS from configure.		#
 #				Use CPPFLAGS from configure.		#
+#				Use LDFLAGS from configure.		#
 #									#
 #########################################################################
 
@@ -57,6 +58,9 @@ endif
 
 check_PROGRAMS = remsyslogtest
 remsyslogtest_SOURCES = main.c
+
+
+AM_LDFLAGS = $(MG_LDFLAGS)
 
 
 LDADD = ../libmgesysutils/libmgesysutils.la

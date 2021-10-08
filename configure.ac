@@ -118,6 +118,7 @@
 # 08/10/2021	MG	1.1.5	Add enable-atonly CLA and add support	#
 #				for doc-base.				#
 #				Make use of new CPPFLAGS macro.		#
+#				Make use of new linker macro.		#
 #									#
 #########################################################################
 
@@ -470,6 +471,7 @@ AC_MSG_NOTICE(checking for compiler characteristics)
 # Build compiler flags depending on compiler version.
 BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS)
 BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS)
+BUILD_LDFLAGS(MG_LDFLAGS)
 
 
 #################################################
