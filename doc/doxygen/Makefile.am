@@ -38,6 +38,8 @@
 #				documentation.				#
 # 08/10/2021	MG	1.0.10	Only register documents if building	#
 #				with ATONLY.				#
+#				Move main source documents into src to	#
+#				enable use of EXTRA_DIST on subdir src.	#
 #									#
 #########################################################################
 
@@ -151,7 +153,7 @@ endif
 endif
 
 
-EXTRA_DIST = $(docpkg) $(intdocpkg) $(srcdir)/libmgesysutils.in \
+EXTRA_DIST = $(docpkg) $(intdocpkg) $(srcdir)/src $(srcdir)/libmgesysutils.in \
 	$(srcdir)/libmgesysutils-int.in
 
 
