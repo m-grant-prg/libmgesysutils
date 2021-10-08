@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: doc/doxygen/Makefile.am					#
-# Author: Copyright (C) 2017-2020  Mark Grant				#
+# Author: Copyright (C) 2017-2021  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -36,6 +36,8 @@
 #				rules are enabled.			#
 # 26/06/2020	MG	1.0.9	Split into API and full internal	#
 #				documentation.				#
+# 08/10/2021	MG	1.0.10	Only register documents if building	#
+#				with ATONLY.				#
 #									#
 #########################################################################
 
@@ -112,9 +114,9 @@ libmgesysutils-int: $(srcdir)/libmgesysutils-int.in
 
 
 # If doc-base is installed register the documents then update dochelp if it is
-# installed.
+# installed. Registering is dependent on ATONLY.
 
-docbasedir = $(datarootdir)/doc-base
+docbasedir = @docbaseloc@
 
 docbase_DATA = libmgesysutils libmgesysutils-int
 
@@ -122,6 +124,7 @@ install-data-hook:
 if !DISTCHECKFAKE
 	cd $(DESTDIR)$(apidir) && tar xf $(docpkg)
 	cd $(DESTDIR)$(intdir) && tar xf $(intdocpkg)
+if ATONLY
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vi $(docbasedir)/libmgesysutils; \
 		install-docs -vi $(docbasedir)/libmgesysutils-int; \
@@ -130,11 +133,11 @@ if !DISTCHECKFAKE
 		dochelp update; \
 	fi
 endif
+endif
 
-uninstall-hook:
+uninstall-local:
 if !DISTCHECKFAKE
-	cd $(DESTDIR)$(apidir) && rm -rf html
-	cd $(DESTDIR)$(intdir) && rm -rf html-int
+if ATONLY
 	if command -v install-docs >/dev/null 2>&1; then \
 		install-docs -vr libmgesysutils; \
 		install-docs -vr libmgesysutils-int; \
@@ -142,6 +145,9 @@ if !DISTCHECKFAKE
 	if command -v dochelp >/dev/null 2>&1; then \
 		dochelp update; \
 	fi
+endif
+	cd $(DESTDIR)$(apidir) && rm -rf html
+	cd $(DESTDIR)$(intdir) && rm -rf html-int
 endif
 
 
