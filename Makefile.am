@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2015-2019  Mark Grant				#
+# Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -46,6 +46,7 @@
 #				/usr/share/java must be accommodated,	#
 #				so set the configure flags to be used	#
 #				by make distcheck.			#
+# 08/10/2021	MG	1.0.13	Add misc and doc/misc to Dist.		#
 #									#
 #########################################################################
 
@@ -71,8 +72,8 @@ doc_DATA = AUTHORS ChangeLog COPYING NEWS README
 
 EXTRA_DIST = $(srcdir)/AUTHORS $(srcdir)/ChangeLog $(srcdir)/COPYING \
 		$(srcdir)/NEWS $(srcdir)/README
-
 EXTRA_DIST += m4/gnulib-cache.m4
+EXTRA_DIST += doc/misc misc
 
 
 srctarball:
