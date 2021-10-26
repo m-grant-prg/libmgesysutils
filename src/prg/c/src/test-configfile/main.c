@@ -24,7 +24,7 @@
 /*
  * configfile test program.
  */
-int main(int argc, char **argv)
+int main(void)
 {
 	/*
 	 * Odd {} duplication below prevents odd missing braces compiler
