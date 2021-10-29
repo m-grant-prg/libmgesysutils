@@ -1,3 +1,29 @@
+2021-10-29 v1.3.1 Mark Grant <m.grant.prg@gmail.com>
+	* test-remsyslog: Fix unused parameter warning
+	test-configfile: Fix unused parameter warning
+	actions: Minimum version now focal
+	doc: Expand branch / distro release explanation
+	at: Upgrade gen-gnulib.sh to v1.0.2
+	at: Update c-compiler macros to v1.0.9
+	at: Change debug optimisation to -O0
+	at: Use LDFLAGS prepared by configure
+	at: Add linker macro
+	at: Use CPPFLAGS prepared in configure
+	tests: Use CFLAGS from configure
+	at: Differentiate full and API documentation
+	at: Capitalise var names in configure and Makefiles
+	doc: Add gnulib notes
+	at: Add doc/misc and misc to Dist
+	doc: Add AT installation notes
+	at: README: Add ldconfig instruction
+	at: docs: Move source files to src
+	at: Update AT install section for enable-atonly
+	at: Register docs with scrollkeeper only if ATONLY
+	doc: Add branch / distro-release notes
+	doc: Update config file for new version of doxygen
+	git: Update gitignore to v1.0.5
+	at: Automatic gnulib update for bullseye
+
 2021-10-06 v1.1.3 Mark Grant <m.grant.prg@gmail.com>
 	* at: Automatic libtool upgrade for stretch
 	lxcu: Add support for Fedora and openSUSE
