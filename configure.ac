@@ -119,6 +119,7 @@
 #				for doc-base.				#
 #				Make use of new CPPFLAGS macro.		#
 #				Make use of new linker macro.		#
+# 05/11/2021	MG	1.1.6	Create debug version of flags where	#
 #									#
 #########################################################################
 
@@ -129,7 +130,7 @@
 #					#
 #########################################
 
-AC_REVISION($Revision: 1.1.5 $)
+AC_REVISION($Revision: 1.1.6 $)
 
 AC_PREREQ(2.69)
 
@@ -468,9 +469,9 @@ AC_TYPE_SSIZE_T
 
 AC_MSG_NOTICE(checking for compiler characteristics)
 
-# Build compiler flags depending on compiler version.
-BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS)
-BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS)
+# Build suitable pre-processor, compiler and linker flags.
+BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS, MG_DEBUG_CPPFLAGS)
+BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS, MG_DEBUG_CFLAGS)
 BUILD_LDFLAGS(MG_LDFLAGS)
 
 
