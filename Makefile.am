@@ -4,7 +4,7 @@
 # Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
 #									#
 # Released under the GPLv3 only.					#
-# SPDX-License-Identifier: GPL-3.0					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 #	AutoMake script file to generate libmgesysutils project from	#
@@ -47,6 +47,7 @@
 #				so set the configure flags to be used	#
 #				by make distcheck.			#
 # 08/10/2021	MG	1.0.13	Add misc and doc/misc to Dist.		#
+# 06/12/2021	MG	1.0.14	Tighten SPOX tag.			#
 #									#
 #########################################################################
 

@@ -3,12 +3,12 @@
  *
  * To send a message to a remote syslog server using UDP.
  *
- * @author Copyright (C) 2015-2019  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021  Mark Grant
  *
  * Released under the GPLv3 only.\n
- * SPDX-License-Identifier: GPL-3.0
+ * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.12 ==== 30/10/2019_
+ * @version _v1.0.13 ==== 06/12/2021_
  */
 
 /* **********************************************************************
@@ -36,6 +36,7 @@
  * 31/05/2019	MG	1.0.11	Correct variable type for return	*
  *				assignment from sendto.			*
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
+ * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
