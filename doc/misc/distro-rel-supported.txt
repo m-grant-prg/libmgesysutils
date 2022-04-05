@@ -1,0 +1,15 @@
+Development is performed under Debian stable and a new branch is created at the
+time that stable changes to a new release. Such branches are only maintained
+from a security / bug fix perspective; active development continues only under
+the tip branch.
+
+Mention below of Fedora, openSUSE and Ubuntu releases show the releases
+supported by this branch subject to the EOL date. They compile and build but may
+produce build warnings, development focus is Debian.
+
+Distro Release		EOL Date
+==============		========
+
+stretch			June 2022
+bionic			April 2023
+
