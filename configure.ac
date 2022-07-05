@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./configure.ac						#
-# Author: Copyright (C) 2015-2021  Mark Grant				#
+# Author: Copyright (C) 2015-2022  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -125,6 +125,8 @@
 #				further package version information.	#
 #				Tighten SPDX tag.			#
 #				Add AC_COPYRIGHT macro.			#
+# 05/07/2022	MG	1.1.8	Use new namespace enhanced compiler and	#
+#				linker macros v1.1.1			#
 #									#
 #########################################################################
 
@@ -135,11 +137,11 @@
 #					#
 #########################################
 
-AC_COPYRIGHT([Copyright (C) 2015-2021  Mark Grant
+AC_COPYRIGHT([Copyright (C) 2015-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION($Revision: 1.1.7 $)
+AC_REVISION($Revision: 1.1.8 $)
 
 AC_PREREQ(2.69)
 
@@ -495,9 +497,9 @@ AC_TYPE_SSIZE_T
 AC_MSG_NOTICE(checking for compiler characteristics)
 
 # Build suitable pre-processor, compiler and linker flags.
-BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS, MG_DEBUG_CPPFLAGS)
-BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS, MG_DEBUG_CFLAGS)
-BUILD_LDFLAGS(MG_LDFLAGS)
+MG_BUILD_COMPILER_VERSION_CPPFLAGS(MG_CPPFLAGS, MG_DEBUG_CPPFLAGS)
+MG_BUILD_COMPILER_VERSION_CFLAGS(MG_CFLAGS, MG_DEBUG_CFLAGS)
+MG_BUILD_LDFLAGS(MG_LDFLAGS)
 
 
 #################################################
