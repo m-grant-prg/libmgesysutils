@@ -37,12 +37,12 @@
  * for an optional Section is only enforced if the Section does appear, (is
  * defined), in the config file.
  *
- * @author Copyright (C) 2015-2019, 2021  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.13 ==== 06/12/2021_
+ * @version _v1.0.14 ==== 06/07/2022_
  */
 
 /* **********************************************************************
@@ -72,6 +72,7 @@
  *				to strncpy.				*
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
+ * 06/07/2022	MG	1.0.14	Fix -Wuse-after-free.			*
  *									*
  ************************************************************************
  */
@@ -127,8 +128,13 @@ int parsefile(struct confsection *params, int nparams, char *filename)
 	if (!ret)
 		ret = chkmandatories(params, nparams);
 	/* Close the file and exit. */
-	if (fclose(fp))
-		ret = chkfileerr(fp);
+	if (fclose(fp)) {
+		sav_errno = errno;
+		mge_errno = MGE_ERRNO;
+		syslog((int)(LOG_USER | LOG_NOTICE), "%s",
+		       mge_strerror(mge_errno));
+		ret = -mge_errno;
+	}
 	return ret;
 }
 
@@ -471,4 +477,3 @@ static int chkfileerr(FILE *fp)
 	}
 	return -mge_errno;
 }
-
