@@ -1,3 +1,10 @@
+2022-07-07 v1.4.1 Mark Grant <m.grant.prg@gmail.com>
+	* doc: Update distro releases for this branch
+	configfile: Fix use after free
+	at: Upgrade bootstrap.sh to v1.5.1
+	at: Add support for gcc analyzer option
+	m4: Upgrade compiler and linker macros to v1.1.1
+
 2021-12-06 v1.3.2 Mark Grant <m.grant.prg@gmail.com>
 	* at: Add AC_COPYRIGHT macro
 	all: Tighten SPDX tags
