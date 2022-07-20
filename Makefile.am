@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2015-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -48,6 +48,7 @@
 #				by make distcheck.			#
 # 08/10/2021	MG	1.0.13	Add misc and doc/misc to Dist.		#
 # 06/12/2021	MG	1.0.14	Tighten SPOX tag.			#
+# 20/07/2022	MG	1.0.15	Add doxygen target.			#
 #									#
 #########################################################################
 
@@ -88,4 +89,10 @@ srctarball:
 		--output=$${targ} \
 		HEAD && \
 	cd -
+
+doxygen:
+	(cd doc/doxygen && rm -f *.stamp && $(MAKE) $(AM_MAKEFLAGS) $@) \
+		|| exit 1
+
+.PHONY: doxygen
 
