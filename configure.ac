@@ -129,6 +129,10 @@
 #				linker macros v1.1.1			#
 #				New CL option to enable compiler	#
 #				analyzer output.			#
+# 20/07/2022	MG	1.1.9	Remove portability restrictions for	#
+#				Automake. Allows automatic generation	#
+#				of source file depends in the doxygen	#
+#				Makefile.am				#
 #									#
 #########################################################################
 
@@ -143,7 +147,7 @@ AC_COPYRIGHT([Copyright (C) 2015-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION($Revision: 1.1.8 $)
+AC_REVISION($Revision: 1.1.9 $)
 
 AC_PREREQ(2.69)
 
@@ -183,7 +187,7 @@ AC_SUBST(lib_version_info, "1:2:0")
 # This also checks :-	BSD install	make variable set	mkdir -p
 #			gawk
 #
-AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects tar-pax])
+AM_INIT_AUTOMAKE(-Wall -Wno-portability -Werror subdir-objects tar-pax)
 
 #
 # Standard macros will be automatically placed in m4.
