@@ -1,6 +1,6 @@
 Configuration File
 ==================
-[TOC]
+\tableofcontents
 \section parsefile Parse Configuration File
 
 The parsefile function in the libmgesysutils library processes a configuration

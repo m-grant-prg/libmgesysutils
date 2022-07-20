@@ -1,6 +1,6 @@
 Remote SysLog
 =============
-[TOC]
+\tableofcontents
 Functions around remote syslogs.
 
 \section sndremsyslogmsg Send Remote SysLog Message
