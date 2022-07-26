@@ -133,6 +133,9 @@
 #				Automake. Allows automatic generation	#
 #				of source file depends in the doxygen	#
 #				Makefile.am				#
+# 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
+#				using GitHub Pages for hosting Doxygen	#
+#				documentation.				#
 #									#
 #########################################################################
 
@@ -147,7 +150,7 @@ AC_COPYRIGHT([Copyright (C) 2015-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION($Revision: 1.1.9 $)
+AC_REVISION($Revision: 1.2.1 $)
 
 AC_PREREQ(2.69)
 
@@ -695,7 +698,7 @@ AC_MSG_NOTICE(processing output files)
 # Directory Variables, (bindir and friends), except in Makefiles and pkg-config
 # files. See GNU AutoConf manual section 4.8.2 Installation Directory Variables.
 #
-AC_CONFIG_FILES(doc/doxygen/Doxyfile)
+AC_CONFIG_FILES(docs/doxygen/Doxyfile)
 AC_CONFIG_FILES(src/prg/c/pkg-config/libmgesysutils.pc)
 
 # Causes AC_OUTPUT to create a c preprocessor file with #define statements about
@@ -704,7 +707,7 @@ AC_CONFIG_HEADERS(src/prg/c/gen/inc/config.h)
 
 # Project Makefiles to create.
 AC_CONFIG_FILES(Makefile
-		doc/doxygen/Makefile
+		docs/doxygen/Makefile
 		src/man/3/Makefile
 		src/prg/c/gen/lib/Makefile
 		src/prg/c/inc/Makefile
