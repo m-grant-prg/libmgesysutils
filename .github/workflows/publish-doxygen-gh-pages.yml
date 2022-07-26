@@ -48,8 +48,9 @@ jobs:
 
       - name: Add the extra PPA packages
         run: |
-          sudo apt-get install -y autoconf-archive libtool-bin valgrind
-          sudo apt-get install -y dia doxygen graphviz txt2man txt2manwrap
+          sudo apt-get install -y autoconf-archive libtool-bin
+          sudo apt-get install -y doxygen graphviz
+          sudo apt-get install -y libmgec2 libmgec2-dev txt2man txt2manwrap
 
       - name: Autoreconf
         run: autoreconf -if .
