@@ -1,3 +1,8 @@
+2022-08-16 v1.4.4 Mark Grant <m.grant.prg@gmail.com>
+	* editors: Update editorconfig to v1.0.3
+	editors: Add editorconfig file
+	docs: Correct missed directory name change
+
 2022-07-26 v1.4.3 Mark Grant <m.grant.prg@gmail.com>
 	* actions: Correct cut and paste on dependencies
 
