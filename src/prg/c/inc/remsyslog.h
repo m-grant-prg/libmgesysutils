@@ -6,12 +6,12 @@
  * Header file for sending a message to a remote syslog server in the
  * libmgesysutils shared library.
  *
- * @author Copyright (C) 2015-2019, 2021  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.9 ==== 06/12/2021_
+ * @version _v1.0.10 ==== 19/08/2022_
  */
 
 /* **********************************************************************
@@ -29,6 +29,7 @@
  * 16/05/2019	MG	1.0.7	Collapse AT subprojects into one.	*
  * 30/10/2019	MG	1.0.8	Apply clang-format.			*
  * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
+ * 19/08/2022	MG	1.0.10	Rename portability.h			*
  *									*
  ************************************************************************
  */
@@ -36,7 +37,7 @@
 #ifndef REMSYSLOG_H
 #define REMSYSLOG_H
 
-#include <portability.h>
+#include <mge-portability.h>
 
 BEGIN_C_DECLS
 
@@ -46,4 +47,3 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 END_C_DECLS
 
 #endif /* ndef REMSYSLOG_H */
-

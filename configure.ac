@@ -136,6 +136,7 @@
 # 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
 #				using GitHub Pages for hosting Doxygen	#
 #				documentation.				#
+# 19/08/2022	MG	1.2.2	Rename portability.h			#
 #									#
 #########################################################################
 
@@ -150,7 +151,7 @@ AC_COPYRIGHT([Copyright (C) 2015-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION($Revision: 1.2.1 $)
+AC_REVISION($Revision: 1.2.2 $)
 
 AC_PREREQ(2.69)
 
@@ -499,7 +500,7 @@ AC_CHECK_HEADERS(sys/socket.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(netinet/in.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
-AC_CHECK_HEADERS(portability.h, [], AC_MSG_ERROR(header not found))
+AC_CHECK_HEADERS(libmgec/mge-portability.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(mge-errno.h, [], AC_MSG_ERROR(header not found))
 
 
