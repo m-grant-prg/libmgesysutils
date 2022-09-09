@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/src/libmgesysutils/remsyslog/remsyslog.c
+ * @file src/prg/c/src/libmgesysutils/remsyslog.c
  *
  * To send a message to a remote syslog server using UDP.
  *

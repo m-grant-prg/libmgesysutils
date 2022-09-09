@@ -60,6 +60,8 @@
 #				Use (non-)debug CFLAGS from configure	#
 # 06/12/2021	MG	1.0.20	Tighten SPDX tag.			#
 # 05/07/2022	MG	1.0.21	Add compiler analyzer option.		#
+# 09/09/2022	MG	1.1.1	Remove internal.h and flatten directory	#
+#				structure.				#
 #									#
 #########################################################################
 
@@ -90,14 +92,10 @@ endif
 AM_CFLAGS += $(LIBMGEC_CFLAGS)
 
 
-noinst_HEADERS = configfile/internal.h
-
-
 lib_LTLIBRARIES = libmgesysutils.la
 
 
-libmgesysutils_la_SOURCES = configfile/configfile.c remsyslog/remsyslog.c
-libmgesysutils_la_SOURCES += version.c
+libmgesysutils_la_SOURCES = configfile.c remsyslog.c version.c
 
 
 AM_LDFLAGS = $(MG_LDFLAGS)

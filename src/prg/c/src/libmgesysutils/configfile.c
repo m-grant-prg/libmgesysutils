@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/src/libmgesysutils/configfile/configfile.c
+ * @file src/prg/c/src/libmgesysutils/configfile.c
  *
  * Configuration file processing.
  *
@@ -74,6 +74,7 @@
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
  * 06/07/2022	MG	1.0.14	Fix -Wuse-after-free.			*
  * 09/09/2022	MG	1.0.15	Remove unnecessary include of stdlib.h	*
+ *				Move forward declarations here.		*
  *									*
  ************************************************************************
  */
@@ -85,13 +86,23 @@
 #include <syslog.h>
 
 #include <configfile.h>
-
-#include "internal.h"
 #include <mge-errno.h>
 
 static char line[MAX_LINE_LENGTH];
 static char currentsection[MAX_KEYVAL_LENGTH];
 static struct confsection *pcursect;
+
+static char *getparamline(char *, FILE *);
+static int parseline(struct confsection *, int, char *);
+static int parsesection(struct confsection *, int, char *);
+static int validatesection(struct confsection *, int, char *);
+static int parseparam(char *);
+static int isolatekey(char *, char *, char *);
+static int isolatevalue(char *, char *, char *);
+static int validatekeyvalue(char *, char *);
+static int chkmandatories(struct confsection *, int);
+static int chkkeys(struct confsection *);
+static int chkfileerr(FILE *);
 
 /**
  * Parse a configuration file.
