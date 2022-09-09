@@ -145,6 +145,7 @@
 #				Variables such as pkgincludedir. Use	#
 #				Makefile.am variable substitution	#
 #				instead.				#
+#				Add test-headers build.			#
 #									#
 #########################################################################
 
@@ -619,6 +620,7 @@ AC_SUBST([edit], ["sed \
 		-e 's|@pc_requires_private[@]|\$(pc_requires_private)|g' \
 		-e 's|@pkgversion[@]|\$(pkgversion)|g' \
 		-e 's|@docbaseloc[@]|\$(docbaseloc)|g' \
+		-e 's|@CC[@]|\$(CC)|g' \
 		-e 's|@prefix[@]|\$(prefix)|g' \
 		-e 's|@exec_prefix[@]|\$(exec_prefix)|g' \
 		-e 's|@bindir[@]|\$(bindir)|g' \
@@ -742,7 +744,8 @@ AC_CONFIG_FILES(Makefile
 		src/prg/c/pkg-config/Makefile
 		src/prg/c/src/libmgesysutils/Makefile
 		src/prg/c/src/test-configfile/Makefile
-		src/prg/c/src/test-remsyslog/Makefile)
+		src/prg/c/src/test-remsyslog/Makefile
+		src/prg/c/src/test-headers/Makefile)
 
 AC_OUTPUT
 

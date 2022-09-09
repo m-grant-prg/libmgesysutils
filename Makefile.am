@@ -52,6 +52,7 @@
 # 26/07/2022	MG	1.1.1	Change doc directory to docs to support	#
 #				using GitHub Pages to host Doxygen	#
 #				documentation.				#
+# 09/09/2022	MG	1.1.2	Add test-headers build.			#
 #									#
 #########################################################################
 
@@ -69,6 +70,7 @@ SUBDIRS += src/prg/c/lib-tmp
 SUBDIRS += src/prg/c/pkg-config
 SUBDIRS += src/prg/c/src/libmgesysutils
 SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
+SUBDIRS += src/prg/c/src/test-headers
 SUBDIRS += docs/doxygen
 
 
