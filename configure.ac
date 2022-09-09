@@ -136,9 +136,15 @@
 # 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
 #				using GitHub Pages for hosting Doxygen	#
 #				documentation.				#
-# 08/09/2022	MG	1.2.2	Rename portability.h			#
+# 09/09/2022	MG	1.2.2	Rename portability.h			#
 #				Add checks for headers in inc-tmp	#
 #				directory.				#
+#				Do not generate pkg-config file with	#
+#				AC_CONFIG_FILES as it does not support	#
+#				extended Installation Directory		#
+#				Variables such as pkgincludedir. Use	#
+#				Makefile.am variable substitution	#
+#				instead.				#
 #									#
 #########################################################################
 
@@ -186,6 +192,8 @@ AC_DEFINE(SOURCE_VERSION, "1.0.13", \
 	Define to the version of source code in this package.)
 
 AC_SUBST(lib_version_info, "1:2:0")
+
+AC_SUBST(pkgversion, $PACKAGE_VERSION)
 
 #
 # Passes the options to all am files. Puts objects in the sub-directory
@@ -607,6 +615,9 @@ AC_MSG_NOTICE(processing additional checks and variables)
 #	pkglibexecdir	${libexecdir}/${PACKAGE}
 #
 AC_SUBST([edit], ["sed \
+		-e 's|@pc_requires[@]|\$(pc_requires)|g' \
+		-e 's|@pc_requires_private[@]|\$(pc_requires_private)|g' \
+		-e 's|@pkgversion[@]|\$(pkgversion)|g' \
 		-e 's|@docbaseloc[@]|\$(docbaseloc)|g' \
 		-e 's|@prefix[@]|\$(prefix)|g' \
 		-e 's|@exec_prefix[@]|\$(exec_prefix)|g' \
@@ -684,7 +695,6 @@ done
 #
 # Setup substitution variables for use in the pkg-config file.
 #
-
 # The Requires field.
 AC_SUBST(pc_requires)
 # LIBMGEC is a Requires AOT Requires.private because it exposes mge_errno.
@@ -710,9 +720,12 @@ AC_MSG_NOTICE(processing output files)
 # AC_CONFIG_FILES should not be used to substitute AutoConf Installation
 # Directory Variables, (bindir and friends), except in Makefiles and pkg-config
 # files. See GNU AutoConf manual section 4.8.2 Installation Directory Variables.
+# This manual section mentions bindir, includedir etc but makes no mention of
+# any extended forms such as pkgincludedir, and it indeed seems that they are
+# not supported. Variable substitution in the Makefile.am's should be used
+# instead.
 #
 AC_CONFIG_FILES(docs/doxygen/Doxyfile)
-AC_CONFIG_FILES(src/prg/c/pkg-config/libmgesysutils.pc)
 
 # Causes AC_OUTPUT to create a c preprocessor file with #define statements about
 # the configuration.

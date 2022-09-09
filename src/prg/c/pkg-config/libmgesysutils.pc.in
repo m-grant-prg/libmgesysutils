@@ -3,12 +3,14 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 datarootdir=@datarootdir@
 datadir=@datadir@
-includedir=@includedir@
+pkgincludedir=@pkgincludedir@
 
 Name: libmgesysutils
 Description: MGE system utilities library.
-Version: @PACKAGE_VERSION@
+Version: @pkgversion@
+URL: https://github.com/m-grant-prg/libmgesysutils/wiki
 Requires: @pc_requires@
 Requires.private: @pc_requires_private@
 Libs: -L${libdir} -lmgesysutils
-Cflags: -I${includedir}
+Cflags: -I${pkgincludedir}
+
