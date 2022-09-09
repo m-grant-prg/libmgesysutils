@@ -146,6 +146,7 @@
 #				Makefile.am variable substitution	#
 #				instead.				#
 #				Add test-headers build.			#
+#				Add run-tests for make check.		#
 #									#
 #########################################################################
 
@@ -745,7 +746,8 @@ AC_CONFIG_FILES(Makefile
 		src/prg/c/src/libmgesysutils/Makefile
 		src/prg/c/src/test-configfile/Makefile
 		src/prg/c/src/test-remsyslog/Makefile
-		src/prg/c/src/test-headers/Makefile)
+		src/prg/c/src/test-headers/Makefile
+		src/prg/c/src/run-tests/Makefile)
 
 AC_OUTPUT
 

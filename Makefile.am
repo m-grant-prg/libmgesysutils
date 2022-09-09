@@ -53,6 +53,7 @@
 #				using GitHub Pages to host Doxygen	#
 #				documentation.				#
 # 09/09/2022	MG	1.1.2	Add test-headers build.			#
+#				Add run-tests for make check.		#
 #									#
 #########################################################################
 
@@ -71,6 +72,7 @@ SUBDIRS += src/prg/c/pkg-config
 SUBDIRS += src/prg/c/src/libmgesysutils
 SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
 SUBDIRS += src/prg/c/src/test-headers
+SUBDIRS += src/prg/c/src/run-tests
 SUBDIRS += docs/doxygen
 
 
