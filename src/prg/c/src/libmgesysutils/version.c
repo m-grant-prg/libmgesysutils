@@ -5,12 +5,12 @@
  *
  * Standard library-wide software versioning functions and information.
  *
- * @author Copyright (C) 2015-2019, 2021  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.11 ==== 06/12/2021_
+ * @version _v1.0.12 ==== 09/09/2021_
  */
 
 /* **********************************************************************
@@ -31,6 +31,7 @@
  * 16/05/2019	MG	1.0.9	Collapse AT sub-projects into one.	*
  * 30/10/2019	MG	1.0.10	Apply clang-format.			*
  * 06/12/2021	MG	1.0.11	Tighten SPDX tag.			*
+ * 09/09/2022	MG	1.0.12	Remove unnecessary include of stdlib.h	*
  *									*
  ************************************************************************
  */
@@ -38,7 +39,6 @@
 #include <config.h>
 #include <libmgesysutils.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * Get the git-describe based package version.
@@ -75,4 +75,3 @@ void libmgesysutils_print_src_version(void)
 	printf("%s %s %s", "libmgesysutils Source version -", SOURCE_VERSION,
 	       "\n");
 }
-
