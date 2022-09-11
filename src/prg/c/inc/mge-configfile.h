@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/configfile.h
+ * @file src/prg/c/inc/mge-configfile.h
  *
  * Config file processing header file.
  *
@@ -10,7 +10,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.10 ==== 19/08/2022_
+ * @version _v1.1.1 ==== 11/09/2022_
  */
 
 /* **********************************************************************
@@ -29,12 +29,13 @@
  * 30/10/2019	MG	1.0.8	Apply clang-format.			*
  * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
  * 19/08/2022	MG	1.0.10	Rename portability.h			*
+ * 11/09/2022	MG	1.1.1	Rename to mge-configfile.h		*
  *									*
  ************************************************************************
  */
 
-#ifndef CONFIGFILE_H
-#define CONFIGFILE_H
+#ifndef MGE_CONFIGFILE_H
+#define MGE_CONFIGFILE_H
 
 #include <mge-portability.h>
 
@@ -69,4 +70,4 @@ int parsefile(struct confsection *params, int nparams, char *filename);
 
 END_C_DECLS
 
-#endif /* ndef CONFIGFILE_H */
+#endif /* ndef MGE_CONFIGFILE_H */

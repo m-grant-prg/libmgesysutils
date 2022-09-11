@@ -26,11 +26,12 @@
 # 16/05/2019	MG	1.0.5	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
 # 06/12/2021	MG	1.0.6	Tighten SPDX tag.			#
-# 09/09/2022	MG	1.0.7	Install in package specific include	#
+# 11/09/2022	MG	1.0.7	Install in package specific include	#
 #				directory.				#
+#				Rename configfile.h			#
 #									#
 #########################################################################
 
-pkginclude_HEADERS = configfile.h remsyslog.h
+pkginclude_HEADERS = mge-configfile.h remsyslog.h
 pkginclude_HEADERS += libmgesysutils.h
 

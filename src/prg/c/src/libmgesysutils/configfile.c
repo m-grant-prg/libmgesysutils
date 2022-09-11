@@ -42,7 +42,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.15 ==== 09/09/2022_
+ * @version _v1.0.15 ==== 11/09/2022_
  */
 
 /* **********************************************************************
@@ -73,8 +73,9 @@
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
  * 06/07/2022	MG	1.0.14	Fix -Wuse-after-free.			*
- * 09/09/2022	MG	1.0.15	Remove unnecessary include of stdlib.h	*
+ * 11/09/2022	MG	1.0.15	Remove unnecessary include of stdlib.h	*
  *				Move forward declarations here.		*
+ *				Rename configfile.h			*
  *									*
  ************************************************************************
  */
@@ -85,7 +86,7 @@
 #include <string.h>
 #include <syslog.h>
 
-#include <configfile.h>
+#include <mge-configfile.h>
 #include <mge-errno.h>
 
 static char line[MAX_LINE_LENGTH];

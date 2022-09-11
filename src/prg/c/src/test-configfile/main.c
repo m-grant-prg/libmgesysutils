@@ -17,8 +17,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <configfile.h>
 #include <libmgesysutils.h>
+#include <mge-configfile.h>
 #include <mge-errno.h>
 
 /*

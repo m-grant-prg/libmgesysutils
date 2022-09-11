@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: src/prg/c/inc-tmp/Makefile.am				#
-# Author: Copyright (C) 2017-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2017-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -29,11 +29,12 @@
 # 16/05/2019	MG	1.0.3	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
 # 06/12/2021	MG	1.0.4	Tighten SPDX tag.			#
+# 11/09/2022	MG	1.0.5	Rename configfile.h			#
 #									#
 #########################################################################
 
 
 noinst_HEADERS = $(tmpheaders)
 
-EXTRA_HEADERS = configfile.h remsyslog.h libmgesysutils.h
+EXTRA_HEADERS = mge-configfile.h remsyslog.h libmgesysutils.h
 
