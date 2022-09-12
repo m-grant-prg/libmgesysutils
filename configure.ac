@@ -136,7 +136,7 @@
 # 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
 #				using GitHub Pages for hosting Doxygen	#
 #				documentation.				#
-# 09/09/2022	MG	1.2.2	Rename portability.h			#
+# 12/09/2022	MG	1.2.2	Rename portability.h			#
 #				Add checks for headers in inc-tmp	#
 #				directory.				#
 #				Do not generate pkg-config file with	#
@@ -147,6 +147,7 @@
 #				instead.				#
 #				Add test-headers build.			#
 #				Add run-tests for make check.		#
+#				Use pkginclude location.		#
 #									#
 #########################################################################
 
@@ -512,13 +513,13 @@ AC_CHECK_HEADERS(sys/socket.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(netinet/in.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(netdb.h, [], AC_MSG_ERROR(header not found))
 AC_CHECK_HEADERS(syslog.h, [], AC_MSG_ERROR(header not found))
-if test -f `dirname $0`/src/prg/c/inc-tmp/mge-portability.h ; then
+if test -f `dirname $0`/src/prg/c/inc-tmp/libmgec/mge-portability.h ; then
 	AC_MSG_NOTICE(mge-portability.h is in the internal inc-tmp directory)
 else
 	AC_CHECK_HEADERS(libmgec/mge-portability.h, [],
 			 AC_MSG_ERROR(header not found))
 fi
-if test -f `dirname $0`/src/prg/c/inc-tmp/mge-errno.h ; then
+if test -f `dirname $0`/src/prg/c/inc-tmp/libmgec/mge-errno.h ; then
 	AC_MSG_NOTICE(mge-errno.h is in the internal inc-tmp directory)
 else
 	AC_CHECK_HEADERS(libmgec/mge-errno.h, [],

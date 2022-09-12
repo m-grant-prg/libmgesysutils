@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/remsyslog.h
+ * @file src/prg/c/inc/libmgesysutils/remsyslog.h
  *
  * Send message to remote syslog header file.
  *
@@ -11,7 +11,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.10 ==== 19/08/2022_
+ * @version _v1.0.10 ==== 12/09/2022_
  */
 
 /* **********************************************************************
@@ -29,7 +29,8 @@
  * 16/05/2019	MG	1.0.7	Collapse AT subprojects into one.	*
  * 30/10/2019	MG	1.0.8	Apply clang-format.			*
  * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
- * 19/08/2022	MG	1.0.10	Rename portability.h			*
+ * 12/09/2022	MG	1.0.10	Rename portability.h			*
+ *				Use pkginclude location.		*
  *									*
  ************************************************************************
  */
@@ -37,7 +38,7 @@
 #ifndef REMSYSLOG_H
 #define REMSYSLOG_H
 
-#include <mge-portability.h>
+#include <libmgec/mge-portability.h>
 
 BEGIN_C_DECLS
 

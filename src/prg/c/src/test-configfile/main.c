@@ -17,9 +17,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <libmgesysutils.h>
-#include <mge-configfile.h>
-#include <mge-errno.h>
+#include <libmgec/mge-errno.h>
+#include <libmgesysutils/libmgesysutils.h>
+#include <libmgesysutils/mge-configfile.h>
 
 /*
  * configfile test program.

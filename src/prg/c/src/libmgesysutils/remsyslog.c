@@ -3,12 +3,12 @@
  *
  * To send a message to a remote syslog server using UDP.
  *
- * @author Copyright (C) 2015-2019, 2021  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.13 ==== 06/12/2021_
+ * @version _v1.0.14 ==== 12/09/2022_
  */
 
 /* **********************************************************************
@@ -37,6 +37,7 @@
  *				assignment from sendto.			*
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
+ * 12/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
  *									*
  ************************************************************************
  */
@@ -50,8 +51,8 @@
 #include <syslog.h>
 #include <unistd.h>
 
-#include <mge-errno.h>
-#include <remsyslog.h>
+#include <libmgec/mge-errno.h>
+#include <libmgesysutils/remsyslog.h>
 
 /**
  * Send message to remote syslog server.
@@ -140,4 +141,3 @@ err_exit:
 	freeaddrinfo(res);
 	return -mge_errno;
 }
-

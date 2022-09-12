@@ -16,9 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <libmgesysutils.h>
-#include <mge-errno.h>
-#include <remsyslog.h>
+#include <libmgec/mge-errno.h>
+#include <libmgesysutils/libmgesysutils.h>
+#include <libmgesysutils/remsyslog.h>
 
 /*
  * remsyslog test program.
