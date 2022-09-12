@@ -29,12 +29,13 @@
 # 16/05/2019	MG	1.0.3	Collapse AT sub-projects into one.	#
 #				Remove shebang.				#
 # 06/12/2021	MG	1.0.4	Tighten SPDX tag.			#
-# 11/09/2022	MG	1.0.5	Rename configfile.h			#
+# 12/09/2022	MG	1.0.5	Rename configfile.h			#
+#				Empty EXTRA_HEADERS.			#
 #									#
 #########################################################################
 
 
 noinst_HEADERS = $(tmpheaders)
 
-EXTRA_HEADERS = mge-configfile.h remsyslog.h libmgesysutils.h
+EXTRA_HEADERS =
 
