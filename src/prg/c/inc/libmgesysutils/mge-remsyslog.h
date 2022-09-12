@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/libmgesysutils/remsyslog.h
+ * @file src/prg/c/inc/libmgesysutils/mge-remsyslog.h
  *
  * Send message to remote syslog header file.
  *
@@ -31,12 +31,13 @@
  * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
  * 12/09/2022	MG	1.0.10	Rename portability.h			*
  *				Use pkginclude location.		*
+ *				Rename remsyslog.			*
  *									*
  ************************************************************************
  */
 
-#ifndef REMSYSLOG_H
-#define REMSYSLOG_H
+#ifndef MGE_REMSYSLOG_H
+#define MGE_REMSYSLOG_H
 
 #include <libmgec/mge-portability.h>
 
@@ -47,4 +48,4 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 
 END_C_DECLS
 
-#endif /* ndef REMSYSLOG_H */
+#endif /* ndef MGE_REMSYSLOG_H */

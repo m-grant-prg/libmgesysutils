@@ -38,6 +38,7 @@
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
  * 12/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
+ *				Rename remsyslog.			*
  *									*
  ************************************************************************
  */
@@ -52,7 +53,7 @@
 #include <unistd.h>
 
 #include <libmgec/mge-errno.h>
-#include <libmgesysutils/remsyslog.h>
+#include <libmgesysutils/mge-remsyslog.h>
 
 /**
  * Send message to remote syslog server.

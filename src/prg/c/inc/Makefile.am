@@ -30,9 +30,11 @@
 #				directory.				#
 #				Rename configfile.h			#
 #				Use pkginclude location.		#
+#				Rename remsyslog.			#
 #									#
 #########################################################################
 
-pkginclude_HEADERS = libmgesysutils/mge-configfile.h libmgesysutils/remsyslog.h
+pkginclude_HEADERS = libmgesysutils/mge-configfile.h
+pkginclude_HEADERS +=libmgesysutils/mge-remsyslog.h
 pkginclude_HEADERS += libmgesysutils/libmgesysutils.h
 
