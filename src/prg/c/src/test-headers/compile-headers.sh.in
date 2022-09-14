@@ -7,11 +7,15 @@ testdir=$(pwd)
 # the directory structure is different during make distcheck.
 if [[ -z $srcdir ]]; then
 	cliheaders="-I../../../../../../src/prg/c/inc"
+	cliheaders+=" -I../../../../../../src/prg/c/inc/libmgesysutils"
 	cliheaders+=" -I../../../../../../src/prg/c/inc-tmp"
+	cliheaders+=" -I../../../../../../src/prg/c/inc-tmp/libmgec"
 	headers=$(find ../../../../../../src -name *.h)
 else
 	cliheaders="-I$srcdir/../../../../../src/prg/c/inc"
+	cliheaders+=" -I$srcdir/../../../../../src/prg/c/inc/libmgesysutils"
 	cliheaders+=" -I$srcdir/../../../../../src/prg/c/inc-tmp"
+	cliheaders+=" -I$srcdir/../../../../../src/prg/c/inc-tmp/libmgec"
 	headers=$(find $srcdir/../../../../../src -name *.h)
 fi
 for headerpath in $headers; do
