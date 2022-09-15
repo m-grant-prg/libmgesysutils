@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/libmgesysutils/mge-configfile.h
+ * @file src/prg/c/inc/mge-configfile.h
  *
  * Config file processing header file.
  *
@@ -10,7 +10,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.1.1 ==== 12/09/2022_
+ * @version _v1.1.1 ==== 15/09/2022_
  */
 
 /* **********************************************************************
@@ -29,7 +29,7 @@
  * 30/10/2019	MG	1.0.8	Apply clang-format.			*
  * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
  * 19/08/2022	MG	1.0.10	Rename portability.h			*
- * 12/09/2022	MG	1.1.1	Rename to mge-configfile.h		*
+ * 15/09/2022	MG	1.1.1	Rename to mge-configfile.h		*
  *				Use pkginclude location.		*
  *									*
  ************************************************************************

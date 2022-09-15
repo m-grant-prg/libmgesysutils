@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/libmgesysutils/libmgesysutils.h
+ * @file src/prg/c/inc/libmgesysutils.h
  *
  * Header file for libmgesysutils shared library.
  *
@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.8 ==== 12/09/2022_
+ * @version _v1.0.8 ==== 15/09/2022_
  */
 
 /* **********************************************************************
@@ -24,7 +24,7 @@
  * 16/05/2019	MG	1.0.5	Collapse AT sub-projects into one.	*
  * 30/10/2019	MG	1.0.6	Apply clang-format.			*
  * 06/12/2021	MG	1.0.7	Tighten SPDX tag.			*
- * 12/09/2022	MG	1.0.8	Rename portability.h			*
+ * 15/09/2022	MG	1.0.8	Rename portability.h			*
  *				Use pkginclude location.		*
  *									*
  ************************************************************************

@@ -8,7 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.14 ==== 12/09/2022_
+ * @version _v1.0.14 ==== 15/09/2022_
  */
 
 /* **********************************************************************
@@ -37,7 +37,7 @@
  *				assignment from sendto.			*
  * 30/10/2019	MG	1.0.12	Apply clang-format.			*
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
- * 12/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
+ * 15/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
  *				Rename remsyslog.			*
  *									*
  ************************************************************************
@@ -53,7 +53,7 @@
 #include <unistd.h>
 
 #include <libmgec/mge-errno.h>
-#include <libmgesysutils/mge-remsyslog.h>
+#include <mge-remsyslog.h>
 
 /**
  * Send message to remote syslog server.
