@@ -1,7 +1,7 @@
 NAME
 parsefile - Parse a configuration file.
 SYNOPSIS
-#include <mge-configfile.h>
+#include <libmgesysutils/mge-configfile.h>
 
 int parsefile(struct confsection *parameters, int numberofparams,
 		char *configfile);

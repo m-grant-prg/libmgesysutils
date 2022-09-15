@@ -1,7 +1,7 @@
 NAME
 sndremsyslogmsg - Send a message to a remote syslog server.
 SYNOPSIS
-#include <mge-remsyslog.h>
+#include <libmgesysutils/mge-remsyslog.h>
 
 int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		const char *message);
