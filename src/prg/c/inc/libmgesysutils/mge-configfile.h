@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/mge-configfile.h
+ * @file src/prg/c/inc/libmgesysutils/mge-configfile.h
  *
  * Config file processing header file.
  *

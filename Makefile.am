@@ -65,7 +65,7 @@ AM_DISTCHECK_CONFIGURE_FLAGS = --enable-distcheckfake=yes
 
 SUBDIRS = src/man/3
 SUBDIRS += src/prg/c/gen/lib
-SUBDIRS += src/prg/c/inc
+SUBDIRS += src/prg/c/inc/libmgesysutils
 SUBDIRS += src/prg/c/inc-tmp
 SUBDIRS += src/prg/c/lib-tmp
 SUBDIRS += src/prg/c/pkg-config

@@ -1,6 +1,6 @@
 #########################################################################
 #									#
-# Script ID: src/prg/c/inc/Makefile.am					#
+# Script ID: src/prg/c/inc/libmgesysutils/Makefile.am			#
 # Author: Copyright (C) 2015-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#

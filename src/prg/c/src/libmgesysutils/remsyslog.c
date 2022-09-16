@@ -53,7 +53,7 @@
 #include <unistd.h>
 
 #include <libmgec/mge-errno.h>
-#include <mge-remsyslog.h>
+#include <libmgesysutils/mge-remsyslog.h>
 
 /**
  * Send message to remote syslog server.

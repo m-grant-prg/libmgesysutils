@@ -740,7 +740,7 @@ AC_CONFIG_FILES(Makefile
 		docs/doxygen/Makefile
 		src/man/3/Makefile
 		src/prg/c/gen/lib/Makefile
-		src/prg/c/inc/Makefile
+		src/prg/c/inc/libmgesysutils/Makefile
 		src/prg/c/inc-tmp/Makefile
 		src/prg/c/lib-tmp/Makefile
 		src/prg/c/pkg-config/Makefile

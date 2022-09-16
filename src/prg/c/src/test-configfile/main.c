@@ -18,8 +18,8 @@
 #include <string.h>
 
 #include <libmgec/mge-errno.h>
-#include <libmgesysutils.h>
-#include <mge-configfile.h>
+#include <libmgesysutils/libmgesysutils.h>
+#include <libmgesysutils/mge-configfile.h>
 
 /*
  * configfile test program.

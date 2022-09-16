@@ -1,5 +1,5 @@
 /**
- * @file src/prg/c/inc/mge-remsyslog.h
+ * @file src/prg/c/inc/libmgesysutils/mge-remsyslog.h
  *
  * Send message to remote syslog header file.
  *

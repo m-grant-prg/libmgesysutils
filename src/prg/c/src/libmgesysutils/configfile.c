@@ -88,7 +88,7 @@
 #include <syslog.h>
 
 #include <libmgec/mge-errno.h>
-#include <mge-configfile.h>
+#include <libmgesysutils/mge-configfile.h>
 
 static char line[MAX_LINE_LENGTH];
 static char currentsection[MAX_KEYVAL_LENGTH];

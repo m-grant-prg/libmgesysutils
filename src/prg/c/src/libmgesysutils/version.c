@@ -39,7 +39,7 @@
 #include <config.h>
 #include <stdio.h>
 
-#include <libmgesysutils.h>
+#include <libmgesysutils/libmgesysutils.h>
 
 /**
  * Get the git-describe based package version.
