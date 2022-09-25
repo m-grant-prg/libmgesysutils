@@ -136,7 +136,7 @@
 # 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
 #				using GitHub Pages for hosting Doxygen	#
 #				documentation.				#
-# 12/09/2022	MG	1.2.2	Rename portability.h			#
+# 25/09/2022	MG	1.2.2	Rename portability.h			#
 #				Add checks for headers in inc-tmp	#
 #				directory.				#
 #				Do not generate pkg-config file with	#
@@ -148,6 +148,8 @@
 #				Add test-headers build.			#
 #				Add run-tests for make check.		#
 #				Use pkginclude location.		#
+#				Change tmplibraries to use an absolute	#
+#				path.					#
 #									#
 #########################################################################
 
@@ -491,8 +493,14 @@ AC_MSG_NOTICE(checking for particular programs required at run time)
 
 AC_MSG_NOTICE(checking for libraries required by this application)
 
-AC_SEARCH_LIBS(pull_msg, mgec, , \
-	AC_MSG_ERROR(function pull_msg not found in libmgec))
+if test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la ; then
+	AC_MSG_NOTICE(Not performing AC SEARCH LIBS for libmgec as \
+$(dirname $0)/src/prg/c/lib-tmp/libmgec/libmgec.la \
+has been found.)
+else
+	AC_SEARCH_LIBS(pull_msg, mgec, , \
+		       AC_MSG_ERROR(function pull_msg not found in libmgec))
+fi
 
 
 #########################################
@@ -570,8 +578,14 @@ AC_CHECK_FUNCS(gethostname memset socket strchr)
 #						#
 #################################################
 
-PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
-		AC_MSG_ERROR(pkg-config file not found))
+if test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la ; then
+	AC_MSG_NOTICE(Not performing PKG CHECK MODULES for libmgec as \
+$(dirname $0)/src/prg/c/lib-tmp/libmgec/libmgec.la \
+has been found.)
+else
+	PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
+			  AC_MSG_ERROR(pkg-config file not found))
+fi
 
 
 #################################################
@@ -682,19 +696,25 @@ done
 #
 AC_SUBST(tmplibraries)
 
-for direntry in `dirname $0`/src/prg/c/lib-tmp/*
+AC_MSG_NOTICE(Looking for temporary libraries...)
+
+cd `dirname $0`
+topdir=$(find ~+ -type d -name atbuild -prune -o -type d -name lib-tmp -print)
+cd - > /dev/null
+
+for direntry in $topdir/*
 do
 	if test -d "$direntry" ;then
-		for entry in `dirname $0`\
-/src/prg/c/lib-tmp/$(basename "$direntry")/*.la
+		for entry in $direntry/*.la
 		do
 			if test -f "$entry" ;then
-				tmplibraries=$tmplibraries\
-" \$(srcdir)/../../lib-tmp/"$(basename "$direntry")"/"$(basename "$entry")
+				AC_MSG_NOTICE(Temporary library $entry found.)
+				tmplibraries+=" $entry"
 			fi
 		done
 	fi
 done
+AC_MSG_NOTICE(Temporary libraries to be used are $tmplibraries)
 
 #
 # Setup substitution variables for use in the pkg-config file.
