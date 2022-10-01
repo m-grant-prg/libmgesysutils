@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: src/prg/c/src/test-configfile/Makefile.am			#
-# Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2015-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -45,6 +45,7 @@
 # 05/11/2021	MG	1.0.15	Use (non-)debug CPPFLAGS from configure	#
 #				Use (non-)debug CFLAGS from configure	#
 # 06/12/2021	MG	1.0.16	Tighten SPDX tag.			#
+# 30/09/2022	MG	1.0.17	Re-order LDADD.				#
 #									#
 #########################################################################
 
@@ -72,8 +73,8 @@ configfiletest_SOURCES = main.c
 AM_LDFLAGS = $(MG_LDFLAGS)
 
 
-LDADD = ../libmgesysutils/libmgesysutils.la
-LDADD += $(tmplibraries)
+LDADD = $(tmplibraries)
+LDADD += ../libmgesysutils/libmgesysutils.la
 
 
 noclosingbracket.conf noequalssign.conf nomandatorykey.conf nonewline.conf \
