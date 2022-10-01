@@ -51,7 +51,7 @@
 # SECTION  9: Check for structures					#
 # SECTION 10: Check for compiler characteristics			#
 # SECTION 11: Check for library functions				#
-# SECTION 12: Check for pkg-config files				#
+# SECTION 12: Check for pkg-config files or alternatives		#
 # SECTION 13: Check for system services					#
 # SECTION 14: Additional checks & variables				#
 # SECTION 15: Specify the output files					#
@@ -136,7 +136,7 @@
 # 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
 #				using GitHub Pages for hosting Doxygen	#
 #				documentation.				#
-# 25/09/2022	MG	1.2.2	Rename portability.h			#
+# 01/10/2022	MG	1.2.2	Rename portability.h			#
 #				Add checks for headers in inc-tmp	#
 #				directory.				#
 #				Do not generate pkg-config file with	#
@@ -151,6 +151,8 @@
 #				Change tmplibraries to use an absolute	#
 #				path.					#
 #				Use find to get tmpheaders.		#
+#				Libraries: In tmplibraries else use	#
+#				pkg-config else use search libs.	#
 #									#
 #########################################################################
 
@@ -488,24 +490,6 @@ AC_MSG_NOTICE(checking for particular programs required at run time)
 
 #########################################
 #					#
-# SECTION  6: Check for libraries	#
-#					#
-#########################################
-
-AC_MSG_NOTICE(checking for libraries required by this application)
-
-if test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la ; then
-	AC_MSG_NOTICE(Not performing AC SEARCH LIBS for libmgec as \
-$(dirname $0)/src/prg/c/lib-tmp/libmgec/libmgec.la \
-has been found.)
-else
-	AC_SEARCH_LIBS(pull_msg, mgec, , \
-		       AC_MSG_ERROR(function pull_msg not found in libmgec))
-fi
-
-
-#########################################
-#					#
 # SECTION  7: Check for header files	#
 #					#
 #########################################
@@ -573,20 +557,22 @@ AC_MSG_NOTICE(checking for GNU compatible library functions)
 AC_CHECK_FUNCS(gethostname memset socket strchr)
 
 
-#################################################
-#						#
-# SECTION 12: Check for pkg-config files	#
-#						#
-#################################################
+#################################################################
+#								#
+# SECTION 12: Check for pkg-config files or alternatives	#
+#								#
+#################################################################
 
-if test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la ; then
-	AC_MSG_NOTICE(Not performing PKG CHECK MODULES for libmgec as \
-$(dirname $0)/src/prg/c/lib-tmp/libmgec/libmgec.la \
-has been found.)
-else
-	PKG_CHECK_MODULES(LIBMGEC, libmgec, [], \
-			  AC_MSG_ERROR(pkg-config file not found))
-fi
+AC_MSG_NOTICE(Processing required libraries)
+
+# Use tmplibraries if present
+#	else use pkg check modules giving XXX_CFLAGS and XXX_LIBS
+#		else use search libs giving LIBS
+AS_IF([test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la],
+      [AC_MSG_NOTICE([Using tmplibraries AOT pkg-config for libmgec library])],
+      [PKG_CHECK_MODULES([LIBMGEC], [libmgec], [],
+	   [AC_SEARCH_LIBS([pull_msg], [mgec], [],
+		[AC_MSG_ERROR([function pull_msg not found in libmgec])])])])
 
 
 #################################################
