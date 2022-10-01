@@ -45,7 +45,8 @@
 # 05/11/2021	MG	1.0.15	Use (non-)debug CPPFLAGS from configure	#
 #				Use (non-)debug CFLAGS from configure	#
 # 06/12/2021	MG	1.0.16	Tighten SPDX tag.			#
-# 30/09/2022	MG	1.0.17	Re-order LDADD.				#
+# 01/10/2022	MG	1.0.17	Re-order LDADD.				#
+#				Add libmgec to linker flags.		#
 #									#
 #########################################################################
 
@@ -71,6 +72,7 @@ configfiletest_SOURCES = main.c
 
 
 AM_LDFLAGS = $(MG_LDFLAGS)
+AM_LDFLAGS += $(LIBMGEC_LIBS)
 
 
 LDADD = $(tmplibraries)
