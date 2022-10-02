@@ -301,9 +301,8 @@ configure.ac provides Makefile.am's with a variable tmplibraries. This variable
 contains a space separated list of the absolute paths of all libraries under
 lib-tmp.
 
-In addition, configure.ac checking of availability of such libraries and
-associated pkg-config files using AC_SEARCH_LIBS and PKG_CHECK_MODULES is
-conditional on such a library not being present in lib-tmp.
+In addition, configure.ac checks the availability of such libraries in strict
+order of lib-tmp, PKG_CHECK_MODULES and lastly AC_SEARCH_LIBS.
 
 \subsubsection library_consumption Library Consumption
 
@@ -390,6 +389,9 @@ mgrantprg@leonidas:~/SWDev/Projects/C/libmgesysutils/atbuild/src/prg/c/src/test-
 mgrantprg@leonidas:~/SWDev/Projects/C/libmgesysutils/atbuild/src/prg/c/src/test-configfile$
 
 \endcode
+
+So, for libraries go to the .libs directory and use ldd ./library.so and for
+executables use the debugging shown above.
 
 \section linking_internal_libraries Linking Internal Libraries
 
