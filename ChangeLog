@@ -1,3 +1,6 @@
+2022-11-03 v1.4.5 Mark Grant <m.grant.prg@gmail.com>
+	* actions: Use libmgec3 substitute for libmgec2
+
 2022-08-16 v1.4.4 Mark Grant <m.grant.prg@gmail.com>
 	* editors: Update editorconfig to v1.0.3
 	editors: Add editorconfig file
