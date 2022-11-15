@@ -19,9 +19,7 @@
 # Date		Author	Version	Description				#
 #									#
 # 25/07/2022	MG	1.0.1	Initial release.                        #
-# 03/11/2022    MG      1.0.2   Use special final libmgec2 which is     #
-#                               named libmgec3.                         #
-# 11/11/2022    MG      1.0.3   Only build if this release is flagged   #
+# 11/11/2022    MG      1.0.2   Only build if this release is flagged   #
 #                               as the latest release.                  #
 #									#
 #########################################################################
@@ -85,7 +83,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y autoconf-archive libtool-bin valgrind
           sudo apt-get install -y dia doxygen graphviz
-          sudo apt-get install -y libmgec3 libmgec3-dev txt2man txt2manwrap
+          sudo apt-get install -y libmgec2 libmgec2-dev txt2man txt2manwrap
 
       - name: Configure
         run: |
