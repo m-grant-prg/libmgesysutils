@@ -1,3 +1,7 @@
+2022-11-15 v1.4.6 Mark Grant <m.grant.prg@gmail.com>
+	* actions: Only build documentation on latest release
+	Use libmgec2 not libmgec3
+
 2022-11-03 v1.4.5 Mark Grant <m.grant.prg@gmail.com>
 	* actions: Use libmgec3 substitute for libmgec2
 
