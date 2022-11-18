@@ -60,6 +60,10 @@
 # 20/07/2022	MG	1.0.12	Add doxygen target.			#
 #				Add dependency on document sources and	#
 #				C sources.				#
+# 07/09/2022	MG	1.0.13	Remove all doxygen tarballs. Orphaned	#
+#				tarballs can be left if git describe	#
+#				changes and no make clean has been	#
+#				performed.				#
 #									#
 #########################################################################
 
@@ -206,14 +210,14 @@ am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Doxyfile.in $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 pkglibexecdir = ${libexecdir}/${PACKAGE}
-ACLOCAL = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/missing aclocal-1.16
+ACLOCAL = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 ARFLAGS = cr
-AUTOCONF = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/missing autoconf
-AUTOHEADER = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/missing autoheader
-AUTOMAKE = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/missing automake-1.16
+AUTOCONF = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing automake-1.16
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -248,21 +252,21 @@ LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBGNU_LIBDEPS = 
 LIBGNU_LTLIBDEPS = 
-LIBMGEC_CFLAGS = 
+LIBMGEC_CFLAGS = -I/usr/include/libmgec
 LIBMGEC_LIBS = -lmgec
 LIBOBJS = 
-LIBS = -lmgec 
+LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/missing makeinfo
+MAKEINFO = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MG_ANALYZER_CFLAGS = 
-MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wformat-security -Wdeclaration-after-statement -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -O2
+MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -O2
 MG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time -D_FORTIFY_SOURCE=2
-MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wformat-security -Wdeclaration-after-statement -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -ggdb3 -O0
+MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -ggdb3 -O0
 MG_DEBUG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time
 MG_LDFLAGS = -Wl,-z,relro
 MKDIR_P = /usr/bin/mkdir -p
@@ -275,10 +279,10 @@ OTOOL64 =
 PACKAGE = libmgesysutils
 PACKAGE_BUGREPORT = m.grant.prg@gmail.com
 PACKAGE_NAME = MGE system utilities library
-PACKAGE_STRING = MGE system utilities library 1.4.6
+PACKAGE_STRING = MGE system utilities library 1.5.0
 PACKAGE_TARNAME = libmgesysutils
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.4.6
+PACKAGE_VERSION = 1.5.0
 PATH_SEPARATOR = :
 PKGCONFIG = yes
 PKG_CONFIG = /usr/bin/pkg-config
@@ -292,7 +296,7 @@ STRIP = strip
 TAR = yes
 TXT2MAN = yes
 TXT2MANWRAP = yes
-VERSION = 1.4.6
+VERSION = 1.5.0
 abs_builddir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_srcdir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_top_builddir = /home/runner/work/libmgesysutils/libmgesysutils
@@ -318,7 +322,7 @@ datarootdir = ${prefix}/share
 docbaseloc = ${prefix}/share/doc-base
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
-edit = sed 		-e 's|@docbaseloc@|$(docbaseloc)|g' 		-e 's|@prefix@|$(prefix)|g' 		-e 's|@exec_prefix@|$(exec_prefix)|g' 		-e 's|@bindir@|$(bindir)|g' 		-e 's|@sbindir@|$(sbindir)|g' 		-e 's|@libexecdir@|$(libexecdir)|g' 		-e 's|@libdir@|$(libdir)|g' 		-e 's|@sysconfdir@|$(sysconfdir)|g' 		-e 's|@sharedstatedir@|$(sharedstatedir)|g' 		-e 's|@localstatedir@|$(localstatedir)|g' 		-e 's|@runstatedir@|$(runstatedir)|g' 		-e 's|@includedir@|$(includedir)|g' 		-e 's|@oldincludedir@|$(oldincludedir)|g' 		-e 's|@datarootdir@|$(datarootdir)|g' 		-e 's|@localedir@|$(localedir)|g' 		-e 's|@datadir@|$(datadir)|g' 		-e 's|@mandir@|$(mandir)|g' 		-e 's|@infodir@|$(infodir)|g' 		-e 's|@docdir@|$(docdir)|g' 		-e 's|@htmldir@|$(htmldir)|g' 		-e 's|@dvidir@|$(dvidir)|g' 		-e 's|@pdfdir@|$(pdfdir)|g' 		-e 's|@psdir@|$(psdir)|g' 		-e 's|@lispdir@|$(lispdir)|g' 		-e 's|@pkgdatadir@|$(pkgdatadir)|g' 		-e 's|@pkgincludedir@|$(pkgincludedir)|g' 		-e 's|@pkglibdir@|$(pkglibdir)|g' 		-e 's|@pkglibexecdir@|$(pkglibexecdir)|g'
+edit = sed 		-e 's|@pc_requires@|$(pc_requires)|g' 		-e 's|@pc_requires_private@|$(pc_requires_private)|g' 		-e 's|@pkgversion@|$(pkgversion)|g' 		-e 's|@docbaseloc@|$(docbaseloc)|g' 		-e 's|@CC@|$(CC)|g' 		-e 's|@prefix@|$(prefix)|g' 		-e 's|@exec_prefix@|$(exec_prefix)|g' 		-e 's|@bindir@|$(bindir)|g' 		-e 's|@sbindir@|$(sbindir)|g' 		-e 's|@libexecdir@|$(libexecdir)|g' 		-e 's|@libdir@|$(libdir)|g' 		-e 's|@sysconfdir@|$(sysconfdir)|g' 		-e 's|@sharedstatedir@|$(sharedstatedir)|g' 		-e 's|@localstatedir@|$(localstatedir)|g' 		-e 's|@runstatedir@|$(runstatedir)|g' 		-e 's|@includedir@|$(includedir)|g' 		-e 's|@oldincludedir@|$(oldincludedir)|g' 		-e 's|@datarootdir@|$(datarootdir)|g' 		-e 's|@localedir@|$(localedir)|g' 		-e 's|@datadir@|$(datadir)|g' 		-e 's|@mandir@|$(mandir)|g' 		-e 's|@infodir@|$(infodir)|g' 		-e 's|@docdir@|$(docdir)|g' 		-e 's|@htmldir@|$(htmldir)|g' 		-e 's|@dvidir@|$(dvidir)|g' 		-e 's|@pdfdir@|$(pdfdir)|g' 		-e 's|@psdir@|$(psdir)|g' 		-e 's|@lispdir@|$(lispdir)|g' 		-e 's|@pkgdatadir@|$(pkgdatadir)|g' 		-e 's|@pkgincludedir@|$(pkgincludedir)|g' 		-e 's|@pkglibdir@|$(pkglibdir)|g' 		-e 's|@pkglibexecdir@|$(pkglibexecdir)|g'
 exec_prefix = ${prefix}
 gl_LIBOBJS = 
 gl_LTLIBOBJS = 
@@ -333,8 +337,8 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/install-sh
-lib_version_info = 1:2:0
+install_sh = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/install-sh
+lib_version_info = 2:0:0
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 lispdir = ${datarootdir}/emacs/site-lisp
@@ -346,6 +350,7 @@ oldincludedir = /usr/include
 pc_requires = libmgec
 pc_requires_private = 
 pdfdir = ${docdir}
+pkgversion = 1.5.0
 prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
@@ -382,8 +387,8 @@ docbase_DATA = libmgesysutils libmgesysutils-int
 EXTRA_DIST = $(docpkg) $(intdocpkg) $(srcdir)/src $(srcdir)/libmgesysutils.in \
 	$(srcdir)/libmgesysutils-int.in
 
-CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp $(docpkg) $(intdocpkg) \
-	libmgesysutils libmgesysutils-int
+CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp libmgesysutils \
+	     libmgesysutils-int
 
 all: all-am
 
@@ -731,7 +736,7 @@ uninstall-local:
 	cd $(DESTDIR)$(intdir) && rm -rf html-int
 
 clean-local:
-	rm -rf html html-int
+	rm -rf html html-int libmgesysutils*doxy*.tar.gz
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MGE System Utility Library - API Documentation: src/prg/c/inc/libmgesysutils.h Source File</title>
+<title>MGE System Utility Library - API Documentation: src/prg/c/inc/libmgesysutils/libmgesysutils.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MGE System Utility Library - API Documentation
-   &#160;<span id="projectnumber">v1.4.6</span>
+   &#160;<span id="projectnumber">v1.5.0</span>
    </div>
    <div id="projectbrief">Library of system utility functions.</div>
   </td>
@@ -101,39 +101,40 @@ $(document).ready(function(){initNavTree('libmgesysutils_8h_source.html',''); in
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * 16/05/2019   MG  1.0.5   Collapse AT sub-projects into one.  *</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * 30/10/2019   MG  1.0.6   Apply clang-format.         *</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * 06/12/2021   MG  1.0.7   Tighten SPDX tag.           *</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *                                  *</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ************************************************************************</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifndef LIBMGESYSUTILS_H</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define LIBMGESYSUTILS_H</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;portability.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * 15/09/2022   MG  1.0.8   Rename portability.h            *</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *              Use pkginclude location.        *</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> *                                  *</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> ************************************************************************</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifndef LIBMGESYSUTILS_H</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define LIBMGESYSUTILS_H</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;BEGIN_C_DECLS</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;libmgec/mge-portability.h&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">libmgesysutils_get_pkg_version</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;BEGIN_C_DECLS</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">libmgesysutils_get_src_version</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">libmgesysutils_get_pkg_version</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">libmgesysutils_print_pkg_version</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">libmgesysutils_get_src_version</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e">libmgesysutils_print_src_version</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">libmgesysutils_print_pkg_version</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;END_C_DECLS</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e">libmgesysutils_print_src_version</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ndef LIBMGESYSUTILS_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;END_C_DECLS</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ndef LIBMGESYSUTILS_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="alibmgesysutils_8h_html_a60e66f0ec24a912c126e8d59553463b7"><div class="ttname"><a href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">libmgesysutils_get_src_version</a></div><div class="ttdeci">char * libmgesysutils_get_src_version(void)</div><div class="ttdoc">Get the source version.</div><div class="ttdef"><b>Definition:</b> version.c:56</div></div>
-<div class="ttc" id="alibmgesysutils_8h_html_a4410c3a08febe882e411510b0e66352e"><div class="ttname"><a href="libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e">libmgesysutils_print_src_version</a></div><div class="ttdeci">void libmgesysutils_print_src_version(void)</div><div class="ttdoc">Print the source version string to stdout.</div><div class="ttdef"><b>Definition:</b> version.c:73</div></div>
-<div class="ttc" id="alibmgesysutils_8h_html_acf8b18131bb525755e6866ad737c98f2"><div class="ttname"><a href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">libmgesysutils_get_pkg_version</a></div><div class="ttdeci">BEGIN_C_DECLS char * libmgesysutils_get_pkg_version(void)</div><div class="ttdoc">Get the git-describe based package version.</div><div class="ttdef"><b>Definition:</b> version.c:47</div></div>
-<div class="ttc" id="alibmgesysutils_8h_html_a4f53c7e410022f7214ffbdaed0e1c8c3"><div class="ttname"><a href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">libmgesysutils_print_pkg_version</a></div><div class="ttdeci">void libmgesysutils_print_pkg_version(void)</div><div class="ttdoc">Print the package version string to stdout.</div><div class="ttdef"><b>Definition:</b> version.c:64</div></div>
+<div class="ttc" id="alibmgesysutils_8h_html_a60e66f0ec24a912c126e8d59553463b7"><div class="ttname"><a href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">libmgesysutils_get_src_version</a></div><div class="ttdeci">char * libmgesysutils_get_src_version(void)</div><div class="ttdoc">Get the source version.</div><div class="ttdef"><b>Definition:</b> version.c:57</div></div>
+<div class="ttc" id="alibmgesysutils_8h_html_a4410c3a08febe882e411510b0e66352e"><div class="ttname"><a href="libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e">libmgesysutils_print_src_version</a></div><div class="ttdeci">void libmgesysutils_print_src_version(void)</div><div class="ttdoc">Print the source version string to stdout.</div><div class="ttdef"><b>Definition:</b> version.c:74</div></div>
+<div class="ttc" id="alibmgesysutils_8h_html_acf8b18131bb525755e6866ad737c98f2"><div class="ttname"><a href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">libmgesysutils_get_pkg_version</a></div><div class="ttdeci">BEGIN_C_DECLS char * libmgesysutils_get_pkg_version(void)</div><div class="ttdoc">Get the git-describe based package version.</div><div class="ttdef"><b>Definition:</b> version.c:48</div></div>
+<div class="ttc" id="alibmgesysutils_8h_html_a4f53c7e410022f7214ffbdaed0e1c8c3"><div class="ttname"><a href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">libmgesysutils_print_pkg_version</a></div><div class="ttdeci">void libmgesysutils_print_pkg_version(void)</div><div class="ttdoc">Print the package version string to stdout.</div><div class="ttdef"><b>Definition:</b> version.c:65</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1986ada3285f0a0ebcb94921d9f60ef.html">prg</a></li><li class="navelem"><a class="el" href="dir_088b4e4436e06887f3fa9c5a3af9d85c.html">c</a></li><li class="navelem"><a class="el" href="dir_aba9309797a73b547f3d5132b7fc17af.html">inc</a></li><li class="navelem"><a class="el" href="libmgesysutils_8h.html">libmgesysutils.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1986ada3285f0a0ebcb94921d9f60ef.html">prg</a></li><li class="navelem"><a class="el" href="dir_088b4e4436e06887f3fa9c5a3af9d85c.html">c</a></li><li class="navelem"><a class="el" href="dir_aba9309797a73b547f3d5132b7fc17af.html">inc</a></li><li class="navelem"><a class="el" href="dir_6d9d64069ca2589f604ef7b0ef39e83d.html">libmgesysutils</a></li><li class="navelem"><a class="el" href="libmgesysutils_8h.html">libmgesysutils.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

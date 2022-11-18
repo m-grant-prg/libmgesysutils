@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['libmgesysutils_2eh_52',['libmgesysutils.h',['../libmgesysutils_8h.html',1,'']]]
+  ['mge_2dconfigfile_2eh_53',['mge-configfile.h',['../mge-configfile_8h.html',1,'']]],
+  ['mge_2dremsyslog_2eh_54',['mge-remsyslog.h',['../mge-remsyslog_8h.html',1,'']]]
 ];

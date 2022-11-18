@@ -44,6 +44,10 @@
 # 20/07/2022	MG	1.0.12	Add doxygen target.			#
 #				Add dependency on document sources and	#
 #				C sources.				#
+# 07/09/2022	MG	1.0.13	Remove all doxygen tarballs. Orphaned	#
+#				tarballs can be left if git describe	#
+#				changes and no make clean has been	#
+#				performed.				#
 #									#
 #########################################################################
 
@@ -168,9 +172,9 @@ EXTRA_DIST = $(docpkg) $(intdocpkg) $(srcdir)/src $(srcdir)/libmgesysutils.in \
 	$(srcdir)/libmgesysutils-int.in
 
 
-CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp $(docpkg) $(intdocpkg) \
-	libmgesysutils libmgesysutils-int
+CLEANFILES = doxywarn.txt doxygen.stamp doxygen1.stamp libmgesysutils \
+	     libmgesysutils-int
 
 clean-local:
-	rm -rf html html-int
+	rm -rf html html-int libmgesysutils*doxy*.tar.gz
 
