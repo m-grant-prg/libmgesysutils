@@ -1,5 +1,2 @@
-autoconf autoconf-archive automake autotools-dev libtool-bin pkg-config
-doxygen graphviz
-txt2man txt2manwrap
 libmgec2-dev libmgec2
 
