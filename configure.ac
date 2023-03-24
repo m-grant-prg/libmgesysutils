@@ -164,13 +164,16 @@
 #				USe AC_MSG_CHECKING where appropriate.	#
 #				Move CFLAGS init to Compiler setup	#
 #				section.				#
-# 15/03/2023	MG	1.2.4	Enforce compiler to use, in order; CC	#
+# 24/03/2023	MG	1.2.4	Enforce compiler to use, in order; CC	#
 #				passed to configure, sparse if		#
 #				requested, or from a standard list.	#
 #				Add CL arguments for enable-iwyu and	#
 #				enable-scan-build and use to determine	#
 #				if program availability checks should	#
 #				be performed.				#
+#				Use pkg-config command AOT		#
+#				Pkg_Check_Modules as the macro has	#
+#				problems under some normal conditions.	#
 #									#
 #########################################################################
 
@@ -660,13 +663,22 @@ AC_CHECK_FUNCS(gethostname memset socket strchr)
 AC_MSG_NOTICE(Processing required libraries)
 
 # Use tmplibraries if present
-#	else use pkg check modules giving XXX_CFLAGS and XXX_LIBS
-#		else use search libs giving LIBS
-AS_IF([test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la],
-      [AC_MSG_NOTICE([Using tmplibraries AOT pkg-config for libmgec library])],
-      [PKG_CHECK_MODULES([LIBMGEC], [libmgec], [],
-	   [AC_SEARCH_LIBS([pull_msg], [mgec], [],
-		[AC_MSG_ERROR([function pull_msg not found in libmgec])])])])
+#	else use pkg-config files if present and suitable giving XXX_CFLAGS and
+#	XXX_LIBS
+#		else use Search_Libs giving LIBS
+# As per p274, Autotools, 2nd edition, 2020, John Calcote - Do not use
+# Pkg_Check_Modules macro, it has problems under common conditions.
+if [test -f `dirname $0`/src/prg/c/lib-tmp/libmgec/libmgec.la];then
+	AC_MSG_NOTICE([Using tmplibraries AOT pkg-config for libmgec library])
+elif pkg-config --atleast-version=1.7.0 libmgec; then
+	AC_MSG_NOTICE([Using pkg-config for libmgec library])
+	AC_SUBST([LIBMGEC_CFLAGS], [$(pkg-config --cflags libmgec)])
+	AC_SUBST([LIBMGEC_LIBS], [$(pkg-config --libs libmgec)])
+else
+	AC_MSG_NOTICE([Using Search_LIBS to find libmgec library])
+	AC_SEARCH_LIBS([pull_msg], [mgec], [],
+		[AC_MSG_ERROR([function pull_msg not found in libmgec])])
+fi
 
 
 #################################################
