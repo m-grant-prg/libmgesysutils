@@ -1,3 +1,7 @@
+2023-06-30 v1.4.7 Mark Grant <m.grant.prg@gmail.com>
+	* at: Update Copyright for 2023
+	actions: Replace fetch-latest-release action
+
 2022-11-15 v1.4.6 Mark Grant <m.grant.prg@gmail.com>
 	* actions: Only build documentation on latest release
 	Use libmgec2 not libmgec3
