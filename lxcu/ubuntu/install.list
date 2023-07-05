@@ -1,2 +1,5 @@
+# This file should contain packages required to satisfy the Build-Depends of
+# this package.
+
 libmgec7-dev libmgec7
 
