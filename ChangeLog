@@ -1,3 +1,25 @@
+2023-07-06 v1.5.1 Mark Grant <m.grant.prg@gmail.com>
+	* at: Allow for v1.1.1~rc1 version numbering
+	lxcu: Correct install entries
+	lxcu: Add in-file help text
+	actions: Replace fetch-latest-release action
+	at: Use pkg-config command AOT Pkg_Check_Modules
+	lxcu: Use libmgec7
+	lxcu: Update install list after vm-container-tils upgrade
+	at: Add enable-scan-build CLA to configure
+	at: Upgrade bootstrap.sh to v1.5.6
+	at: Improve enable-iwyu comment
+	at: Add configure CLA enable-iwyu
+	at: Enforce compiler to use rules
+	m4: Update linker macros to v1.1.2
+	m4: Update c compiler macros to v1.2.3
+	git: Update mailmap to v1.0.3
+	editors: Update local.vimrc to v1.0.3
+	git: Update gitignore to v1.0.11
+	git: Update gitattributes to v1.0.4
+	editors: Update editorconfig to v1.0.4
+	clang: Update clang-format to v1.0.3
+
 2022-08-16 v1.4.4 Mark Grant <m.grant.prg@gmail.com>
 	* editors: Update editorconfig to v1.0.3
 	editors: Add editorconfig file
