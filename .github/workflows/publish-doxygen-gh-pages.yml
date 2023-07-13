@@ -27,6 +27,7 @@
 #                               cease to work after GitHub updates. So  #
 #                               replaced by fork and update by          #
 #                               CityOfLosAngeles.                       #
+# 13/07/2023    MG      1.0.5   Run on 20.04                            #
 #                                                                       #
 #########################################################################
 
@@ -41,7 +42,7 @@ jobs:
   version_check:
     outputs:
       status: ${{ steps.build.outputs.flag }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       # Check-out the repository under $GITHUB_WORKSPACE.
@@ -73,7 +74,7 @@ jobs:
 
 
   publish-doxygen:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: version_check
     if: needs.version_check.outputs.status == 'build'
     steps:
