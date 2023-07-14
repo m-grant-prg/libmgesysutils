@@ -3,12 +3,12 @@
  *
  * To send a message to a remote syslog server using UDP.
  *
- * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021-2023  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.14 ==== 15/09/2022_
+ * @version _v1.0.15 ==== 14/07/2023_
  */
 
 /* **********************************************************************
@@ -39,6 +39,7 @@
  * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
  * 15/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
  *				Rename remsyslog.			*
+ * 14/07/2023	MG	1.0.15	Fix buffer overflow in sndremsyslogmsg()*
  *									*
  ************************************************************************
  */
@@ -68,8 +69,8 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 {
 	char clientid[100] = { '\0' };
 	int c;
-	char fullmessage[strlen(message) + 1 + strlen(clientid) + 1
-			 + strlen(prog_name) + 1];
+	char fullmessage[strlen(clientid) + strlen(" ") + strlen(prog_name)
+		+ strlen(": ") + strlen(message) + 1];
 	const char *portname = "syslog";
 	struct addrinfo hints;
 	struct addrinfo *res = NULL;
