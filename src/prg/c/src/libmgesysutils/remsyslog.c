@@ -40,6 +40,7 @@
  * 15/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
  *				Rename remsyslog.			*
  * 14/07/2023	MG	1.0.15	Fix buffer overflow in sndremsyslogmsg()*
+ *				Fix message size in sndremsyslogmsg().	*
  *									*
  ************************************************************************
  */
@@ -53,6 +54,7 @@
 #include <syslog.h>
 #include <unistd.h>
 
+#include <libmgec/libmgec.h>
 #include <libmgec/mge-errno.h>
 #include <libmgesysutils/mge-remsyslog.h>
 
@@ -69,8 +71,8 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 {
 	char clientid[100] = { '\0' };
 	int c;
-	char fullmessage[strlen(clientid) + strlen(" ") + strlen(prog_name)
-		+ strlen(": ") + strlen(message) + 1];
+	char fullmessage[ARRAY_SIZE(clientid) + strlen(" ") + strlen(prog_name)
+			 + strlen(": ") + strlen(message) + 1];
 	const char *portname = "syslog";
 	struct addrinfo hints;
 	struct addrinfo *res = NULL;
