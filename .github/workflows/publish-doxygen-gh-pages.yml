@@ -28,9 +28,6 @@
 #                               replaced by fork and update by          #
 #                               CityOfLosAngeles.                       #
 # 13/07/2023    MG      1.0.5   Run on 22.04                            #
-# 16/07/2023    MG      1.0.6   Add gnulib-tool --update run as the     #
-#                               files generated in the gen/lib          #
-#                               directory are not under git.            #
 #                                                                       #
 #########################################################################
 
@@ -87,33 +84,18 @@ jobs:
           fetch-depth: 0 # Get all incl tags, needed for git-enhanced AC_INIT
           ref: ${{ github.event.release.tag_name }}
 
-      - name: Update the standard package list
-        run: sudo apt-get update
-
-      - name: Add the extra packages
+      - name: Install the extra PPA packages
         run: |
-          sudo apt-get install -y autoconf-archive gnulib libtool-bin
-          sudo apt-get install -y doxygen graphviz
-          sudo apt-get install -y txt2man
-
-      - name: Add the extra PPA
-        run: sudo add-apt-repository ppa:m-grant-prg/utils -y
-
-      - name: Update the package list
-        run: sudo apt-get update
-
-      - name: Add the extra PPA packages
-        run: |
-          sudo apt-get install -y libmgec7 libmgec7-dev txt2manwrap
-
-      - name: Gnulib-tool
-        run: gnulib-tool --update
-
-      - name: Autoreconf
-        run: autoreconf -if .
+          sudo add-apt-repository ppa:m-grant-prg/utils -y
+          sudo apt-get update
+          sudo apt-get install -y autoconf-archive libtool-bin valgrind
+          sudo apt-get install -y dia doxygen graphviz
+          sudo apt-get install -y libmgec7 libmgec7-dev txt2man txt2manwrap
 
       - name: Configure
-        run: ./configure --enable-silent-rules=yes
+        run: |
+          autoreconf -if .
+          ./configure --enable-silent-rules=yes
 
       - name: Make doxygen
         run: make doxygen
