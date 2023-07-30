@@ -1,3 +1,17 @@
+2023-07-30 v1.6.0 Mark Grant <m.grant.prg@gmail.com>
+	* at: docs: Add ldconfig and doc-base AT installation information
+	actions: Organise standard install and PPA installs
+	actions: Remove txt2man install, rely on dependencies
+	lxcu: Remove txt2man, rely on dependency
+	docs: README: Update gnulib information
+	at: Upgrade gen-gnulib.sh to v1.1.0
+	remsyslog: Fix message size
+	editors: Update local.vimrc to v1.0.4
+	at: gnulib updates
+	Merge branch 'master' into tip
+	remsyslog: Fix buffer overflow
+	actions: Run on 22.04
+
 2023-07-06 v1.5.1 Mark Grant <m.grant.prg@gmail.com>
 	* at: Allow for v1.1.1~rc1 version numbering
 	lxcu: Correct install entries
