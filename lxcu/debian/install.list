@@ -4,5 +4,5 @@
 autoconf autoconf-archive automake autotools-dev libtool-bin
 doxygen graphviz
 libmgec7-dev libmgec7
-txt2man txt2manwrap
+txt2manwrap
 
