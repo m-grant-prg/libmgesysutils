@@ -8,41 +8,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.15 ==== 14/07/2023_
- */
-
-/* **********************************************************************
- *									*
- * Changelog								*
- *									*
- * Date		Author	Version	Description				*
- *									*
- * 12/07/2015	MG	1.0.1	First release.				*
- * 16/07/2016	MG	1.0.2	Move towards kernel coding style.	*
- * 17/07/2016	MG	1.0.3	Further coding style changes.		*
- * 04/05/2017	MG	1.0.4	Migrate sendremsyslog to use mge_errno.	*
- *				Improve getaddrinfo processing.		*
- *				Change to send errors to syslog, not	*
- *				stderr.					*
- *				Update to standards from atclstv	*
- *				template v1.0.0				*
- * 07/11/2017	MG	1.0.5	Add Doxygen comments.			*
- * 10/11/2017	MG	1.0.6	Add SPDX license tag.			*
- * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
- * 27/03/2018	MG	1.0.8	Initialise NULL pointer with NULL, not	*
- *				zero, (fixes a sparse warning).		*
- * 13/05/2018	MG	1.0.9	On error return -ve mge_errno.		*
- * 16/05/2019	MG	1.0.10	Collapse AT sub-projects into one.	*
- * 31/05/2019	MG	1.0.11	Correct variable type for return	*
- *				assignment from sendto.			*
- * 30/10/2019	MG	1.0.12	Apply clang-format.			*
- * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
- * 15/09/2022	MG	1.0.14	Add pkgincludedir to #include's		*
- *				Rename remsyslog.			*
- * 14/07/2023	MG	1.0.15	Fix buffer overflow in sndremsyslogmsg()*
- *				Fix message size in sndremsyslogmsg().	*
- *									*
- ************************************************************************
+ * @version _v1.1.0 ==== 04/11/2023_
  */
 
 #include <errno.h>

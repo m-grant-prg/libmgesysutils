@@ -37,48 +37,12 @@
  * for an optional Section is only enforced if the Section does appear, (is
  * defined), in the config file.
  *
- * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021-2023  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.15 ==== 15/09/2022_
- */
-
-/* **********************************************************************
- *									*
- * Changelog								*
- *									*
- * Date		Author	Version	Description				*
- *									*
- * 12/07/2015	MG	1.0.1	First release.				*
- * 16/07/2016	MG	1.0.2	Move towards kernel coding style.	*
- * 17/07/2016	MG	1.0.3	Further coding style changes.		*
- * 04/05/2017	MG	1.0.4	Introduce mge_errno usage.		*
- *				Change to send errors to syslog, not	*
- *				stderr.					*
- *				Update to standards from atclstv	*
- *				template v1.0.0				*
- * 07/11/2017	MG	1.0.5	Add Doxygen comments.			*
- * 10/11/2017	MG	1.0.6	Add SPDX license tag.			*
- * 02/01/2018	MG	1.0.7	Move to new source directory structure.	*
- * 27/03/2018	MG	1.0.8	Ensure variable declarations preceed	*
- *				code, (fixes sparse warnings).		*
- * 13/05/2018	MG	1.0.9	Extract prototype declarations to	*
- *				internal.h				*
- *				Return -ve error number on failure.	*
- * 16/05/2019	MG	1.0.10	Collapse AT sub-projects into one.	*
- * 31/05/2019	MG	1.0.11	Add or correct casts of size argument	*
- *				to strncpy.				*
- * 30/10/2019	MG	1.0.12	Apply clang-format.			*
- * 06/12/2021	MG	1.0.13	Tighten SPDX tag.			*
- * 06/07/2022	MG	1.0.14	Fix -Wuse-after-free.			*
- * 15/09/2022	MG	1.0.15	Remove unnecessary include of stdlib.h	*
- *				Move forward declarations here.		*
- *				Rename configfile.h			*
- *				Use pkinclude location.			*
- *									*
- ************************************************************************
+ * @version _v1.1.0 ==== 04/11/2023_
  */
 
 #include <ctype.h>

@@ -6,34 +6,12 @@
  * Header file for sending a message to a remote syslog server in the
  * libmgesysutils shared library.
  *
- * @author Copyright (C) 2015-2019, 2021, 2022  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021-2023  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.0.10 ==== 15/09/2022_
- */
-
-/* **********************************************************************
- *									*
- * Changelog								*
- *									*
- * Date		Author	Version	Description				*
- *									*
- * 12/07/2015	MG	1.0.1	First release.				*
- * 16/07/2016	MG	1.0.2	Move towards kernel coding style.	*
- * 17/07/2016	MG	1.0.3	Further coding style changes.		*
- * 07/11/2017	MG	1.0.4	Add Doxygen comments.			*
- * 10/11/2017	MG	1.0.5	Add SPDX license tag.			*
- * 02/01/2018	MG	1.0.6	Move to new source directory structure.	*
- * 16/05/2019	MG	1.0.7	Collapse AT subprojects into one.	*
- * 30/10/2019	MG	1.0.8	Apply clang-format.			*
- * 06/12/2021	MG	1.0.9	Tighten SPDX tag.			*
- * 15/09/2022	MG	1.0.10	Rename portability.h			*
- *				Use pkginclude location.		*
- *				Rename remsyslog.			*
- *									*
- ************************************************************************
+ * @version _v1.1.0 ==== 04/11/2023_
  */
 
 #ifndef MGE_REMSYSLOG_H

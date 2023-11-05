@@ -1,6 +1,5 @@
 #########################################################################
 #									#
-# Script ID: ./configure.ac						#
 # Author: Copyright (C) 2015-2023  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
@@ -45,7 +44,6 @@
 #	Used to compile with the sparse static analyser.		#
 #									#
 # Layout: (Only relevant sections will exist).				#
-# ChangeLog : High level ChangeLog					#
 # SECTION  1: Initialisation & Setup					#
 # SECTION  2: Architecture, target and host checks			#
 # SECTION  3: Command line arguments					#
@@ -61,119 +59,6 @@
 # SECTION 13: Check for system services					#
 # SECTION 14: Additional checks & variables				#
 # SECTION 15: Specify the output files					#
-#									#
-#########################################################################
-
-#########################################################################
-#									#
-# Changelog								#
-#									#
-# Date		Author	Version	Description				#
-#									#
-# 12/07/2015	MG	1.0.1	First release.				#
-# 25/10/2015	MG	1.0.2	Restructure and change to conform to	#
-#				AutoTools General Template v1.0.6.	#
-# 13/01/2017	MG	1.0.3	Change to empty CFLAGS here and leave	#
-#				setting to the Makefile.am's.		#
-# 03/02/2017	MG	1.0.4	Add check for mge-errno.h and libmgec.	#
-# 23/04/2017	MG	1.0.5	Make AC_INIT and pkgversion AC_SUBST	#
-#				multi-line.				#
-#				Fully populate sed substitution		#
-#				variables.				#
-#				Add support for temporary header	#
-#				directory.				#
-# 09/06/2017	MG	1.0.6	Add support for temporary libraries.	#
-# 18/10/2017	MG	1.0.7	Add search for temporary libraries and	#
-#				store result in a variable for AutoMake	#
-#				consumption.				#
-# 01/01/2018	MG	1.0.8	Add SPDX license tags to source files.	#
-# 02/01/2018	MG	1.0.9	Move to new source directory structure.	#
-# 05/01/2018	MG	1.0.10	Correct use of config.h - remove the	#
-#				Makefile.am and processing.		#
-#				Update minimum required Autoconf	#
-#				version.				#
-# 11/02/2018	MG	1.0.11	Make AutoMake use posix format for tar.	#
-# 26/03/2018	MG	1.0.12	Add support for an enable-sparse CLA	#
-#				and passing a suitable variable to the	#
-#				Makefile.am's.				#
-# 21/06/2018	MG	1.0.13	Use better source file for		#
-#				AC_CONFIG_SRCDIR check.			#
-#				AC_DEFINE SOURCE_VERSION for use in	#
-#				version.c via config.h			#
-#				Remove no longer needed AC_SUBST	#
-#				variable pkgversion.			#
-#				AC_SUBST the lib_version_info so that	#
-#				all top level versioning can be done	#
-#				from configure.ac			#
-# 11/08/2018	MG	1.0.14	Add support for an enable-headercheck	#
-#				CLA and passing a suitable variable to	#
-#				the Makefile.am's.			#
-#				Build suitable CFLAGS based on compiler	#
-#				version.				#
-# 04/10/2018	MG	1.0.15	Add program check for pkg-config.	#
-# 18/05/2019	MG	1.1.1	Collapse AT sub-projects into one.	#
-#				Remove leading v from package version.	#
-#				Use new m4 macro to build CFLAGS.	#
-#				Revamp to new standard layout.		#
-# 31/05/2019	MG	1.1.2	Add Section 8 and check for (s)size_t.	#
-# 29/10/2019	MG	1.1.3	Add enable-distcheckfake option.	#
-#				Add enable option descriptions in this	#
-#				file's header.				#
-#				Correct ARG_ENABLE help text.		#
-# 08/06/2020	MG	1.1.4	Remove check for unused program dia.	#
-# 08/10/2021	MG	1.1.5	Add enable-atonly CLA and add support	#
-#				for doc-base.				#
-#				Make use of new CPPFLAGS macro.		#
-#				Make use of new linker macro.		#
-# 05/11/2021	MG	1.1.6	Create debug version of flags where	#
-# 06/12/2021	MG	1.1.7	If git is available and we are inside a	#
-#				git tree then use git describe to add	#
-#				further package version information.	#
-#				Tighten SPDX tag.			#
-#				Add AC_COPYRIGHT macro.			#
-# 05/07/2022	MG	1.1.8	Use new namespace enhanced compiler and	#
-#				linker macros v1.1.1			#
-#				New CL option to enable compiler	#
-#				analyzer output.			#
-# 20/07/2022	MG	1.1.9	Remove portability restrictions for	#
-#				Automake. Allows automatic generation	#
-#				of source file depends in the doxygen	#
-#				Makefile.am				#
-# 26/07/2022	MG	1.2.1	Change doc directory to docs to support	#
-#				using GitHub Pages for hosting Doxygen	#
-#				documentation.				#
-# 01/10/2022	MG	1.2.2	Rename portability.h			#
-#				Add checks for headers in inc-tmp	#
-#				directory.				#
-#				Do not generate pkg-config file with	#
-#				AC_CONFIG_FILES as it does not support	#
-#				extended Installation Directory		#
-#				Variables such as pkgincludedir. Use	#
-#				Makefile.am variable substitution	#
-#				instead.				#
-#				Add test-headers build.			#
-#				Add run-tests for make check.		#
-#				Use pkginclude location.		#
-#				Change tmplibraries to use an absolute	#
-#				path.					#
-#				Use find to get tmpheaders.		#
-#				Libraries: In tmplibraries else use	#
-#				pkg-config else use search libs.	#
-# 05/10/2022	MG	1.2.3	Separate AutoTools generated files from	#
-#				project root.				#
-#				USe AC_MSG_CHECKING where appropriate.	#
-#				Move CFLAGS init to Compiler setup	#
-#				section.				#
-# 24/03/2023	MG	1.2.4	Enforce compiler to use, in order; CC	#
-#				passed to configure, sparse if		#
-#				requested, or from a standard list.	#
-#				Add CL arguments for enable-iwyu and	#
-#				enable-scan-build and use to determine	#
-#				if program availability checks should	#
-#				be performed.				#
-#				Use pkg-config command AOT		#
-#				Pkg_Check_Modules as the macro has	#
-#				problems under some normal conditions.	#
 #									#
 #########################################################################
 

@@ -1,6 +1,5 @@
 #########################################################################
 #									#
-# File ID: ./.github/workflows/publish-doxygen-gh-pages.yml		#
 # Author: Copyright (C) 2022, 2023  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
@@ -10,30 +9,6 @@
 # Configuration file for GitHub Actions publication of Doxygen          #
 # documentation to Github Pages. Only runs on published release event.  #
 #									#
-#########################################################################
-
-#########################################################################
-#									#
-# Changelog								#
-#									#
-# Date		Author	Version	Description				#
-#									#
-# 25/07/2022	MG	1.0.1	Initial release.                        #
-# 03/11/2022    MG      1.0.2   Use new libmgec7 library.               #
-# 18/11/2022    MG      1.0.3   Only build if this release is flagged   #
-#                               as the latest release.                  #
-# 30/06/2023    MG      1.0.4   Original action to fetch latest GitHub  #
-#                               release became unmaintained and was to  #
-#                               cease to work after GitHub updates. So  #
-#                               replaced by fork and update by          #
-#                               CityOfLosAngeles.                       #
-# 13/07/2023    MG      1.0.5   Run on 22.04                            #
-# 30/07/2023    MG      1.0.6   Remove txt2man install, rely on         #
-#                               dependencies.                           #
-# 30/07/2023    MG      1.0.7   Organise standard repo and PPA actions. #
-# 15/08/2023    MG      1.0.8   Upgrade fetch-latest-release action to  #
-#                               v2.0.3                                  #
-#                                                                       #
 #########################################################################
 
 

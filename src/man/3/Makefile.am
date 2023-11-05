@@ -1,7 +1,6 @@
 #########################################################################
 #									#
-# Script ID: src/man/3/Makefile.am					#
-# Author: Copyright (C) 2015-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2015-2019, 2021, 2023  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -9,32 +8,6 @@
 # Purpose:								#
 #	AutoMake script file to generate libmgesysutils manual pages	#
 # from source.								#
-#									#
-#########################################################################
-
-#########################################################################
-#									#
-# Changelog								#
-#									#
-# Date		Author	Version	Description				#
-#									#
-# 12/07/2015	MG	1.0.1	Started versioning of this script.	#
-# 22/09/2015	MG	1.0.2	Convert to use txt2manwrap.		#
-# 25/10/2015	MG	1.0.3	Restructure and change to conform to	#
-#				AutoTools General Template v1.0.6.	#
-# 23/04/2017	MG	1.0.4	Correct $(edit) output was being	#
-#				ignored.				#
-#				Rename source file extensions .man.in	#
-# 01/01/2018	MG	1.0.5	Add SPDX license tags to source files.	#
-#				Determine the manual section from the	#
-#				target suffix. If the suffix is blank	#
-#				(foo.) or if there is no suffix (foo)	#
-#				then error out.				#
-# 02/01/2018	MG	1.0.6	Move to new source directory structure.	#
-# 23/05/2018	MG	1.0.7	Consolidated into this dir, 1 level up.	#
-# 16/05/2019	MG	1.0.8	Collapse AT sub-projects into one.	#
-#				Remove shebang.				#
-# 06/12/2021	MG	1.0.9	Tighten SPDX tag.			#
 #									#
 #########################################################################
 
