@@ -10,7 +10,7 @@
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.2.0 ==== 04/11/2023_
+ * @version _v1.2.1 ==== 25/11/2023_
  */
 
 #ifndef MGE_CONFIGFILE_H
@@ -31,7 +31,7 @@ BEGIN_C_DECLS
 
 /** Configuration Key / Value Pair */
 struct confkey {
-	char *key;		       /**< Key part of pair. */
+	const char *key;	       /**< Key part of pair. */
 	int mandatory;		       /**< Mandatory, 1 = true, 0 = false. */
 	int present;		       /**< Pair present, 1 = true, 0 =false.*/
 	char value[MAX_KEYVAL_LENGTH]; /**< Value part of pair. */
@@ -39,9 +39,9 @@ struct confkey {
 
 /** Configuration section definition. */
 struct confsection {
-	char *section; /**< Section name. */
-	int mandatory; /**< Mandatory, 1 = true, 0 = false. */
-	int present;   /**< Pair present, 1 = true, 0 =false.*/
+	const char *section; /**< Section name. */
+	int mandatory;	     /**< Mandatory, 1 = true, 0 = false. */
+	int present;	     /**< Pair present, 1 = true, 0 =false.*/
 	struct confkey keys[MAX_KEYS_PER_SECTION]; /**< Array of KV Pairs*/
 };
 
