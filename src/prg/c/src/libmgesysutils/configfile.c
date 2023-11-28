@@ -78,7 +78,7 @@ static int chkfileerr(FILE *);
  * @param filename The config filename.
  * @return 0 for success, -mge_errno on failure.
  */
-int parsefile(struct confsection *params, int nparams, char *filename)
+int parsefile(struct confsection *params, int nparams, const char *filename)
 {
 	char *pl = line;
 	FILE *fp;

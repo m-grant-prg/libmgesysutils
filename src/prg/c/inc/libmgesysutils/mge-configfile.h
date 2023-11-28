@@ -45,7 +45,7 @@ struct confsection {
 	struct confkey keys[MAX_KEYS_PER_SECTION]; /**< Array of KV Pairs*/
 };
 
-int parsefile(struct confsection *params, int nparams, char *filename);
+int parsefile(struct confsection *params, int nparams, const char *filename);
 
 END_C_DECLS
 
