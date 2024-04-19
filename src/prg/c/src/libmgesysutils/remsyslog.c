@@ -3,12 +3,12 @@
  *
  * To send a message to a remote syslog server using UDP.
  *
- * @author Copyright (C) 2015-2019, 2021-2023  Mark Grant
+ * @author Copyright (C) 2015-2019, 2021-2024  Mark Grant
  *
  * Released under the GPLv3 only.\n
  * SPDX-License-Identifier: GPL-3.0-only
  *
- * @version _v1.1.0 ==== 04/11/2023_
+ * @version _v1.1.1 ==== 19/04/2024_
  */
 
 #include <errno.h>
@@ -81,7 +81,7 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		return -mge_errno;
 	}
 
-	for (rai = res; res != NULL; res = res->ai_next) {
+	for (rai = res; rai != NULL; rai = rai->ai_next) {
 		fd = socket(rai->ai_family, rai->ai_socktype, rai->ai_protocol);
 		if (fd > 0)
 			break;
@@ -91,8 +91,8 @@ int sndremsyslogmsg(const char *hostname, const char *prog_name,
 		goto err_exit;
 
 	/* Send the datagram. */
-	s = sendto(fd, fullmessage, strlen(fullmessage), 0, res->ai_addr,
-		   res->ai_addrlen);
+	s = sendto(fd, fullmessage, strlen(fullmessage), 0, rai->ai_addr,
+		   rai->ai_addrlen);
 	if (s == -1)
 		goto err_exit;
 
