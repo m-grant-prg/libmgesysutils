@@ -1,6 +1,6 @@
 #########################################################################
 #									#
-# Author: Copyright (C) 2015-2019, 2021-2023  Mark Grant		#
+# Author: Copyright (C) 2015-2019, 2021-2024  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -9,6 +9,18 @@
 #	AutoMake script file to generate remsyslog test program.	#
 #									#
 #########################################################################
+
+
+fix-remsyslogtest.sh: Makefile
+	mkdir -p $(@D)
+	rm -f $@ $@.tmp
+	test -f ./$@.in || srcdir=$(srcdir)/; \
+	$(edit) $${srcdir}$(@F).in > $@.tmp
+	mv $@.tmp $@
+	chmod a+x $@
+fix-remsyslogtest.sh: $(srcdir)/fix-remsyslogtest.sh.in
+
+check_SCRIPTS = fix-remsyslogtest.sh
 
 
 if DEBUG
@@ -37,4 +49,9 @@ AM_LDFLAGS += $(LIBMGEC_LIBS)
 
 LDADD = $(tmplibraries)
 LDADD += ../libmgesysutils/libmgesysutils.la
+
+
+EXTRA_DIST = $(srcdir)/fix-remsyslogtest.sh.in
+
+CLEANFILES = *.tmp fix-remsyslogtest.sh
 
