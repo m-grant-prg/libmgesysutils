@@ -1,6 +1,6 @@
 #########################################################################
 #									#
-# Author: Copyright (C) 2015-2019, 2021-2023  Mark Grant		#
+# Author: Copyright (C) 2015-2019, 2021-2024  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -9,6 +9,18 @@
 #	AutoMake script file to generate configfile test program.	#
 #									#
 #########################################################################
+
+
+fix-configfiletest.sh: Makefile
+	mkdir -p $(@D)
+	rm -f $@ $@.tmp
+	test -f ./$@.in || srcdir=$(srcdir)/; \
+	$(edit) $${srcdir}$(@F).in > $@.tmp
+	mv $@.tmp $@
+	chmod a+x $@
+fix-configfiletest.sh: $(srcdir)/fix-configfiletest.sh.in
+
+check_SCRIPTS = fix-configfiletest.sh
 
 
 if DEBUG
@@ -66,7 +78,8 @@ EXTRA_DIST = $(srcdir)/noclosingbracket.conf.in $(srcdir)/noequalssign.conf.in \
 	$(srcdir)/nomandatorykey.conf.in $(srcdir)/nonewline.conf.in \
 	$(srcdir)/nosuchkey.conf.in $(srcdir)/nosuchsection.conf.in \
 	$(srcdir)/thisworks.conf.in $(srcdir)/nomandatorysection.conf.in \
-	$(srcdir)/nostartatsection.conf.in
+	$(srcdir)/nostartatsection.conf.in \
+	$(srcdir)/fix-configfiletest.sh.in
 
-CLEANFILES = *.tmp *.conf
+CLEANFILES = *.tmp *.conf fix-configfiletest.sh
 
