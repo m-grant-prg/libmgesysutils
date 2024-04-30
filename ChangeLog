@@ -1,3 +1,45 @@
+2024-04-30 v1.6.1 Mark Grant <m.grant.prg@gmail.com>
+	* build(deps): bump JamesIves/github-pages-deploy-action
+	build(deps): bump CityOfLosAngeles/fetch-latest-github-release
+	build(deps): bump actions/checkout from 2 to 4
+dependabot[bot] (5):
+
+	git: Correct reasoning, empty vs untracked
+	git: Add gitignore to ensure directory is present even when empty
+	docs: Consolidate Header Naming Considerations in Doxygen
+	at: docs: test-configfile: Provide fix for Automake bug
+	docs: Consolidate gnulib documentation in Doxygen
+	docs: Remove AT installation document
+	at: docs: test-remsyslog: Provide fix for Automake bug
+	remsyslog: Correct variable in use
+	Merge pull request #5 from m-grant-prg/dependabot/github_actions/JamesIves/github-pages-deploy-action-4.6.0
+	at: Check full iwyu command name
+	Merge pull request #4 from m-grant-prg/dependabot/github_actions/CityOfLosAngeles/fetch-latest-github-release-2.0.4
+	editors: Update local-vimrc to v1.0.5
+	git: Update mailmap to v1.0.4
+	git: Update gitignore to v1.0.12
+	git: Update gitattributes to v1.0.5
+	editors: Update editorconfig to v1.0.6
+	clang-format: Update to v1.0.4
+	at: Update Copyright for 2024
+	actions: Add clang-format coding style check action
+	Bump source and library version numbers
+	at: Bump configure version number
+	m4: Upgrade linker m4 to v1.2.0
+	configfile: Constify filename
+	inc: Constify as appropriate
+	libmgesysutls: Constify and use attribute where appropriate
+	m4: Update c-compiler m4 to v1.3.0
+	at: Upgrade gen-gnulib.sh to v1.2.0
+	at: Upgrade bootstrap.sh to v1.6.0
+	at: Improve configure CL syntax description
+	all: Remove most in-file ChangeLogs and versioning
+	docs: Update Doxygen config file for bookworm
+	gnulib: Update following bookworm upgrade
+	Merge pull request #2 from m-grant-prg/dependabot/github_actions/actions/checkout-4
+	github: Add dependabot version update config
+Mark Grant (40):
+
 2023-07-30 v1.6.0 Mark Grant <m.grant.prg@gmail.com>
 	* at: docs: Add ldconfig and doc-base AT installation information
 	actions: Organise standard install and PPA installs
