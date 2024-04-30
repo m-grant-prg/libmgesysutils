@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['sndremsyslogmsg_71',['sndremsyslogmsg',['../mge-remsyslog_8h.html#ac2466c88642bbf09e42d9abd7f3d6c21',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c'],['../remsyslog_8c.html#a59fc3adebab8873944a459ee0ebabe15',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c']]]
+  ['parsefile_65',['parsefile',['../mge-configfile_8h.html#abc2029827f55a75bda15580fc9ac7ddc',1,'parsefile(struct confsection *params, int nparams, const char *filename):&#160;configfile.c'],['../configfile_8c.html#abc2029827f55a75bda15580fc9ac7ddc',1,'parsefile(struct confsection *params, int nparams, const char *filename):&#160;configfile.c']]],
+  ['parseline_66',['parseline',['../configfile_8c.html#a0bfa8ee6d959f0aaa1403f5d33df7c87',1,'configfile.c']]],
+  ['parseparam_67',['parseparam',['../configfile_8c.html#a95bb5fcb88f69c49814c8ab11cb95cc0',1,'configfile.c']]],
+  ['parsesection_68',['parsesection',['../configfile_8c.html#ab6a8811b691bf6ce3c89a40ed941d847',1,'configfile.c']]]
 ];

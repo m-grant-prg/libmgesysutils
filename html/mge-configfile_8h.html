@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MGE System Utility Library - API Documentation
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.6.1</span>
    </div>
    <div id="projectbrief">Library of system utility functions.</div>
   </td>
@@ -139,17 +139,17 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2fb6836a4e9e3cec948828a7be902b02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mge-configfile_8h.html#a2fb6836a4e9e3cec948828a7be902b02">parsefile</a> (struct <a class="el" href="structconfsection.html">confsection</a> *params, int nparams, char *filename)</td></tr>
-<tr class="memdesc:a2fb6836a4e9e3cec948828a7be902b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a configuration file.  <a href="mge-configfile_8h.html#a2fb6836a4e9e3cec948828a7be902b02">More...</a><br /></td></tr>
-<tr class="separator:a2fb6836a4e9e3cec948828a7be902b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc2029827f55a75bda15580fc9ac7ddc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mge-configfile_8h.html#abc2029827f55a75bda15580fc9ac7ddc">parsefile</a> (struct <a class="el" href="structconfsection.html">confsection</a> *params, int nparams, const char *filename)</td></tr>
+<tr class="memdesc:abc2029827f55a75bda15580fc9ac7ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a configuration file.  <a href="mge-configfile_8h.html#abc2029827f55a75bda15580fc9ac7ddc">More...</a><br /></td></tr>
+<tr class="separator:abc2029827f55a75bda15580fc9ac7ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Config file processing header file. </p>
 <p>Header file for config file processing in the libmgesysutils shared library.</p>
-<dl class="section author"><dt>Author</dt><dd>Copyright (C) 2015-2019, 2021, 2022 Mark Grant</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Copyright (C) 2015-2019, 2021-2023 Mark Grant</dd></dl>
 <p>Released under the GPLv3 only.<br  />
 SPDX-License-Identifier: GPL-3.0-only</p>
-<dl class="section version"><dt>Version</dt><dd><em>v1.1.1 ==== 15/09/2022</em> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd><em>v1.2.1 ==== 25/11/2023</em> </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a2ae783b8fbfa14e8e793794c2eaf3563"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ae783b8fbfa14e8e793794c2eaf3563">&#9670;&nbsp;</a></span>MAX_KEYS_PER_SECTION</h2>
@@ -200,8 +200,8 @@ SPDX-License-Identifier: GPL-3.0-only</p>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2fb6836a4e9e3cec948828a7be902b02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fb6836a4e9e3cec948828a7be902b02">&#9670;&nbsp;</a></span>parsefile()</h2>
+<a id="abc2029827f55a75bda15580fc9ac7ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc2029827f55a75bda15580fc9ac7ddc">&#9670;&nbsp;</a></span>parsefile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,7 @@ SPDX-License-Identifier: GPL-3.0-only</p>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em>&#160;</td>
         </tr>
         <tr>

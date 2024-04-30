@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MGE System Utility Library - API Documentation
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.6.1</span>
    </div>
    <div id="projectbrief">Library of system utility functions.</div>
   </td>
@@ -116,12 +116,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acf8b18131bb525755e6866ad737c98f2"><td class="memItemLeft" align="right" valign="top">BEGIN_C_DECLS char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">libmgesysutils_get_pkg_version</a> (void)</td></tr>
-<tr class="memdesc:acf8b18131bb525755e6866ad737c98f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the git-describe based package version.  <a href="libmgesysutils_8h.html#acf8b18131bb525755e6866ad737c98f2">More...</a><br /></td></tr>
-<tr class="separator:acf8b18131bb525755e6866ad737c98f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60e66f0ec24a912c126e8d59553463b7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">libmgesysutils_get_src_version</a> (void)</td></tr>
-<tr class="memdesc:a60e66f0ec24a912c126e8d59553463b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the source version.  <a href="libmgesysutils_8h.html#a60e66f0ec24a912c126e8d59553463b7">More...</a><br /></td></tr>
-<tr class="separator:a60e66f0ec24a912c126e8d59553463b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e9028bef6f664bcf63f8ff7e782a807"><td class="memItemLeft" align="right" valign="top">BEGIN_C_DECLS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmgesysutils_8h.html#a6e9028bef6f664bcf63f8ff7e782a807">__attribute__</a> ((const)) const char *libmgesysutils_get_pkg_version(void)</td></tr>
+<tr class="memdesc:a6e9028bef6f664bcf63f8ff7e782a807"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the source version.  <a href="libmgesysutils_8h.html#a6e9028bef6f664bcf63f8ff7e782a807">More...</a><br /></td></tr>
+<tr class="separator:a6e9028bef6f664bcf63f8ff7e782a807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f53c7e410022f7214ffbdaed0e1c8c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">libmgesysutils_print_pkg_version</a> (void)</td></tr>
 <tr class="memdesc:a4f53c7e410022f7214ffbdaed0e1c8c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the package version string to stdout.  <a href="libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3">More...</a><br /></td></tr>
 <tr class="separator:a4f53c7e410022f7214ffbdaed0e1c8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,50 +128,33 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for libmgesysutils shared library. </p>
-<dl class="section author"><dt>Author</dt><dd>Copyright (C) 2015-2019, 2021, 2022 Mark Grant</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Copyright (C) 2015-2019, 2021-2023 Mark Grant</dd></dl>
 <p>Released under the GPLv3 only.<br  />
 SPDX-License-Identifier: GPL-3.0-only</p>
-<dl class="section version"><dt>Version</dt><dd><em>v1.0.8 ==== 15/09/2022</em> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd><em>v1.1.1 ==== 24/11/2023</em> </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="acf8b18131bb525755e6866ad737c98f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf8b18131bb525755e6866ad737c98f2">&#9670;&nbsp;</a></span>libmgesysutils_get_pkg_version()</h2>
+<a id="a6e9028bef6f664bcf63f8ff7e782a807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9028bef6f664bcf63f8ff7e782a807">&#9670;&nbsp;</a></span>__attribute__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">BEGIN_C_DECLS char* libmgesysutils_get_pkg_version </td>
+          <td class="memname">__attribute__ </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
+          <td class="paramtype">(const)&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the git-describe based package version. </p>
-<dl class="section return"><dt>Returns</dt><dd>The package version string. </dd></dl>
-
-</div>
-</div>
-<a id="a60e66f0ec24a912c126e8d59553463b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60e66f0ec24a912c126e8d59553463b7">&#9670;&nbsp;</a></span>libmgesysutils_get_src_version()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* libmgesysutils_get_src_version </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Get the source version. </p>
-<dl class="section return"><dt>Returns</dt><dd>The source version string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The source version string.</dd></dl>
+<p>Get the source version.</p>
+<dl class="section return"><dt>Returns</dt><dd>The package version string.</dd>
+<dd>
+The source version string. </dd></dl>
 
 </div>
 </div>

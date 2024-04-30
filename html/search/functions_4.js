@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['parsefile_64',['parsefile',['../mge-configfile_8h.html#a2fb6836a4e9e3cec948828a7be902b02',1,'parsefile(struct confsection *params, int nparams, char *filename):&#160;configfile.c'],['../configfile_8c.html#a2fb6836a4e9e3cec948828a7be902b02',1,'parsefile(struct confsection *params, int nparams, char *filename):&#160;configfile.c']]],
-  ['parseline_65',['parseline',['../configfile_8c.html#a0bfa8ee6d959f0aaa1403f5d33df7c87',1,'configfile.c']]],
-  ['parseparam_66',['parseparam',['../configfile_8c.html#a95bb5fcb88f69c49814c8ab11cb95cc0',1,'configfile.c']]],
-  ['parsesection_67',['parsesection',['../configfile_8c.html#ab6a8811b691bf6ce3c89a40ed941d847',1,'configfile.c']]]
+  ['libmgesysutils_5fprint_5fpkg_5fversion_60',['libmgesysutils_print_pkg_version',['../libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3',1,'libmgesysutils_print_pkg_version(void):&#160;version.c'],['../version_8c.html#a4f53c7e410022f7214ffbdaed0e1c8c3',1,'libmgesysutils_print_pkg_version(void):&#160;version.c']]],
+  ['libmgesysutils_5fprint_5fsrc_5fversion_61',['libmgesysutils_print_src_version',['../libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e',1,'libmgesysutils_print_src_version(void):&#160;version.c'],['../version_8c.html#a4410c3a08febe882e411510b0e66352e',1,'libmgesysutils_print_src_version(void):&#160;version.c']]]
 ];

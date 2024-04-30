@@ -16,54 +16,13 @@
 
 #########################################################################
 #									#
-# Script ID: docs/doxygen/Makefile.am					#
-# Author: Copyright (C) 2017-2022  Mark Grant				#
+# Author: Copyright (C) 2017-2023  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 #	AutoMake script file to produce doxygen html documentation.	#
-#									#
-#########################################################################
-
-#########################################################################
-#									#
-# Changelog								#
-#									#
-# Date		Author	Version	Description				#
-#									#
-# 28/12/2017	MG	1.0.0	First release.				#
-# 02/01/2018	MG	1.0.2	Move to new source directory structure.	#
-# 18/01/2018	MG	1.0.3	Update changed source location.		#
-# 11/02/2018	MG	1.0.4	Make tar use the Posix format for	#
-#				longer filenames.			#
-# 21/06/2018	MG	1.0.5	Remove make, (leave install), of	#
-#				libmgec doc-base file as it is now	#
-#				built using AC_CONFIG_FILES.		#
-# 25/06/2018	MG	1.0.6	Reverse 1.0.5 as AC_CONFIG_FILES cannot	#
-#				be used for the substitution of		#
-#				Installation Directory Variables.	#
-# 16/05/2019	MG	1.0.7	Collapse AT sub-projects into one.	#
-#				Remove shebang.				#
-# 30/10/2019	MG	1.0.8	Do not register with doc-base or	#
-#				dochelp when running make distcheck.	#
-#				Reduce Doxygen out put when silent	#
-#				rules are enabled.			#
-# 26/06/2020	MG	1.0.9	Split into API and full internal	#
-#				documentation.				#
-# 08/10/2021	MG	1.0.10	Only register documents if building	#
-#				with ATONLY.				#
-#				Move main source documents into src to	#
-#				enable use of EXTRA_DIST on subdir src.	#
-# 06/12/2021	MG	1.0.11	Tighten SPDX tag.			#
-# 20/07/2022	MG	1.0.12	Add doxygen target.			#
-#				Add dependency on document sources and	#
-#				C sources.				#
-# 07/09/2022	MG	1.0.13	Remove all doxygen tarballs. Orphaned	#
-#				tarballs can be left if git describe	#
-#				changes and no make clean has been	#
-#				performed.				#
 #									#
 #########################################################################
 
@@ -219,6 +178,7 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BASH = @BASH@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -245,6 +205,8 @@ EGREP = @EGREP@
 ETAGS = @ETAGS@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
+GL_CFLAG_ALLOW_WARNINGS = @GL_CFLAG_ALLOW_WARNINGS@
+GL_CFLAG_GNULIB_WARNINGS = @GL_CFLAG_GNULIB_WARNINGS@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -326,8 +288,10 @@ docdir = @docdir@
 dvidir = @dvidir@
 edit = @edit@
 exec_prefix = @exec_prefix@
+gl_LIBOBJDEPS = @gl_LIBOBJDEPS@
 gl_LIBOBJS = @gl_LIBOBJS@
 gl_LTLIBOBJS = @gl_LTLIBOBJS@
+gltests_LIBOBJDEPS = @gltests_LIBOBJDEPS@
 gltests_LIBOBJS = @gltests_LIBOBJS@
 gltests_LTLIBOBJS = @gltests_LTLIBOBJS@
 gltests_WITNESS = @gltests_WITNESS@

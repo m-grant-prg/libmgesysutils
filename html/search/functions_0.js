@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['chkfileerr_54',['chkfileerr',['../configfile_8c.html#aa19c30ff44d82f2f908ee2189e1ab18c',1,'configfile.c']]],
-  ['chkkeys_55',['chkkeys',['../configfile_8c.html#a1876c7ae19ccd566fa894f7cb635e48f',1,'configfile.c']]],
-  ['chkmandatories_56',['chkmandatories',['../configfile_8c.html#a79cdebcd625873dd70b218b823d2ab90',1,'configfile.c']]]
+  ['_5f_5fattribute_5f_5f_53',['__attribute__',['../libmgesysutils_8h.html#a6e9028bef6f664bcf63f8ff7e782a807',1,'__attribute__((const)) const char *libmgesysutils_get_pkg_version(void):&#160;version.c'],['../version_8c.html#a699f6a3da91f9155d09cd12158ed6def',1,'__attribute__((const)) const:&#160;version.c']]]
 ];

@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['mandatory_22',['mandatory',['../structconfkey.html#a8d711981de9206d0cd6601a4b8d6907f',1,'confkey::mandatory()'],['../structconfsection.html#a8d711981de9206d0cd6601a4b8d6907f',1,'confsection::mandatory()']]],
-  ['max_5fkeys_5fper_5fsection_23',['MAX_KEYS_PER_SECTION',['../mge-configfile_8h.html#a2ae783b8fbfa14e8e793794c2eaf3563',1,'mge-configfile.h']]],
-  ['max_5fkeyval_5flength_24',['MAX_KEYVAL_LENGTH',['../mge-configfile_8h.html#a7f7d3a220880b3e8c114a91011b22e5e',1,'mge-configfile.h']]],
-  ['max_5fline_5flength_25',['MAX_LINE_LENGTH',['../mge-configfile_8h.html#af0f2173e3b202ddf5756531b4471dcb2',1,'mge-configfile.h']]],
-  ['mge_2dconfigfile_2eh_26',['mge-configfile.h',['../mge-configfile_8h.html',1,'']]],
-  ['mge_2dremsyslog_2eh_27',['mge-remsyslog.h',['../mge-remsyslog_8h.html',1,'']]]
+  ['libmgesysutils_2eh_17',['libmgesysutils.h',['../libmgesysutils_8h.html',1,'']]],
+  ['libmgesysutils_5fprint_5fpkg_5fversion_18',['libmgesysutils_print_pkg_version',['../libmgesysutils_8h.html#a4f53c7e410022f7214ffbdaed0e1c8c3',1,'libmgesysutils_print_pkg_version(void):&#160;version.c'],['../version_8c.html#a4f53c7e410022f7214ffbdaed0e1c8c3',1,'libmgesysutils_print_pkg_version(void):&#160;version.c']]],
+  ['libmgesysutils_5fprint_5fsrc_5fversion_19',['libmgesysutils_print_src_version',['../libmgesysutils_8h.html#a4410c3a08febe882e411510b0e66352e',1,'libmgesysutils_print_src_version(void):&#160;version.c'],['../version_8c.html#a4410c3a08febe882e411510b0e66352e',1,'libmgesysutils_print_src_version(void):&#160;version.c']]],
+  ['line_20',['line',['../configfile_8c.html#a5c680d4ffafa4a15bd85b1ff3b813897',1,'configfile.c']]]
 ];

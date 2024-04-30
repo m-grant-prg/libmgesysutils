@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['validatekeyvalue_69',['validatekeyvalue',['../configfile_8c.html#a4d7e714283e0f9f58e37b183ee3563a7',1,'configfile.c']]],
-  ['validatesection_70',['validatesection',['../configfile_8c.html#aedd0707414a06dd8f80f9ce9208d92e4',1,'configfile.c']]]
+  ['sndremsyslogmsg_66',['sndremsyslogmsg',['../mge-remsyslog_8h.html#ac2466c88642bbf09e42d9abd7f3d6c21',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c'],['../remsyslog_8c.html#a59fc3adebab8873944a459ee0ebabe15',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c']]]
 ];

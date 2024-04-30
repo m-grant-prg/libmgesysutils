@@ -16,54 +16,13 @@
 
 #########################################################################
 #									#
-# Script ID: docs/doxygen/Makefile.am					#
-# Author: Copyright (C) 2017-2022  Mark Grant				#
+# Author: Copyright (C) 2017-2023  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 #	AutoMake script file to produce doxygen html documentation.	#
-#									#
-#########################################################################
-
-#########################################################################
-#									#
-# Changelog								#
-#									#
-# Date		Author	Version	Description				#
-#									#
-# 28/12/2017	MG	1.0.0	First release.				#
-# 02/01/2018	MG	1.0.2	Move to new source directory structure.	#
-# 18/01/2018	MG	1.0.3	Update changed source location.		#
-# 11/02/2018	MG	1.0.4	Make tar use the Posix format for	#
-#				longer filenames.			#
-# 21/06/2018	MG	1.0.5	Remove make, (leave install), of	#
-#				libmgec doc-base file as it is now	#
-#				built using AC_CONFIG_FILES.		#
-# 25/06/2018	MG	1.0.6	Reverse 1.0.5 as AC_CONFIG_FILES cannot	#
-#				be used for the substitution of		#
-#				Installation Directory Variables.	#
-# 16/05/2019	MG	1.0.7	Collapse AT sub-projects into one.	#
-#				Remove shebang.				#
-# 30/10/2019	MG	1.0.8	Do not register with doc-base or	#
-#				dochelp when running make distcheck.	#
-#				Reduce Doxygen out put when silent	#
-#				rules are enabled.			#
-# 26/06/2020	MG	1.0.9	Split into API and full internal	#
-#				documentation.				#
-# 08/10/2021	MG	1.0.10	Only register documents if building	#
-#				with ATONLY.				#
-#				Move main source documents into src to	#
-#				enable use of EXTRA_DIST on subdir src.	#
-# 06/12/2021	MG	1.0.11	Tighten SPDX tag.			#
-# 20/07/2022	MG	1.0.12	Add doxygen target.			#
-#				Add dependency on document sources and	#
-#				C sources.				#
-# 07/09/2022	MG	1.0.13	Remove all doxygen tarballs. Orphaned	#
-#				tarballs can be left if git describe	#
-#				changes and no make clean has been	#
-#				performed.				#
 #									#
 #########################################################################
 
@@ -219,6 +178,7 @@ AUTOCONF = ${SHELL} '/home/runner/work/libmgesysutils/libmgesysutils/build-aux/m
 AUTOHEADER = ${SHELL} '/home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing' autoheader
 AUTOMAKE = ${SHELL} '/home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing' automake-1.16
 AWK = gawk
+BASH = /bin/bash
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = 
@@ -245,6 +205,8 @@ EGREP = /usr/bin/grep -E
 ETAGS = etags
 EXEEXT = 
 FGREP = /usr/bin/grep -F
+GL_CFLAG_ALLOW_WARNINGS = -Wno-error
+GL_CFLAG_GNULIB_WARNINGS =  -Wno-cast-qual -Wno-conversion -Wno-float-equal -Wno-sign-compare -Wno-undef -Wno-unused-function -Wno-unused-parameter -Wno-float-conversion -Wimplicit-fallthrough -Wno-pedantic -Wno-sign-conversion -Wno-type-limits -Wno-unsuffixed-float-constants
 GREP = /usr/bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -268,9 +230,9 @@ LT_SYS_LIBRARY_PATH =
 MAKEINFO = ${SHELL} '/home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing' makeinfo
 MANIFEST_TOOL = :
 MG_ANALYZER_CFLAGS =  -fanalyzer
-MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -O2
+MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -O2
 MG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time -D_FORTIFY_SOURCE=2
-MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-include-dirs -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -fstack-clash-protection -Wmultistatement-macros -ggdb3 -O0
+MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -ggdb3 -O0
 MG_DEBUG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time
 MG_LDFLAGS = -Wl,-z,relro
 MKDIR_P = /usr/bin/mkdir -p
@@ -283,10 +245,10 @@ OTOOL64 =
 PACKAGE = libmgesysutils
 PACKAGE_BUGREPORT = m.grant.prg@gmail.com
 PACKAGE_NAME = MGE system utilities library
-PACKAGE_STRING = MGE system utilities library 1.6.0
+PACKAGE_STRING = MGE system utilities library 1.6.1
 PACKAGE_TARNAME = libmgesysutils
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.6.0
+PACKAGE_VERSION = 1.6.1
 PATH_SEPARATOR = :
 PKGCONFIG = yes
 RANLIB = ranlib
@@ -298,7 +260,7 @@ STRIP = strip
 TAR = yes
 TXT2MAN = yes
 TXT2MANWRAP = yes
-VERSION = 1.6.0
+VERSION = 1.6.1
 abs_builddir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_srcdir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_top_builddir = /home/runner/work/libmgesysutils/libmgesysutils
@@ -324,10 +286,12 @@ datarootdir = ${prefix}/share
 docbaseloc = ${prefix}/share/doc-base
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
-edit = sed 		-e 's|@pc_requires@|$(pc_requires)|g' 		-e 's|@pc_requires_private@|$(pc_requires_private)|g' 		-e 's|@pkgversion@|$(pkgversion)|g' 		-e 's|@docbaseloc@|$(docbaseloc)|g' 		-e 's|@CC@|$(CC)|g' 		-e 's|@prefix@|$(prefix)|g' 		-e 's|@exec_prefix@|$(exec_prefix)|g' 		-e 's|@bindir@|$(bindir)|g' 		-e 's|@sbindir@|$(sbindir)|g' 		-e 's|@libexecdir@|$(libexecdir)|g' 		-e 's|@libdir@|$(libdir)|g' 		-e 's|@sysconfdir@|$(sysconfdir)|g' 		-e 's|@sharedstatedir@|$(sharedstatedir)|g' 		-e 's|@localstatedir@|$(localstatedir)|g' 		-e 's|@runstatedir@|$(runstatedir)|g' 		-e 's|@includedir@|$(includedir)|g' 		-e 's|@oldincludedir@|$(oldincludedir)|g' 		-e 's|@datarootdir@|$(datarootdir)|g' 		-e 's|@localedir@|$(localedir)|g' 		-e 's|@datadir@|$(datadir)|g' 		-e 's|@mandir@|$(mandir)|g' 		-e 's|@infodir@|$(infodir)|g' 		-e 's|@docdir@|$(docdir)|g' 		-e 's|@htmldir@|$(htmldir)|g' 		-e 's|@dvidir@|$(dvidir)|g' 		-e 's|@pdfdir@|$(pdfdir)|g' 		-e 's|@psdir@|$(psdir)|g' 		-e 's|@lispdir@|$(lispdir)|g' 		-e 's|@pkgdatadir@|$(pkgdatadir)|g' 		-e 's|@pkgincludedir@|$(pkgincludedir)|g' 		-e 's|@pkglibdir@|$(pkglibdir)|g' 		-e 's|@pkglibexecdir@|$(pkglibexecdir)|g'
+edit = sed 		-e 's|@bashlocation@|$(BASH)|g' 		-e 's|@pc_requires@|$(pc_requires)|g' 		-e 's|@pc_requires_private@|$(pc_requires_private)|g' 		-e 's|@pkgversion@|$(pkgversion)|g' 		-e 's|@docbaseloc@|$(docbaseloc)|g' 		-e 's|@CC@|$(CC)|g' 		-e 's|@prefix@|$(prefix)|g' 		-e 's|@exec_prefix@|$(exec_prefix)|g' 		-e 's|@bindir@|$(bindir)|g' 		-e 's|@sbindir@|$(sbindir)|g' 		-e 's|@libexecdir@|$(libexecdir)|g' 		-e 's|@libdir@|$(libdir)|g' 		-e 's|@sysconfdir@|$(sysconfdir)|g' 		-e 's|@sharedstatedir@|$(sharedstatedir)|g' 		-e 's|@localstatedir@|$(localstatedir)|g' 		-e 's|@runstatedir@|$(runstatedir)|g' 		-e 's|@includedir@|$(includedir)|g' 		-e 's|@oldincludedir@|$(oldincludedir)|g' 		-e 's|@datarootdir@|$(datarootdir)|g' 		-e 's|@localedir@|$(localedir)|g' 		-e 's|@datadir@|$(datadir)|g' 		-e 's|@mandir@|$(mandir)|g' 		-e 's|@infodir@|$(infodir)|g' 		-e 's|@docdir@|$(docdir)|g' 		-e 's|@htmldir@|$(htmldir)|g' 		-e 's|@dvidir@|$(dvidir)|g' 		-e 's|@pdfdir@|$(pdfdir)|g' 		-e 's|@psdir@|$(psdir)|g' 		-e 's|@lispdir@|$(lispdir)|g' 		-e 's|@pkgdatadir@|$(pkgdatadir)|g' 		-e 's|@pkgincludedir@|$(pkgincludedir)|g' 		-e 's|@pkglibdir@|$(pkglibdir)|g' 		-e 's|@pkglibexecdir@|$(pkglibexecdir)|g'
 exec_prefix = ${prefix}
+gl_LIBOBJDEPS = 
 gl_LIBOBJS = 
 gl_LTLIBOBJS = 
+gltests_LIBOBJDEPS = 
 gltests_LIBOBJS = 
 gltests_LTLIBOBJS = 
 gltests_WITNESS = IN_LIBMGESYSUTILS_GNULIB_TESTS
@@ -340,7 +304,7 @@ htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
 install_sh = ${SHELL} /home/runner/work/libmgesysutils/libmgesysutils/build-aux/install-sh
-lib_version_info = 2:0:0
+lib_version_info = 2:1:0
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 lispdir = ${datarootdir}/emacs/site-lisp
@@ -352,7 +316,7 @@ oldincludedir = /usr/include
 pc_requires = libmgec
 pc_requires_private = 
 pdfdir = ${docdir}
-pkgversion = 1.6.0
+pkgversion = 1.6.1
 prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}

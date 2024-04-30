@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['validatekeyvalue_39',['validatekeyvalue',['../configfile_8c.html#a4d7e714283e0f9f58e37b183ee3563a7',1,'configfile.c']]],
-  ['validatesection_40',['validatesection',['../configfile_8c.html#aedd0707414a06dd8f80f9ce9208d92e4',1,'configfile.c']]],
-  ['value_41',['value',['../structconfkey.html#a2dea8074569e66cce8419ab0b5f3f884',1,'confkey']]],
-  ['version_2ec_42',['version.c',['../version_8c.html',1,'']]]
+  ['section_36',['section',['../structconfsection.html#a6a4f19e932bc4c92841653e974164301',1,'confsection']]],
+  ['sndremsyslogmsg_37',['sndremsyslogmsg',['../mge-remsyslog_8h.html#ac2466c88642bbf09e42d9abd7f3d6c21',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c'],['../remsyslog_8c.html#a59fc3adebab8873944a459ee0ebabe15',1,'sndremsyslogmsg(const char *hostname, const char *prog_name, const char *message):&#160;remsyslog.c']]]
 ];
