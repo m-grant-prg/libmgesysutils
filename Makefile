@@ -230,9 +230,9 @@ LT_SYS_LIBRARY_PATH =
 MAKEINFO = ${SHELL} '/home/runner/work/libmgesysutils/libmgesysutils/build-aux/missing' makeinfo
 MANIFEST_TOOL = :
 MG_ANALYZER_CFLAGS =  -fanalyzer
-MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -O2
+MG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -std=gnu17 -O2
 MG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time -D_FORTIFY_SOURCE=2
-MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -std=gnu11 -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -ggdb3 -O0
+MG_DEBUG_CFLAGS = -g -Wall -Wextra -fstack-protector-strong -grecord-gcc-switches -Wbad-function-cast -Wconversion -Wdeclaration-after-statement -Wformat-security -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Woverlength-strings -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wwrite-strings -Wformat-signedness -Wlogical-op -Wsuggest-attribute=const -fasynchronous-unwind-tables -Wduplicated-cond -Wnull-dereference -Wduplicated-branches -fstack-clash-protection -Wmultistatement-macros -Wsuggest-attribute=malloc -std=gnu17 -ggdb3 -O0
 MG_DEBUG_CPPFLAGS = -DHAVE_WINSOCK2_H=0 -Wdate-time
 MG_LDFLAGS = -Wl,-z,relro
 MKDIR_P = /usr/bin/mkdir -p
@@ -245,10 +245,10 @@ OTOOL64 =
 PACKAGE = libmgesysutils
 PACKAGE_BUGREPORT = m.grant.prg@gmail.com
 PACKAGE_NAME = MGE system utilities library
-PACKAGE_STRING = MGE system utilities library 1.6.1
+PACKAGE_STRING = MGE system utilities library 1.6.2
 PACKAGE_TARNAME = libmgesysutils
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.6.1
+PACKAGE_VERSION = 1.6.2
 PATH_SEPARATOR = :
 PKGCONFIG = yes
 RANLIB = ranlib
@@ -260,7 +260,7 @@ STRIP = strip
 TAR = yes
 TXT2MAN = yes
 TXT2MANWRAP = yes
-VERSION = 1.6.1
+VERSION = 1.6.2
 abs_builddir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_srcdir = /home/runner/work/libmgesysutils/libmgesysutils/docs/doxygen
 abs_top_builddir = /home/runner/work/libmgesysutils/libmgesysutils
@@ -316,7 +316,7 @@ oldincludedir = /usr/include
 pc_requires = libmgec
 pc_requires_private = 
 pdfdir = ${docdir}
-pkgversion = 1.6.1
+pkgversion = 1.6.2
 prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
