@@ -24,6 +24,21 @@ check_SCRIPTS = fix-remsyslogtest.sh
 
 
 if DEBUG
+.gdbinit: Makefile
+	mkdir -p $(@D)
+	rm -f $@ $@.tmp
+	no_dot_target=`echo $@ | sed "s/^.//"`; \
+		test -f ./$${no_dot_target}.in || srcdir=$(srcdir)/; \
+		no_dot_file=`echo $(@F) | sed "s/^.//"`; \
+		$(edit) $${srcdir}$${no_dot_file}.in > $@.tmp
+	mv $@.tmp $@
+.gdbinit: $(srcdir)/gdbinit.in
+
+check_SCRIPTS += .gdbinit
+endif
+
+
+if DEBUG
 AM_CPPFLAGS = $(MG_DEBUG_CPPFLAGS)
 else
 AM_CPPFLAGS = $(MG_CPPFLAGS)
@@ -51,7 +66,7 @@ LDADD = $(tmplibraries)
 LDADD += ../libmgesysutils/libmgesysutils.la
 
 
-EXTRA_DIST = $(srcdir)/fix-remsyslogtest.sh.in
+EXTRA_DIST = $(srcdir)/fix-remsyslogtest.sh.in $(srcdir)/gdbinit.in
 
-CLEANFILES = *.tmp fix-remsyslogtest.sh
+CLEANFILES = *.tmp fix-remsyslogtest.sh .gdbinit
 
