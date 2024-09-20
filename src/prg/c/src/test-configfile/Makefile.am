@@ -11,16 +11,17 @@
 #########################################################################
 
 
-fix-configfiletest.sh: Makefile
+fix-AT-LD-LIBRARY-PATH-bug.sh: configfiletest Makefile
 	mkdir -p $(@D)
 	rm -f $@ $@.tmp
 	test -f ./$@.in || srcdir=$(srcdir)/; \
 	$(edit) $${srcdir}$(@F).in > $@.tmp
 	mv $@.tmp $@
 	chmod a+x $@
-fix-configfiletest.sh: $(srcdir)/fix-configfiletest.sh.in
+	./$@ "configfiletest"
+fix-AT-LD-LIBRARY-PATH-bug.sh: $(srcdir)/fix-AT-LD-LIBRARY-PATH-bug.sh.in
 
-check_SCRIPTS = fix-configfiletest.sh
+check_SCRIPTS = fix-AT-LD-LIBRARY-PATH-bug.sh
 
 
 if DEBUG
@@ -94,8 +95,9 @@ EXTRA_DIST = $(srcdir)/noclosingbracket.conf.in $(srcdir)/noequalssign.conf.in \
 	$(srcdir)/nosuchkey.conf.in $(srcdir)/nosuchsection.conf.in \
 	$(srcdir)/thisworks.conf.in $(srcdir)/nomandatorysection.conf.in \
 	$(srcdir)/nostartatsection.conf.in \
-	$(srcdir)/fix-configfiletest.sh.in \
+	$(srcdir)/fix-AT-LD-LIBRARY-PATH-bug.sh.in \
 	$(srcdir)/gdbinit.in
 
-CLEANFILES = *.tmp *.conf fix-configfiletest.sh .gdbinit
+CLEANFILES = *.tmp *.conf fix-AT-LD-LIBRARY-PATH-bug.sh \
+	     .gdbinit
 

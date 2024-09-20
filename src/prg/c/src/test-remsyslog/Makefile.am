@@ -11,16 +11,17 @@
 #########################################################################
 
 
-fix-remsyslogtest.sh: Makefile
+fix-AT-LD-LIBRARY-PATH-bug.sh: remsyslogtest Makefile
 	mkdir -p $(@D)
 	rm -f $@ $@.tmp
 	test -f ./$@.in || srcdir=$(srcdir)/; \
 	$(edit) $${srcdir}$(@F).in > $@.tmp
 	mv $@.tmp $@
 	chmod a+x $@
-fix-remsyslogtest.sh: $(srcdir)/fix-remsyslogtest.sh.in
+	./$@ "remsyslogtest"
+fix-AT-LD-LIBRARY-PATH-bug.sh: $(srcdir)/fix-AT-LD-LIBRARY-PATH-bug.sh.in
 
-check_SCRIPTS = fix-remsyslogtest.sh
+check_SCRIPTS = fix-AT-LD-LIBRARY-PATH-bug.sh
 
 
 if DEBUG
@@ -66,7 +67,8 @@ LDADD = $(tmplibraries)
 LDADD += ../libmgesysutils/libmgesysutils.la
 
 
-EXTRA_DIST = $(srcdir)/fix-remsyslogtest.sh.in $(srcdir)/gdbinit.in
+EXTRA_DIST = $(srcdir)/fix-AT-LD-LIBRARY-PATH-bug.sh.in $(srcdir)/gdbinit.in
 
-CLEANFILES = *.tmp fix-remsyslogtest.sh .gdbinit
+CLEANFILES = *.tmp fix-AT-LD-LIBRARY-PATH-bug.sh \
+	     .gdbinit
 
