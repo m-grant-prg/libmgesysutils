@@ -1,6 +1,6 @@
 #########################################################################
 #									#
-# Author: Copyright (C) 2015-2019, 2021-2023  Mark Grant		#
+# Author: Copyright (C) 2015-2019, 2021-2024  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -25,17 +25,17 @@ SUBDIRS += src/prg/c/inc-tmp
 SUBDIRS += src/prg/c/lib-tmp
 SUBDIRS += src/prg/c/pkg-config
 SUBDIRS += src/prg/c/src/libmgesysutils
+SUBDIRS += docs/doxygen
 SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
 SUBDIRS += src/prg/c/src/test-headers
 SUBDIRS += src/prg/c/src/run-tests
-SUBDIRS += docs/doxygen
 
 
 doc_DATA = AUTHORS ChangeLog COPYING NEWS README
 
 
 EXTRA_DIST = $(srcdir)/AUTHORS $(srcdir)/ChangeLog $(srcdir)/COPYING \
-		$(srcdir)/NEWS $(srcdir)/README
+	     $(srcdir)/NEWS $(srcdir)/README
 EXTRA_DIST += m4/gnulib-cache.m4
 EXTRA_DIST += docs/misc misc
 
