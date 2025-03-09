@@ -427,12 +427,6 @@ AC_PROG_SED
 AC_MSG_NOTICE(checking for some standard AutoTools required programs)
 AC_PROG_INSTALL
 
-AC_MSG_NOTICE(checking for particular programs required at build and run time)
-AC_PATH_PROG([BASH], [bash], [no])
-if test "x$BASH" = "xno" ; then
-	AC_MSG_ERROR([bash not found])
-fi
-
 AC_MSG_NOTICE(checking for particular programs required by this build)
 AC_CHECK_PROG(DOT, dot, yes, no)
 if test "x$DOT" = "xno" ; then
@@ -479,6 +473,10 @@ if test "x$TXT2MANWRAP" = "xno" ; then
 fi
 
 AC_MSG_NOTICE(checking for particular programs required at build and run time)
+AC_PATH_PROG([BASH], [bash], [no])
+if test "x$BASH" = "xno" ; then
+	AC_MSG_ERROR([bash not found])
+fi
 
 AC_MSG_NOTICE(checking for particular programs required at run time)
 
