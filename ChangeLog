@@ -1,3 +1,15 @@
+2025-10-27 v1.7.1 Mark Grant <m.grant.prg@gmail.com>
+	* build(deps): bump actions/checkout from 4 to 5
+dependabot[bot] (1):
+
+	docs: Create a reproducible archive for html
+	docs: Run doxygen -u Doxyfile.in after doxygen upgrade
+	gnulib: Upgrade after Trixie implementation
+	at: Upgrade bootstrap.sh to v1.6.1
+	Merge pull request #23 from m-grant-prg/dependabot/github_actions/tip/actions/checkout-5
+	m4: Update c-compiler flags to v1.3.2
+Mark Grant (6):
+
 2025-07-11 v1.7.0 Mark Grant <m.grant.prg@gmail.com>
 	* build(deps): bump CityOfLosAngeles/fetch-latest-github-release
 dependabot[bot] (1):
