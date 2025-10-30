@@ -52,13 +52,6 @@ var NAVTREE =
       [ "Installation Considerations", "md_docs_doxygen_src_150_autotools_internal.html#installation_condiderations", [
         [ "Making Libraries Available", "md_docs_doxygen_src_150_autotools_internal.html#ldconfig", null ],
         [ "doc-base Documentation", "md_docs_doxygen_src_150_autotools_internal.html#doc_base", null ]
-      ] ],
-      [ "Troubleshooting", "md_docs_doxygen_src_150_autotools_internal.html#troubleshooting", [
-        [ "Automake or Libtool Bug", "md_docs_doxygen_src_150_autotools_internal.html#automake_or_libtool_bug", [
-          [ "Affected Environments", "md_docs_doxygen_src_150_autotools_internal.html#affected_environments", null ],
-          [ "The Issue", "md_docs_doxygen_src_150_autotools_internal.html#the_issue", null ],
-          [ "Workarounds", "md_docs_doxygen_src_150_autotools_internal.html#workarounds", null ]
-        ] ]
       ] ]
     ] ],
     [ "Configuration File", "md_docs_doxygen_src_200_config_file.html", [
