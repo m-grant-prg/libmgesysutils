@@ -1,6 +1,6 @@
 #########################################################################
 #									#
-# Author: Copyright (C) 2015-2019, 2021-2024  Mark Grant		#
+# Author: Copyright (C) 2015-2019, 2021-2025  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -38,7 +38,6 @@ EXTRA_DIST = $(srcdir)/AUTHORS $(srcdir)/ChangeLog $(srcdir)/COPYING \
 	     $(srcdir)/NEWS $(srcdir)/README
 EXTRA_DIST += m4/gnulib-cache.m4
 EXTRA_DIST += docs/misc misc
-EXTRA_DIST += $(srcdir)/fix-AT-LD-LIBRARY-PATH-bug.sh.in
 
 
 srctarball:
