@@ -1,3 +1,6 @@
+2025-10-30 v1.7.2 Mark Grant <m.grant.prg@gmail.com>
+	* at: docs: tests: Remove fix for AutoTools LD_LIBRARY_PATH bug
+
 2025-10-27 v1.7.1 Mark Grant <m.grant.prg@gmail.com>
 	* build(deps): bump actions/checkout from 4 to 5
 dependabot[bot] (1):
