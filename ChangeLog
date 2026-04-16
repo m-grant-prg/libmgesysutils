@@ -1,3 +1,34 @@
+2026-04-16 v1.7.3 Mark Grant <m.grant.prg@gmail.com>
+	* build(deps): bump jidicula/clang-format-action from 4.17.0 to 4.18.0
+	build(deps): bump jidicula/clang-format-action from 4.16.0 to 4.17.0
+	build(deps): bump JamesIves/github-pages-deploy-action
+	build(deps): bump JamesIves/github-pages-deploy-action
+	build(deps): bump actions/checkout from 5 to 6
+	build(deps): bump JamesIves/github-pages-deploy-action
+	build(deps): bump jidicula/clang-format-action from 4.15.0 to 4.16.0
+dependabot[bot] (7):
+
+	at: Add distro info for Installation Directories
+	Merge pull request #36 from m-grant-prg/dependabot/github_actions/tip/jidicula/clang-format-action-4.18.0
+	Merge pull request #35 from m-grant-prg/dependabot/github_actions/tip/jidicula/clang-format-action-4.17.0
+	at: Upgrade bootstrap.sh to v1.7.1
+	at: Remove old signature file before creating a new one
+	at: Upgrade bootstrap.sh to v1.7.0
+	at: Add sign_tarball target
+	at: Leave source tarball name same as distribution tarball
+	Merge branch 'tip' of github.com:m-grant-prg/libmgesysutils into tip
+	Merge pull request #32 from m-grant-prg/dependabot/github_actions/tip/JamesIves/github-pages-deploy-action-4.8.0
+	at: Update Copyright for 2026
+	Merge pull request #31 from m-grant-prg/dependabot/github_actions/tip/JamesIves/github-pages-deploy-action-4.7.6
+	Merge pull request #28 from m-grant-prg/dependabot/github_actions/tip/actions/checkout-6
+	at: Upgrade bootstrap.sh to v1.6.2
+	gnulib: Upgrade gen-gnulib.sh to v1.3.0
+	at: Correct links to doxygen documentation on GitHub
+	Merge pull request #27 from m-grant-prg/dependabot/github_actions/tip/JamesIves/github-pages-deploy-action-4.7.4
+	Merge pull request #24 from m-grant-prg/dependabot/github_actions/tip/jidicula/clang-format-action-4.16.0
+	m4: Update c-compiler flags to v1.3.3
+Mark Grant (19):
+
 2025-10-30 v1.7.2 Mark Grant <m.grant.prg@gmail.com>
 	* at: docs: tests: Remove fix for AutoTools LD_LIBRARY_PATH bug
 
