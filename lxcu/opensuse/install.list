@@ -3,6 +3,7 @@
 
 autoconf autoconf-archive automake libtool make
 doxygen graphviz graphviz-gd
+ShellCheck
 tar
 libmgec7 libmgec7-devel
 txt2manwrap
