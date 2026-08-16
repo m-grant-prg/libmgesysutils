@@ -676,6 +676,7 @@ AC_MSG_NOTICE(processing additional checks and variables)
 #					${libexecdir}/${PACKAGE}
 #
 AC_SUBST([edit], ["$SED \
+		-e 's|@abstopsrcdir[@]|\$(abs_top_srcdir)|g' \
 		-e 's|@bashlocation[@]|\$(BASH)|g' \
 		-e 's|@pc_requires[@]|\$(pc_requires)|g' \
 		-e 's|@pc_requires_private[@]|\$(pc_requires_private)|g' \
@@ -819,7 +820,7 @@ AC_CONFIG_FILES(Makefile
 		src/prg/c/src/test-configfile/Makefile
 		src/prg/c/src/test-remsyslog/Makefile
 		src/prg/c/src/test-headers/Makefile
-		src/prg/c/src/run-tests/Makefile)
+		src/run-tests/Makefile)
 
 AC_OUTPUT
 
