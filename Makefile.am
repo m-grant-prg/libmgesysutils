@@ -28,6 +28,7 @@ SUBDIRS += src/prg/c/src/libmgesysutils
 SUBDIRS += docs/doxygen
 SUBDIRS += src/prg/c/src/test-configfile src/prg/c/src/test-remsyslog
 SUBDIRS += src/prg/c/src/test-headers
+SUBDIRS += src/tests/shellcheck
 SUBDIRS += src/run-tests
 
 
